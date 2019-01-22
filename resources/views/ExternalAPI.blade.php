@@ -26,8 +26,9 @@
     <script src="/js/cookie.js"></script>
     <script type = "text/javascript">
     $(document).ready(function() {
-      var onready = listCookies();
-      console.log(onready);
+      //var onready = listCookies();
+      //console.log(onready);
+      //alert(onready);
       //form validation
       $("#submit").on('click', function () {
         if (document.myForm.Name.value == "") {
@@ -48,8 +49,10 @@
           //contentType: "application/json",
             data: $('#frm').serializeArray(),
             success : function(json) {
+          //    alert("success");
             console.log("success");
             var Jtoken = json.token;
+        //    console.log(Jtoken);
             setCookie("token",Jtoken, 7);
             var test = listCookies();
             console.log(test);
