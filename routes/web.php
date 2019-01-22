@@ -22,3 +22,9 @@ Route::get('/Boutique', function () {
 Route::get('/SignUp', function () {
     return view('truc');
 });
+Route::get('/header', function () {
+    return view('header');
+});
+Route::get('/test', function () {
+    return view('bladetest');
+});

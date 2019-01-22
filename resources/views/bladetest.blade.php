@@ -1,0 +1,9 @@
+@extends('header')
+@extends('layouts/layout-master')
+    <head>
+    @section('merde')
+    @stop
+</head>
+    @section('sidebar')
+    @stop
+    </body>
