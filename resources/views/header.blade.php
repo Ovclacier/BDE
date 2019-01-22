@@ -14,7 +14,6 @@
         <title>BDE Connexion</title>
 
 	</head>
-    @section('navbar')
 
 <nav class="navbar navbar-fixed-top back">
   <div class="container-fluid-bis">
@@ -38,7 +37,6 @@
     </div>
   </div>
 </nav>
-@show
 
 
 <br>blblblb 1<br>
