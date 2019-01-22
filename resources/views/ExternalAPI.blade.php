@@ -2,28 +2,13 @@
 <html>
 <head>
 <title>API National du CESI</title>
-<script type = "text/javascript">
-//Form validation code will go here
-function validate() {
-console.log(0.1 + 0.2);
-if (document.myForm.Name.value == "") {
-  alert("please provide your name!");
-  document.myForm.Name.focus();
-  return false;
-}
-if (document.myForm.Password.value == "") {
-  alert("Password field is empty!");
-  document.myForm.Password.focus();
-  return false;
-}
-  return(true);
-};
+
 </script>
 </head>
 <body>
   <!-- form serves to receive auth token -->
     <h1>Sign in to external Server</h1>
-    <form method="post" name="myForm" onsubmit = "return(validate());" action="http://localhost:3000/auth/signin">
+    <form id="frm" name="myForm" onsubmit = "return(validate());" method="post">
     @csrf
         <div>
             <input type="test" name="Name" placeholder="Ville de votre centre">
@@ -34,8 +19,42 @@ if (document.myForm.Password.value == "") {
         </div>
 
         <div>
-            <input type="submit" value="Submit"/>
+            <input id="submit" type="button" value="Submit"/>
         </div>
     </form>
+    <script src="/js/jquery-3.3.1.js"></script>
+    <script type = "text/javascript">
+    $(document).ready(function() {
+      //form validation
+      $("#submit").on('click', function () {
+        if (document.myForm.Name.value == "") {
+          alert("please provide your name!");
+          document.myForm.Name.focus();
+          return false;
+        }
+        if (document.myForm.Password.value == "") {
+          alert("Password field is empty!");
+          document.myForm.Password.focus();
+          return false;
+        }
+        //send data to API
+        $.ajax({
+          url:'http://localhost:3000/auth/signin',
+          type : 'POST',
+          dataType : 'json',
+          data : $("#frm").serialize(),
+          success : function(result) {
+            console.log("success");
+            console.log(result);
+          },
+          error : function(xhr,resp, text) {
+            console.log(xhr, resp, text);
+            console.log('error');
+          }
+        })
+      })
+    });
+    </script>
+
 </body>
 </html>
