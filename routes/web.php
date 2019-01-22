@@ -14,9 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/header', function () {
-    return view('header');
+
+Route::get('/Boutique', function () {
+    return view('boutique');
 });
-Route::get('/footer', function () {
-    return view('footer');
+
+Route::get('/SignUp', function () {
+    return view('truc');
 });
