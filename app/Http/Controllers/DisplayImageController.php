@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class DisplayImageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('viewproducts', ['products'=> $products]);
+        //
     }
 
     /**
@@ -25,7 +23,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('createproduct');
+        //
     }
 
     /**
@@ -36,18 +34,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-       $test = explode('/', $request->image->store('public/images'));
-        $product = Product::firstOrCreate([
-            'name' => $request->name],
-            ['image' => $test[2],
-            'description' => $request->description,
-            'price' => $request->price,
-            'count' => $request->count
-            ]);
-        $product->save();
-        $products = Product::all();
-        return view('viewproducts', ['products' => $products]);
-        
+        //
     }
 
     /**
@@ -58,7 +45,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+      //  
     }
 
     /**

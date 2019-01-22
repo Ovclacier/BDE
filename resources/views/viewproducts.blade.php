@@ -1,3 +1,5 @@
+
+
 <!doctype html>
     <html lang="{{ app()->getLocale() }}">
     <head>
@@ -9,21 +11,25 @@
             <div class="content">
                 <h1>Here's a list of available products</h1>
                 <table>
-                    <thead>
+                    <thead align="center">
                         <td>Name</td>
+                        <td>Image</td>
                         <td>Description</td>
                         <td>Count</td>
                         <td>Price</td>
                     </thead>
-                    <tbody>
+                    <tbody align="center">
                         @foreach ($products as $product)
                             <tr>
                                 <td>{{ $product->name }}</td>
-                                <td class="inner-table">{{ $product->description }}</td>
+                                
+                                <td class="inner-table"><img src="storage/images/{{$product->image}}" height=100px width=100px/></td>
+                                <td class="inner-table">{{$product->description}}</td>
                                 <td class="inner-table">{{ $product->count }}</td>
                                 <td class="inner-table">{{ $product->price }}</td>
                             </tr>
                         @endforeach
+                       
                     </tbody>
                 </table>
             </div>
