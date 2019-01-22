@@ -24,14 +24,16 @@
     </form>
 
     <!-- form to access API -->
+
     <script src="/js/jquery-3.3.1.js"></script>
     <script src="/js/cookie.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            //var onready = listCookies();
-            //console.log(onready);
+            var onready = listCookies();
+            console.log(onready);
             //alert(onready);
             //form validation
+            //eraseCookie("token");
             $("#submit").on('click', function() {
                 if (document.myForm.Name.value == "") {
                     alert("please provide your name!");
