@@ -10,13 +10,33 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+
+//Le login marche, mais la route qui gère /login et /register est où?
+
+/*
+ProductController-related routes
+*/
+Route::get('/create','ProductController@create');
+Route::get('/products','ProductController@index');
+Route::resource('/products', 'ProductController');
+
 
 Route::get('/', function () {
     return view('welcome');
 });
+/*
+HomeController-related routes
+*/
+Route::get('/send/email', 'HomeController@mail');
+Route::get('/home', 'HomeController@index')->name('home');
+
+/*
+//No header or footer views
 Route::get('/header', function () {
     return view('header');
 });
 Route::get('/footer', function () {
     return view('footer');
 });
+*/
