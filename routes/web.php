@@ -11,12 +11,22 @@
 |
 */
 
+ Route::get('/create', function(){
+     return view('createproduct');
+ });
+ Route::get('/products', function(){
+    return view('createproduct');
+});
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/header', function () {
-    return view('header');
-});
-Route::get('/footer', function () {
-    return view('footer');
-});
+Route::get('/send/email', 'HomeController@mail');
+
+Route::resource('/products', 'ProductController');
+
+Auth::routes();
+
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
