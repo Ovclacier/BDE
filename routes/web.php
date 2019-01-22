@@ -30,7 +30,9 @@ HomeController-related routes
 */
 Route::get('/send/email', 'HomeController@mail');
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('A', function() {
+  return view('truc');
+});
 /*
 //No header or footer views
 Route::get('/header', function () {

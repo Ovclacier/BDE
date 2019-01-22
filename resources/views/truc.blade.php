@@ -16,7 +16,7 @@
 		<div class = "container-fluid container text-center">
 			<div class="col-lg-1 col-md-0 col-sm-0"></div>
 			<div class="col-lg-4 col-md-12 col-sm-12 wrapper">
-					<form id="Connexion">
+					<form id="Connexion" method="POST" action='http://localhost:3000/api/users'>
 		                <h2>Connexion</h2>
 		                <div class="formContainer">
 	                    <div><input class="logInput blackInput" type="text" name="mail" placeholder="Mail"></div>
@@ -36,7 +36,7 @@
 	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="nom" placeholder="Nom"></div>
 	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="prénom" placeholder="Prénom"></div>
 					    <div class="inForm">Localisation :</div>
-					    <form>
+					    
 					    <select name="place">
 					    <option>Strasbourg</option>
 					    <option>Paris</option>
@@ -44,13 +44,14 @@
 					    <option>San Fransisco</option>
 					    <option>Tokyo</option>
 					    </select>
-					    </form>
-	                    <div id="Sign up" class="inForm bigger"><br><button>S'inscrire</button></div>
+					 			<div id="Sign up" class="inForm bigger"><br><button type="submit">S'inscrire</button></div>
+
+
 		            </form>
 		        </div>
             </div>
         </div>
-	    
+
     </body>
 
 </html>
