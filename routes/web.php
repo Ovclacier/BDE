@@ -28,3 +28,9 @@ Route::get('/header', function () {
 Route::get('/test', function () {
     return view('bladetest');
 });
+
+
+//Page qui hérite d'une autre
+Route::get('/WHAT', function() {
+  return view('headerTest');
+});
