@@ -15,11 +15,42 @@
 
 </head>
 <body>
+<<<<<<< HEAD
 
   @yield('navbar')
 
   @yield('contenu')
 
   @yield('footer')
+=======
+  <nav class="navbar navbar-fixed-top back">
+    <div class="container-fluid-bis">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <img class="logo" alt="logo du cesi" src="https://cdn.discordapp.com/attachments/533281182180442114/536851376052109313/logo.png">
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class=" nav navbar-nav">
+  		<li><a class="texte" href="google.fr">Boutique</a></li>
+          <li><a class="texte" href="google.fr">Boite à idées</a></li>
+          <li><a class="texte" href="google.fr">Events</a></li>
+        </ul>
+        <ul class=" nav navbar-nav navbar-right">
+          <li><a class="texte" href="localhost">Connexion/Inscription</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  @yield('contenu')
+
+  <footer>
+    <p><a class="lien" href="http://google.com">Mentions légales</a><a class="barre"> | </a><a>BDE@viacesi.fr</a></p>
+  </footer>
+>>>>>>> 4354c85e9986dce68a0f4b67ada63d4165fd7f00
 </body>
 </html>

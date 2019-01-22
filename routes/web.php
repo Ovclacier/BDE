@@ -38,3 +38,9 @@ Route::get('/test', function () {
 Route::get('/WHAT', function() {
   return view('headerTest');
 });
+<<<<<<< HEAD
+=======
+Route::get('/WHAT2', function() {
+  return view('jsp');
+});
+>>>>>>> 4354c85e9986dce68a0f4b67ada63d4165fd7f00
