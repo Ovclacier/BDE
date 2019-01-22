@@ -2,15 +2,15 @@
 @extends('HéritageTest')
 <html>
 	@section('titre')
-	<title>Boutique</title>
+	<title>Evenement</title>
 
 	
 	@section('contenu')
 
 	<div>
 		<div class = "container-fluid container blc text-center">
-			<div class="row ble1 menuTop">
-				<h1>Les produits du moments</h1>
+			<div class="row ble1 ">
+				<h1>Fiche Evenement</h1>
 			</div>
 			<div class="col-lg-4 col-md-6 col-sm-12">
 				<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" alt="pile"></a>

@@ -33,11 +33,9 @@ Route::get('/test', function () {
     return view('bladetest');
 });
 
-
-//Page qui hérite d'une autre
-Route::get('/WHAT', function() {
-  return view('headerTest');
-});
 Route::get('/WHAT2', function() {
   return view('jsp');
 });
+Route::get('/fiche', function() {
+    return view('Fiche-event');
+  });
