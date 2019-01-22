@@ -15,11 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/Evenements', function () {
+    return view('event');
+});
+
 Route::get('/Boutique', function () {
     return view('boutique');
 });
 
-Route::get('/SignUp', function () {
+Route::get('/Connexion', function () {
     return view('truc');
 });
 Route::get('/header', function () {

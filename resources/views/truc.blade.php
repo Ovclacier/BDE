@@ -4,6 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta http-equiv="Content-Language" content="fr" />
 		<title>BDE Connexion</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     	<link rel="stylesheet" href="{{ asset('/css/bootstrap-theme.min.css') }}">
     	<link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
