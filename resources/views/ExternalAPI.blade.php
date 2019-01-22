@@ -2,14 +2,12 @@
 <html>
 <head>
 <title>API National du CESI</title>
-
-</script>
 </head>
 <body>
   <!-- form serves to receive auth token -->
     <h1>Sign in to external Server</h1>
     <form id="frm" name="myForm" onsubmit = "return(validate());" method="post">
-    @csrf
+      {{ csrf_field() }}
         <div>
             <input type="test" name="Name" placeholder="Ville de votre centre">
         </div>
@@ -22,9 +20,14 @@
             <input id="submit" type="button" value="Submit"/>
         </div>
     </form>
+
+    <!-- form to access API -->
     <script src="/js/jquery-3.3.1.js"></script>
+    <script src="/js/cookie.js"></script>
     <script type = "text/javascript">
     $(document).ready(function() {
+      var onready = listCookies();
+      console.log(onready);
       //form validation
       $("#submit").on('click', function () {
         if (document.myForm.Name.value == "") {
@@ -42,10 +45,14 @@
           url:'http://localhost:3000/auth/signin',
           type : 'POST',
           dataType : 'json',
-          data : $("#frm").serialize(),
-          success : function(result) {
+          //contentType: "application/json",
+            data: $('#frm').serializeArray(),
+            success : function(json) {
             console.log("success");
-            console.log(result);
+            var Jtoken = json.token;
+            setCookie("token",Jtoken, 7);
+            var test = listCookies();
+            console.log(test);
           },
           error : function(xhr,resp, text) {
             console.log(xhr, resp, text);
