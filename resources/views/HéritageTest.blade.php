@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Language" content="fr" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/bootstrap-theme.min.css') }}">
@@ -27,9 +26,9 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class=" nav navbar-nav">
-  		<li><a class="texte" href="google.fr">Boutique</a></li>
-          <li><a class="texte" href="google.fr">Boite à idées</a></li>
-          <li><a class="texte" href="google.fr">Events</a></li>
+  		<li><a class="texte" href="https://google.fr">Boutique</a></li>
+          <li><a class="texte" href="https://google.fr">Boite à idées</a></li>
+          <li><a class="texte" href="https://google.fr">Events</a></li>
         </ul>
         <ul class=" nav navbar-nav navbar-right">
           <li><a class="texte" href="localhost">Connexion/Inscription</a></li>
