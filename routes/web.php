@@ -34,3 +34,6 @@ Route::get('/test', function () {
 Route::get('/WHAT', function() {
   return view('headerTest');
 });
+Route::get('/WHAT2', function() {
+  return view('jsp');
+});

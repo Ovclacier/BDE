@@ -14,8 +14,8 @@
 	</head>
 
 	<body>
-	
-	@include('includes.header')
+
+	@include('header')
 
 
 		<div class = "container-fluid container blc text-center">
@@ -35,7 +35,7 @@
 		</div>
 
 		<div class="container-fluid container blc text-center ">
-		
+
 			<div class="row ble1">
 				<h2>Liste produit</h2>
 				</div>
@@ -50,7 +50,7 @@
 						<li>Pile de montre</li>
 					</ul>
 				</div>
-			
+
 				<div class="col-lg-9 col-mg-12 col-sm-12 blc">
 					<div class="col-lg-3 col-md-6 col-sm-6">
 						<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" width="200" height="200" alt="pile"></a>
