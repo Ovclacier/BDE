@@ -31,6 +31,7 @@ button{
 }
 
 
+
 input[type]{
     padding: 2px;
     margin: 1px;
@@ -156,7 +157,16 @@ h3{
 }
 
 .wrapper{
-    background-color: lightgrey;
+    
+    background: rgb(255,255,255);/* Old Browsers */
+    background: -moz-linear-gradient(left, rgb(255,255,255) 0%, rgb(246,246,246) 47%, rgb(237,237,237) 100%); /* FF3.6+ */
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgb(255,255,255)), color-stop(47%, rgb(246,246,246)), color-stop(100%, rgb(237,237,237)));/* Chrome, Safari4+ */
+    background: -webkit-linear-gradient(left, rgb(255,255,255) 0%, rgb(246,246,246) 47%, rgb(237,237,237) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgb(255,255,255) 0%, rgb(246,246,246) 47%, rgb(237,237,237) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, rgb(255,255,255) 0%, rgb(246,246,246) 47%, rgb(237,237,237) 100%); /* IE 10+ */
+    background: linear-gradient(to right, rgb(255,255,255) 0%, rgb(246,246,246) 47%, rgb(237,237,237) 100%);/* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1 );/* IE6-9 */
+
     padding: 3em;
     margin: 2em;
     text-align: center;

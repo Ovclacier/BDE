@@ -1,18 +1,7 @@
-<!DOCTYPE html>
+@extends('HéritageTest')
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta http-equiv="Content-Language" content="fr" />
-		<title>BDE Connexion</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
-    	<link rel="stylesheet" href="{{ asset('/css/bootstrap-theme.min.css') }}">
-    	<link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
-		<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-
-
-	</head>
-	<body>
+	
+	@section('contenu')
 		<br><br><br><br><br>
 		<div class = "container-fluid container text-center">
 			<div class="col-lg-1 col-md-0 col-sm-0"></div>
@@ -52,6 +41,6 @@
             </div>
         </div>
 	    
-    </body>
 
 </html>
+@endsection
