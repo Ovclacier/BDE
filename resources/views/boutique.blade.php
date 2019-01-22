@@ -10,7 +10,9 @@
 
 	<div>
 		<div class = "container-fluid container blc text-center">
-			<h1>Les produits du moments</h1>
+			<div class="row ble1 menuTop">
+				<h1>Les produits du moments</h1>
+			</div>
 			<div class="col-lg-4 col-md-6 col-sm-12">
 				<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" alt="pile"></a>
 				<div>Pile AA</div>
