@@ -1,9 +1,11 @@
 @extends('HéritageTest')
 <html>
+	@section('titre')
+	<title>Boutique</title>
 	
 	@section('contenu')
 
-
+	<div>
 		<div class = "container-fluid container blc text-center">
 			<h1>Les produits du moments</h1>
 			<div class="col-lg-4 col-md-6 col-sm-12">
@@ -24,7 +26,7 @@
 		
 			<div class="row ble1">
 				<h2>Liste produit</h2>
-				</div>
+			</div>
 			<div class="row">
 				<div class="col-lg-3 col-mg-12 col-sm-12 ble2 text-left marginMenu fontSizeMenu">
 					<h3 class="text-center">Coucou</h3>
@@ -56,7 +58,6 @@
 					</div>
 				</div>
 			</div>
-
-		</div>
+</div>
 				
 @endsection
