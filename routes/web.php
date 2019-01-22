@@ -33,12 +33,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('A', function() {
   return view('truc');
 });
-/*
-//No header or footer views
-Route::get('/header', function () {
-    return view('header');
+
+Route::get('/api', function() {
+  return view('ExternalAPI');
 });
-Route::get('/footer', function () {
-    return view('footer');
-});
-*/

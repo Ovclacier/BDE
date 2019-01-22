@@ -29,14 +29,14 @@
 	        <div class="col-lg-1 col-md-0 col-sm-0"></div>
 			<div class="col-lg-4 col-md-12 col-sm-12 wrapper">
 				<div class="container-fluid container"></div>
-		            <form id="Inscription">
+		            <form id="Inscription" method="POST" action="http://localhost:3000/api/users">
 		                <h2>S'inscrire</h2>
 	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="mail" placeholder="Mail"></div>
 	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="password" name="pwd" placeholder="Mot de passe"></div>
 	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="nom" placeholder="Nom"></div>
 	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="prénom" placeholder="Prénom"></div>
 					    <div class="inForm">Localisation :</div>
-					    
+
 					    <select name="place">
 					    <option>Strasbourg</option>
 					    <option>Paris</option>
