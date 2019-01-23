@@ -2,15 +2,15 @@
 @extends('HéritageTest')
 <html>
 	@section('titre')
-	<title>Evenement</title>
+	<title>Boutique</title>
+    @endsection
 
-	
 	@section('contenu')
 
 	<div>
 		<div class = "container-fluid container blc text-center">
 			<div class="row ble1 ">
-				<h1 class="headed">Fiche Evenement</h1>
+            <h1>BDE Administration</h1>
             </div>
             <div class="row ble2 ">
             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -20,8 +20,8 @@
             <button type="button">Download to .pdf</button>
             </div>
 			</div>
-			<div class="col-lg-12 col-md-12 col-sm-12">
-            <table class="adm"border=1 width=100% cellspacing=1 cellpadding=1 >
+			<div class="col-lg-12 col-md-12 col-sm-12 tableau">
+            <table class="adm" >
             <?php
             $nombre_de_lignes = 1;
 
@@ -45,6 +45,4 @@
 			</div>
 			
     </div>
-        <a class="descIdee">sfvsfdsfdsf</a>		
-        <a>sfvsfdsfdsf</a>	
 @endsection
