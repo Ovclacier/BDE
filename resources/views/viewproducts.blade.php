@@ -19,6 +19,7 @@
                         <td>Price</td>
                     </thead>
                     <tbody align="center">
+                    <section id="content">
                         @foreach ($products as $product)
                             <tr>
                                 <td>{{ $product->name }}</td>
@@ -29,7 +30,8 @@
                                 <td class="inner-table">{{ $product->price }}</td>
                             </tr>
                         @endforeach
-                       
+                       </section>
+                       {{ $products->links() }}
                     </tbody>
                 </table>
             </div>

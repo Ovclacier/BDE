@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-
-class ProductController extends Controller
+use App\Post;
+class PostsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +13,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(2);
-        return view('viewproducts', ['products'=> $products]);
+        $posts = Post::paginate(5);
+
+        return view('showposts', ['posts'=> $posts]);
     }
 
     /**
@@ -27,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('createproduct');
+        return view('addpost');
     }
 
     /**
@@ -38,19 +36,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-       $test = explode('/', $request->image->store('public/images'));
-       $product = Product::firstOrCreate([
-            'name' => $request->name],
-            ['image' => $test[2],
-            'description' => $request->description,
-            'price' => $request->price,
-            'count' => $request->count
-            ]);
-        $product->save();
-        //$products = Product::all();
-        $products = DB::table('products')->simplePaginate(2);
-        return view('viewproducts', ['products' => $products]);
         
+        $post = Post::Create([
+            'title' => $request->title, 
+            'content' => $request->content, 
+            'author_id'=> $request->author
+        ]);
+        $post->save();
+        $posts = Post::all();
+
+
+        return view('showposts', ['posts'=> $posts]);
     }
 
     /**

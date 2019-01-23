@@ -1,3 +1,7 @@
+<?php 
+session_start();
+
+?>
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
     <head>
@@ -77,6 +81,7 @@
                 <div class="links">
                 <a href="{{ config('app.url')}}/products/create">Create Products</a>
                 <a href="{{ config('app.url')}}/products">View Products</a>
+                <a href="{{ config('app.url')}}/posts">View Posts</a>
                 </div>
             </div>
         </div>

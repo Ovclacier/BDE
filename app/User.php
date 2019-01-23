@@ -21,6 +21,13 @@ class User extends Authenticatable
     ];
 
     /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
+
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
@@ -28,4 +35,19 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getAuthIdentifier()
+    {
+      return $this->getKey();
+    }
+
+    public function getAuthPassword()
+    {
+      return $this->password;
+    }
+
+    public function getReminderEmail()
+    {
+      return $this->email;
+    }
 }
