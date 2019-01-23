@@ -34,6 +34,14 @@ Route::get('A', function() {
   return view('truc');
 });
 
+/*
+Branch Intermediate
+*/
+
 Route::get('/api', function() {
   return view('ExternalAPI');
+});
+//should be restricted to users with appropriate grade
+Route::get('/admin', function() {
+  return view('jsp');
 });
