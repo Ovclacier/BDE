@@ -12,7 +12,7 @@
 */
 Auth::routes();
 
-//Le login marche, mais la route qui gère /login et /register est où?
+//Le login marche, mais la route qui gÃ¨re /login et /register est oÃ¹?
 
 /*
 ProductController-related routes
@@ -33,9 +33,6 @@ HomeController-related routes
 */
 Route::get('/send/email', 'HomeController@mail');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('A', function() {
-  return view('truc');
-});
 
 Route::get('/Boutique', function () {
     return view('boutique');
@@ -44,8 +41,10 @@ Route::get('/Boutique', function () {
 Branch Intermediate
 */
 
+/*
 Route::get('/Connexion', function () {
     return view('truc');
+  });
 Route::get('/api', function() {
   return view('ExternalAPI');
 });
@@ -57,10 +56,13 @@ Route::get('/test', function () {
 });
 
 Route::get('/WHAT2', function() {
+ return view('jsp');
+});
 //should be restricted to users with appropriate grade
 Route::get('/admin', function() {
   return view('jsp');
 });
 Route::get('/fiche', function() {
     return view('Fiche-event');
-  });
+});
+*/
