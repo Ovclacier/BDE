@@ -15,7 +15,21 @@
             <input id="get" type="button" value="GET" />
     </form>
 
-    <!-- form to access API -->
+
+    <table id="try" class="display" style="width:100%">
+      <thead>
+                  <tr>
+                      <th>id</th>
+                      <th>Prenom</th>
+                      <th>Nom</th>
+                      <th>Mail</th>
+                      <th>Centre</th>
+                  </tr>
+          </thead>
+          <tbody>
+          </tbody>
+
+
 
     <script src="/js/jquery-3.3.1.js"></script>
     <!-- cookie.js is obsolete -->
@@ -24,21 +38,37 @@
     <script src="/js/Jquerycookie/jquery.cookie.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-        //    alert($.cookie("token"));
 
+        //    alert($.cookie("token"));
             //form validation
-            $("#get").on('click', function() {
-                //send data to API
                 $.ajax({
-                    url: 'http://localhost:3000/api/users',
+                    url: 'http://localhost:3000/api/users/',
                     type: 'GET',
                     dataType: 'json',
                     headers: {"Authorization": $.cookie("token")},
+
                     success: function(json) {
                         //    alert("success");
                         console.log("success");
                         var Users = json;
-                        console.log(Users);
+                  //      console.log(Users);
+                          "serverSide": false,
+                          "processing": true,
+                          "ajax": {
+                            url: 'http://localhost:3000/api/users/',
+                            type: 'GET',
+                            dataType: 'json',
+                            headers: {"Authorization": $.cookie("token")}
+                          },
+                          "columns": [
+                            {"data":"id"},
+                            {"data":"Prenom"},
+                            {"data":"Nom"},
+                            {"data":"Mail"},
+                            {"data":"Centre"}
+
+                          ]
+                        });
                         //    console.log(Jtoken);
                     },
                     error: function(xhr, resp, text) {
@@ -46,10 +76,9 @@
                         console.log('error');
                     }
                 })
-            })
-        });
+              });
+
     </script>
 
 </body>
-
 </html>
