@@ -1,20 +1,11 @@
-
+@extends('HéritageTest')
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta http-equiv="Content-Language" content="fr" />
-		<title>BDE Boutique</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
-	 	<link rel="stylesheet" href="{{ asset('/css/bootstrap-theme.min.css') }}">
-	 	<link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
-		<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="assets\js\bootstrap.min.js"></script>
-		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-	</head>
+	@section('titre')
+	<title>Évènements</title>
+	@endsection
 
-	<body>
+	@section('contenu')
+
 		<div class="container blc container-fluid text-center">
 			<div class="row ble1 menuTop">
 				<h1>Évènements</h1>
@@ -58,8 +49,5 @@
 			</div>
 
 		</div>
-	</body>
 
-	<footer>
- 		<p><a class="lien" href="http://google.com">Mentions légales</a><a class="barre"> | </a><a>BDE@viacesi.fr</a></p>
-	</footer>
+@endsection
