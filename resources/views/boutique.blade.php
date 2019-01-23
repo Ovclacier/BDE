@@ -3,7 +3,7 @@
 <html>
 	@section('titre')
 	<title>Boutique</title>
-
+	@endsection
 	
 	@section('contenu')
 

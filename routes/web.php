@@ -15,6 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/Idees', function () {
+    return view('BoiteIdee');
+});
+Route::get('/testIdee', function () {
+    return view('ficheIdee');
+});
+
+
 Route::get('/Evenements', function () {
     return view('event');
 });
