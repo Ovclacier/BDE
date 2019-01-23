@@ -10,59 +10,32 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
 
-//Le login marche, mais la route qui gÃ¨re /login et /register est oÃ¹?
-
-/*
-ProductController-related routes
-*/
-Route::get('/create','ProductController@create');
-Route::get('/products','ProductController@index');
-Route::resource('/products', 'ProductController');
-
-
+ Route::get('/create', function(){
+     return view('createproduct');
+ });
+ Route::get('/products', function(){
+    return view('createproduct');
+});
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/Evenements', function () {
-    return view('event');
-/*
-HomeController-related routes
-*/
 Route::get('/send/email', 'HomeController@mail');
+
+Route::resource('/products', 'ProductController');
+
+Auth::routes();
+
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/Boutique', function () {
-    return view('boutique');
-});
-/*
-Branch Intermediate
-*/
-
-/*
-Route::get('/Connexion', function () {
-    return view('truc');
-  });
 Route::get('/api', function() {
   return view('ExternalAPI');
 });
-Route::get('/header', function () {
-    return view('header');
-});
-Route::get('/test', function () {
-    return view('bladetest');
-});
-
-Route::get('/WHAT2', function() {
- return view('jsp');
-});
-//should be restricted to users with appropriate grade
 Route::get('/admin', function() {
+  return view('admin');
+});
+Route::get('/jsp',function() {
   return view('jsp');
 });
-Route::get('/fiche', function() {
-    return view('Fiche-event');
-});
-*/

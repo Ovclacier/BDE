@@ -1,6 +1,6 @@
 @extends('layout')
 <html>
-	
+
 	@section('contenu')
 		<br><br><br><br><br>
 		<div class = "container-fluid container text-center">
