@@ -19,9 +19,15 @@ a:hover{
     text-decoration: none;
 }
 button{
-    background-color: lightgrey;
+    background-color: lightgray;
     border: solid black 1px;
     font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.adm{
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 
