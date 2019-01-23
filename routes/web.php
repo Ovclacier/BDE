@@ -33,8 +33,8 @@ Route::get('/test', function () {
     return view('bladetest');
 });
 
-Route::get('/WHAT2', function() {
-  return view('jsp');
+Route::get('/admin', function() {
+  return view('admin');
 });
 Route::get('/fiche', function() {
     return view('Fiche-event');
