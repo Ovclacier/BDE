@@ -1,22 +1,12 @@
-<!DOCTYPE html>
+@extends('HéritageTest')
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta http-equiv="Content-Language" content="fr" />
-		<title>BDE Connexion</title>
-		<link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
-    	<link rel="stylesheet" href="{{ asset('/css/bootstrap-theme.min.css') }}">
-    	<link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
-		<link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-
-
-	</head>
-	<body>
+	
+	@section('contenu')
 		<br><br><br><br><br>
 		<div class = "container-fluid container text-center">
 			<div class="col-lg-1 col-md-0 col-sm-0"></div>
 			<div class="col-lg-4 col-md-12 col-sm-12 wrapper">
-					<form id="Connexion" method="POST" action='http://localhost:3000/api/users'>
+					<form id="Connexion">
 		                <h2>Connexion</h2>
 		                <div class="formContainer">
 	                    <div><input class="logInput blackInput" type="text" name="mail" placeholder="Mail"></div>
@@ -29,14 +19,14 @@
 	        <div class="col-lg-1 col-md-0 col-sm-0"></div>
 			<div class="col-lg-4 col-md-12 col-sm-12 wrapper">
 				<div class="container-fluid container"></div>
-		            <form id="Inscription" method="POST" action="http://localhost:3000/api/users">
+		            <form id="Inscription">
 		                <h2>S'inscrire</h2>
 	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="mail" placeholder="Mail"></div>
 	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="password" name="pwd" placeholder="Mot de passe"></div>
 	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="nom" placeholder="Nom"></div>
 	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="prénom" placeholder="Prénom"></div>
 					    <div class="inForm">Localisation :</div>
-
+					    <form>
 					    <select name="place">
 					    <option>Strasbourg</option>
 					    <option>Paris</option>
@@ -44,14 +34,11 @@
 					    <option>San Fransisco</option>
 					    <option>Tokyo</option>
 					    </select>
-					 			<div id="Sign up" class="inForm bigger"><br><button type="submit">S'inscrire</button></div>
-
-
+					    </form>
+	                    <div id="Sign up" class="inForm bigger"><br><button>S'inscrire</button></div>
 		            </form>
 		        </div>
             </div>
         </div>
-
-    </body>
-
 </html>
+@endsection

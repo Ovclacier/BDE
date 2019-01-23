@@ -36,4 +36,28 @@ Route::get('A', function() {
 
 Route::get('/api', function() {
   return view('ExternalAPI');
+
+Route::get('/Evenements', function () {
+    return view('event');
 });
+
+Route::get('/Boutique', function () {
+    return view('boutique');
+});
+
+Route::get('/Connexion', function () {
+    return view('truc');
+});
+Route::get('/header', function () {
+    return view('header');
+});
+Route::get('/test', function () {
+    return view('bladetest');
+});
+
+Route::get('/WHAT2', function() {
+  return view('jsp');
+});
+Route::get('/fiche', function() {
+    return view('Fiche-event');
+  });
