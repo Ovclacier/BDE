@@ -16,10 +16,13 @@
   {
     switch ($id) {
       case 1:
-        return 'admin';
+        return 'student';
         break;
       case 2:
-        return 'superadmin';
+        return 'cesi';
+        break;
+      case 3:
+        return 'bde';
         break;
       default:
         return 'user';

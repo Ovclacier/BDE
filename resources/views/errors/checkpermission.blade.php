@@ -11,7 +11,7 @@
 
 
 <div class="container text-center">
-	<h1>You don't have permission for access this page <br/> Please contact your Superadmin!</h1>
+	<h1>You don't have permission for access this page <br/> Please contact a BDE member!</h1>
 </div>
 
 

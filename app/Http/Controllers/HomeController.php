@@ -51,9 +51,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function adminSuperadmin()
+    public function studentCesiBde()
     {
-        dd('Access Admin and Superadmin');
+        dd('Access All logged Users');
     }
 
 
@@ -62,8 +62,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function superadmin()
+    public function cesiBde()
     {
-        dd('Access only Superadmin');
+        dd('Access only CESI and BDE');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function bde()
+    {
+        dd('Access only BDE');
     }
 }
