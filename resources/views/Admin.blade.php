@@ -27,17 +27,15 @@
 
             while ($nombre_de_lignes <= 100)
             {
-             echo '<tr><th>'.$nombre_de_lignes;
-             echo '</th><td>'.$nombre_de_lignes;
+             echo '<tr><td>'.$nombre_de_lignes;
+             echo '</td><td>'.$nombre_de_lignes;
              echo '</td><td>'.$nombre_de_lignes;
              echo '</td><td>'.$nombre_de_lignes;
              echo '</td><td>'.$nombre_de_lignes.'</td></tr>';
              $nombre_de_lignes++;
 }
 ?>
-            <tr><th>Fuck it</th><td>cellule1</td><td>cellule 2</td><td>cellule1</td><td>cellule1</td></tr>
-            <tr><th>Cellules vides</th><td></td><td></td></tr>
-            <tr><th>cellules du bas</th><td></td><td>cellule 6</td></tr>
+    
             </table>
 
 </table>
