@@ -1,0 +1,53 @@
+{
+  "error": false,
+  "data": [
+    {
+      "id": 1,
+      "Mail": "123@456.com",
+      "Prenom": "John",
+      "Nom": "Doe",
+      "Centre": "Lyon",
+      "Grade": 1,
+      "User": "Deprecated",
+      "Mdp": "$2a$10$w5kLMORb43XQ.2XgZZPwxu15Y411DPClN1M57G.yVKOm8qZ2TdEwm",
+      "createdAt": "2019-01-22T07:59:46.000Z",
+      "updatedAt": "2019-01-22T07:59:46.000Z"
+    },
+    {
+      "id": 3,
+      "Mail": "123@example.com",
+      "Prenom": "John",
+      "Nom": "TEST",
+      "Centre": "Lyon",
+      "Grade": 1,
+      "User": "Deprecated",
+      "Mdp": "$2a$10$mFBznHLljsj3V0nyGWQGT.xSgoKjue6sq3ExXWurpLg9zGQzyBYU2",
+      "createdAt": "2019-01-22T08:01:00.000Z",
+      "updatedAt": "2019-01-22T08:03:58.000Z"
+    },
+    {
+      "id": 5,
+      "Mail": "1234@456.com",
+      "Prenom": "Jane",
+      "Nom": "Doe",
+      "Centre": "Lyon",
+      "Grade": 1,
+      "User": "Deprecated",
+      "Mdp": "$2a$10$zUYdcvIiV.46YRbGqeUdXOEyqf4FJ1xE9X5.iUED0fPtTWgh2KZVu",
+      "createdAt": "2019-01-22T08:02:28.000Z",
+      "updatedAt": "2019-01-22T08:02:28.000Z"
+    },
+    {
+      "id": 6,
+      "Mail": "879@gmail.com",
+      "Prenom": "AZERY",
+      "Nom": "Qwerty",
+      "Centre": "Tokyo",
+      "Grade": 1,
+      "User": "deprecated",
+      "Mdp": "$2a$10$OFIbBBF6Rmg6RBjXbmdQ4eUmhqiR8KvRT1VV5P2XI9Xu7rHvNPgIm",
+      "createdAt": "2019-01-22T13:08:23.000Z",
+      "updatedAt": "2019-01-22T13:08:23.000Z"
+    }
+  ]
+}

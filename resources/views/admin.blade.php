@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>API National du CESI</title>
-    <link rel="stylesheet" type="text/css" href="datatables/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="datatables/datatables.min.css" />
 </head>
 
 <body>
@@ -12,73 +12,53 @@
     <h1>Sign in to external Server</h1>
     <form id="frm" name="myForm" method="get">
         {{ csrf_field() }}
-            <input id="get" type="button" value="GET" />
+        <input id="get" type="button" value="GET" />
     </form>
 
 
-    <table id="try" class="display" style="width:100%">
-      <thead>
-                  <tr>
-                      <th>id</th>
-                      <th>Prenom</th>
-                      <th>Nom</th>
-                      <th>Mail</th>
-                      <th>Centre</th>
-                  </tr>
-          </thead>
-          <tbody>
-          </tbody>
+    <table id="example" class="display" style="width:100%">
 
 
 
-    <script src="/js/jquery-3.3.1.js"></script>
-    <!-- cookie.js is obsolete -->
-    <script src="/js/cookie.js"></script>
-    <script type="text/javascript" src="datatables/datatables.min.js"></script>
-    <script src="/js/Jquerycookie/jquery.cookie.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-
-        //    alert($.cookie("token"));
-            //form validation
-                $.ajax({
-                    url: 'http://localhost:3000/api/users/',
-                    type: 'GET',
-                    dataType: 'json',
-                    headers: {"Authorization": $.cookie("token")},
-
-                    success: function(json) {
-                        //    alert("success");
-                        console.log("success");
-                        var Users = json;
-                  //      console.log(Users);
-                          "serverSide": false,
-                          "processing": true,
-                          "ajax": {
-                            url: 'http://localhost:3000/api/users/',
-                            type: 'GET',
-                            dataType: 'json',
-                            headers: {"Authorization": $.cookie("token")}
+        <script src="/js/jquery-3.3.1.js"></script>
+        <!-- cookie.js is obsolete -->
+        <script src="/js/cookie.js"></script>
+        <script type="text/javascript" src="datatables/datatables.min.js"></script>
+        <script src="/js/Jquerycookie/jquery.cookie.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+              $.ajax({
+                  'url': "http://localhost:3000/api/users",
+                  'method': "GET",
+                  'contentType': 'application/json',
+                  'headers': {
+                  'Authorization': $.cookie("token")
+                  },
+              }).done(function(data) {
+                console.log(data);
+                  $('#example').dataTable({
+                      "sDom": 'frtip',
+                      "bServerSide": true,
+                      "bProcessing" : true,
+                      "aaData": data,
+                      "columns": [{
+                              "data": "Mail"
                           },
-                          "columns": [
-                            {"data":"id"},
-                            {"data":"Prenom"},
-                            {"data":"Nom"},
-                            {"data":"Mail"},
-                            {"data":"Centre"}
-
-                          ]
-                        });
-                        //    console.log(Jtoken);
-                    },
-                    error: function(xhr, resp, text) {
-                        console.log(xhr, resp, text);
-                        console.log('error');
-                    }
-                })
-              });
-
-    </script>
+                          {
+                              "data": "Nom"
+                          },
+                          {
+                              "data": "Prenom"
+                          },
+                          {
+                              "data": "Centre"
+                          }
+                      ]
+                  });
+              })
+          })
+        </script>
 
 </body>
+
 </html>
