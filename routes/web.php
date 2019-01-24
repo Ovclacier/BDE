@@ -32,7 +32,7 @@ Route::get('/Boutique', function () {
 });
 
 Route::get('/Connexion', function () {
-    return view('truc');
+    return view('connexion');
 });
 Route::get('/header', function () {
     return view('header');

@@ -8,7 +8,7 @@ body{
     
 }.bckConnexion{
     background-image: url("../img/Background.png");
-    background-size: 100%;
+    background-size: cover;
 }
 
 a:link{
@@ -105,6 +105,9 @@ h2{
         overflow: auto;
         
     }
+    .body{
+        background-image: none;
+    }
    }
 .tableau{
     width: 100%;
@@ -138,7 +141,6 @@ div.centerImg div{
    top: 50%;                         /* 3 */
    transform: translate(0, -50%) }   /* 4 */ 
 }
-
 
 
 
