@@ -10,13 +10,13 @@
 <body>
     <!-- form serves to receive auth token -->
     <h1>Sign in to external Server</h1>
-    <form id="frm" name="myForm" method="get">
-        {{ csrf_field() }}
-        <input id="get" type="button" value="GET" />
-    </form>
+        <div>
+            <input id="field" type="test" name="event" placeholder="Id de l'event">
+        </div>
+        <input id="get" type="button" value="Submit" />
 
 
-    <table id="example" class="display" style="width:100%">
+    <table id="example" class="display" style="width:80%">
       <thead>
         <tr>
           <th>Mail</th>
@@ -36,25 +36,54 @@
         <script src="/js/Jquerycookie/jquery.cookie.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
-              $("#example").DataTable({
-                "ajax": {
-                  "url": 'http://localhost:3000/api/users',
-                  "dataType": "json",
-                  "type": "GET",
-                  "beforeSend":function(xhr) {
-                    xhr.setRequestHeader("Authorization", $.cookie("token"));
-                  }
-                },
-                "columns": [
-                  {"data":"Mail"},
-                  {"data":"Prenom"},
-                  {"data":"Nom"},
-                  {"data":"Centre"},
-                  {"data":"Grade"}
+              var table;
+              table = $("#example").DataTable({
+               "ajax": {
+                 "url": 'http://localhost:3000/api/participate/1',
+                 "dataType": "json",
+                 "type": "GET",
+                 "beforeSend":function(xhr) {
+                   xhr.setRequestHeader("Authorization", $.cookie("token"));
+                 }
+               },
+               "columns": [
+                 {"data":"Mail"},
+                 {"data":"Prenom"},
+                 {"data":"Nom"},
+                 {"data":"Centre"},
+                 {"data":"Grade"}
+               ]
+             });
 
-                ]
-              });
-            })
+              $("#get").on('click', function() {
+                  var data = $('#field').val();
+                  console.log(data);
+                  if (data == "") {
+                    alert('please specify an event!');
+                    return false;
+                  }
+              //    console.log(data);
+                  table.destroy();
+                   table = $("#example").DataTable({
+                    "ajax": {
+                      "url": 'http://localhost:3000/api/participate/' + data,
+                      "dataType": "json",
+                      "type": "GET",
+                      "beforeSend":function(xhr) {
+                        xhr.setRequestHeader("Authorization", $.cookie("token"));
+                      }
+                    },
+                    "columns": [
+                      {"data":"Mail"},
+                      {"data":"Prenom"},
+                      {"data":"Nom"},
+                      {"data":"Centre"},
+                      {"data":"Grade"}
+                    ]
+                  });
+                });
+            });
+
         </script>
 </body>
 

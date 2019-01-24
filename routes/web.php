@@ -33,7 +33,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/api', function() {
   return view('ExternalAPI');
 });
-Route::get('/admin8', function() {
+Route::get('/admin', function() {
   return view('admin');
 });
 Route::get('/jsp',function() {
