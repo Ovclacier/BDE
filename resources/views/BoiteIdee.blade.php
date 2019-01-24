@@ -1,4 +1,4 @@
-@extends('HéritageTest')
+@extends('layout')
 <html>
 	@section('titre')
 	<title>Boîte à idées</title>

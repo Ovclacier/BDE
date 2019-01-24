@@ -1,4 +1,4 @@
-@extends('HéritageTest')
+@extends('layout')
 
 @section('title')
   <title>BDE Connexion</title>

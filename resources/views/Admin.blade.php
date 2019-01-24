@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-@extends('HéritageTest')
+@extends('layout')
 <html>
 	@section('title')
 	<title>Administration</title>
