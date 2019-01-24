@@ -17,15 +17,15 @@
 		<div class = "container-fluid container text-center">
 			<div class="col-lg-1 col-md-0 col-sm-0"></div>
 			<div class="col-lg-4 col-md-12 col-sm-12 wrapper">
-					<form id="Connexion">
-		                <h2 class="titreEvent">Connexion</h2>
-		                <div class="formContainer">
-		                    <div><input type="text" name="mail" placeholder="Mail"></div>
-		                    <div><input type="password" name="pwd" placeholder="Mot de passe"></div>
+				<form id="Connexion">
+	                <h2 class="titreEvent">Connexion</h2>
+	                <div class="formContainer">
+	                    <div><input type="text" name="mail" placeholder="Mail"></div>
+	                    <div><input type="password" name="pwd" placeholder="Mot de passe"></div>
 
-		                    <div><br><button form="Connexion">Connexion</button></div>
-		                </div>
-		            </form>
+	                    <div><br><button form="Connexion">Connexion</button></div>
+	                </div>
+	            </form>
 	        </div>
 	        <div class="col-lg-1 col-md-0 col-sm-0"></div>
 			<div class="col-lg-4 col-md-12 col-sm-12 wrapper">
@@ -41,18 +41,21 @@
 	                </div>
 	                <br>
 				    <div class="inForm">Localisation :</div>
-				    <form>
-					    <select name="place">
-						    <option>Strasbourg</option>
-						    <option>Paris</option>
-						    <option>Poitou-Charentes</option>
-						    <option>San Fransisco</option>
-						    <option>Tokyo</option>
-					    </select>
-				    </form>
+				    <select name="place">
+					    <option>Strasbourg</option>
+					    <option>Paris</option>
+					    <option>Poitou-Charentes</option>
+					    <option>San Fransisco</option>
+					    <option>Tokyo</option>
+				    </select>
                     <div><br><button form="Inscription">S'inscrire</button></div>
 	            </form>
 	        </div>
         </div>
 	</body>
+
+	<footer class="footerConnexion">
+		<p><a class="lien" href="http://google.com">Mentions légales</a><a class="barre"> | </a><a>BDE@viacesi.fr</a></p>
+	</footer>
+
 </html>
