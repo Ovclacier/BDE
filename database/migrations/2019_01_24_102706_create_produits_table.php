@@ -18,6 +18,7 @@ class CreateProduitsTable extends Migration
             $table->char('Nom_article');
             $table->char('description');
             $table->double('prix', 2, 2);
+            $table->char('catégorie');
             $table->char('URL_image');
         });
     }
