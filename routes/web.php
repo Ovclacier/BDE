@@ -22,6 +22,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/cart/add-item/{id}', 'CartController@addItem')->name('cart.addItem');
+
 Route::get('/send/email', 'HomeController@mail');
 
 Route::resource('/products', 'ProductController');

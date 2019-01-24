@@ -25,57 +25,61 @@ class ProductController extends Controller
         return view('shop.cart');
     }
 
-    public function addToCart($id)
+    public function addItem($id)
     {
-        $product = Product::find($id);
+        
+    
+ 
 
-        if (!$product) {
+        // $product = Product::find($id);
 
-            abort(404);
+        // if (!$product) {
 
-        }
+        //     abort(404);
 
-        $cart = session()->get('cart');
+        // }
 
-        // if cart is empty then this the first product
-        if (!$cart) {
+        // $cart = session()->get('cart');
 
-            $cart = [
-                $id => [
-                    "name" => $product->name,
-                    "quantity" => 1,
-                    "price" => $product->price,
-                    "photo" => $product->photo,
-                ],
-            ];
+        // // if cart is empty then this the first product
+        // if (!$cart) {
 
-            session()->put('cart', $cart);
+        //     $cart = [
+        //         $id => [
+        //             "name" => $product->name,
+        //             "quantity" => 1,
+        //             "price" => $product->price,
+        //             "photo" => $product->photo,
+        //         ],
+        //     ];
 
-            return redirect()->back()->with('success', 'Product added to cart successfully!');
-        }
+        //     session()->put('cart', $cart);
 
-        // if item not exist in cart then add to cart with quantity = 1
-        $cart[$id] = [
-            "name" => $product->name,
-            "quantity" => 1,
-            "price" => $product->price,
-            "photo" => $product->photo,
-        ];
+        //     return redirect()->back()->with('success', 'Product added to cart successfully!');
+        // }
 
-        // if cart not empty then check if this product exist then increment quantity
-        if (isset($cart[$id])) {
+        // // if item not exist in cart then add to cart with quantity = 1
+        // $cart[$id] = [
+        //     "name" => $product->name,
+        //     "quantity" => 1,
+        //     "price" => $product->price,
+        //     "photo" => $product->photo,
+        // ];
 
-            $cart[$id]['quantity']++;
+        // // if cart not empty then check if this product exist then increment quantity
+        // if (isset($cart[$id])) {
 
-            session()->put('cart', $cart);
+        //     $cart[$id]['quantity']++;
 
-            return redirect()->back()->with('success', 'Product added to cart successfully!');
+        //     session()->put('cart', $cart);
 
-        }
+        //     return redirect()->back()->with('success', 'Product added to cart successfully!');
 
-        session()->put('cart', $cart);
+        // }
 
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        // session()->put('cart', $cart);
+
+        // return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 
     /**
@@ -143,18 +147,17 @@ class ProductController extends Controller
 
     public function update(Request $request)
     {
-        if($request->id and $request->quantity)
-        {
+        if ($request->id and $request->quantity) {
             $cart = session()->get('cart');
- 
+
             $cart[$request->id]["quantity"] = $request->quantity;
- 
+
             session()->put('cart', $cart);
- 
+
             session()->flash('success', 'Cart updated successfully');
         }
     }
- 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -163,20 +166,19 @@ class ProductController extends Controller
      */
     public function remove(Request $request)
     {
-        if($request->id) {
- 
+        if ($request->id) {
+
             $cart = session()->get('cart');
- 
-            if(isset($cart[$request->id])) {
- 
+
+            if (isset($cart[$request->id])) {
+
                 unset($cart[$request->id]);
- 
+
                 session()->put('cart', $cart);
             }
- 
+
             session()->flash('success', 'Product removed successfully');
         }
     }
-    
-    
+
 }

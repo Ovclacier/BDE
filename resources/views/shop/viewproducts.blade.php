@@ -24,9 +24,10 @@
                                 <td>{{ $product->name }}</td>
                                 
                                 <td class="inner-table"><img src="storage/images/{{$product->image}}" height=100px width=100px/></td>
-                                <td class="inner-table">{{$product->description}}</td>
-                                <td class="inner-table">{{ $product->count }}</td>
-                                <td class="inner-table">{{ $product->price }}</td>
+                                <td class="inner-table"><input value="{{$product->description}}" readonly></td>
+                                <td class="inner-table"><input value="{{ $product->count }}" readonly></td>
+                                <td class="inner-table"><input value="{{ $product->price }}" readonly></td>
+                                <td style="display:none;">{{ $product->id }}</td>
                             </tr>
                         @endforeach
                        </section>
@@ -35,5 +36,6 @@
                 </table>
             </div>
         </div>
+
     </body>
     </html>
