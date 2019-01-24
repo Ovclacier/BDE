@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 @extends('HéritageTest')
 <html>
-	@section('titre')
-	<title>Boutique</title>
+	@section('title')
+	<title>Administration</title>
     @endsection
 
 	@section('contenu')

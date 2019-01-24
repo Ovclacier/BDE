@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 @extends('HéritageTest')
 <html>
-	@section('titre')
+	@section('title')
 	<title>Boutique</title>
 	@endsection
 	
