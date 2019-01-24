@@ -22,14 +22,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/cart','CartController@index')->name('cart.index');
-
-Route::post('/cart','CartController@create')->name('cart.add');
-
-Route::get('/cart/details','CartController@show')->name('cart.details');
-
-Route::delete('/cart/{id}','CartController@delete')->name('cart.delete');
-
 Route::get('/send/email', 'HomeController@mail');
 
 Route::resource('/products', 'ProductController');
@@ -57,5 +49,3 @@ Route::group(['middleware'=>'auth'], function () {
 // Route::patch('update-cart', 'ProductController@update');
 // Route::delete('remove-from-cart', 'ProductController@delete');
 // Route::get('cart', 'ProductController@cart');
-// Route::post('/cart/conditions','CartController@addCondition')->name('cart.addCondition');
-// Route::delete('/cart/conditions','CartController@clearCartConditions')->name('cart.clearCartConditions');

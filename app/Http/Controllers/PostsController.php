@@ -15,7 +15,7 @@ class PostsController extends Controller
     {
         $posts = Post::paginate(5);
 
-        return view('showposts', ['posts'=> $posts]);
+        return view('post.showposts', ['posts'=> $posts]);
     }
 
     /**
@@ -46,7 +46,7 @@ class PostsController extends Controller
         $posts = Post::all();
 
 
-        return view('showposts', ['posts'=> $posts]);
+        return view('post.showposts', ['posts'=> $posts]);
     }
 
     /**
