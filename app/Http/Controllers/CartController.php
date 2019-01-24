@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Cart_storage;
+use App\Http\Controllers\Controller;
+use App\Product;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -14,7 +18,11 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $carts = Cart_storage::all();
+        $products = Product::paginate(2);
+        return view('shop.viewproducts', ['products' => $products],
+                                        ['carts' => $carts]
+    );
     }
 
     /**
@@ -35,7 +43,14 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $products = Product::paginate(2);
+        $carts = Cart_storage::firstOrCreate([
+            'user_id' => $request->user_id],
+            ['cart_data' => $request->cart_data]);
+        $carts->save();
+        
+        return view('shop.viewproducts', ['products' => $products],
+                                        ['carts' => $carts]);
     }
 
     /**

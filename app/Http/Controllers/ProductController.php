@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\Cart_storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,70 +17,26 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $carts = Cart_storage::all();
         $products = Product::paginate(2);
-        return view('shop.viewproducts', ['products' => $products]);
+        return view('shop.viewproducts', ['products' => $products],
+                                        ['carts' => $carts]
+    );
     }
 
-    public function cart()
-    {
-        return view('shop.cart');
-    }
+   
 
-    public function addItem($id)
+    public function addItem(Request $request)
     {
+        $products = Product::paginate(2);
+        $carts = Cart_storage::firstOrCreate([
+            'user_id' => $request->user_id],
+            ['cart_data' => $request->cart_data]);
+        $carts->save();
         
+        return view('shop.viewproducts', ['products' => $products],
+                                        ['carts' => $carts]);
     
- 
-
-        // $product = Product::find($id);
-
-        // if (!$product) {
-
-        //     abort(404);
-
-        // }
-
-        // $cart = session()->get('cart');
-
-        // // if cart is empty then this the first product
-        // if (!$cart) {
-
-        //     $cart = [
-        //         $id => [
-        //             "name" => $product->name,
-        //             "quantity" => 1,
-        //             "price" => $product->price,
-        //             "photo" => $product->photo,
-        //         ],
-        //     ];
-
-        //     session()->put('cart', $cart);
-
-        //     return redirect()->back()->with('success', 'Product added to cart successfully!');
-        // }
-
-        // // if item not exist in cart then add to cart with quantity = 1
-        // $cart[$id] = [
-        //     "name" => $product->name,
-        //     "quantity" => 1,
-        //     "price" => $product->price,
-        //     "photo" => $product->photo,
-        // ];
-
-        // // if cart not empty then check if this product exist then increment quantity
-        // if (isset($cart[$id])) {
-
-        //     $cart[$id]['quantity']++;
-
-        //     session()->put('cart', $cart);
-
-        //     return redirect()->back()->with('success', 'Product added to cart successfully!');
-
-        // }
-
-        // session()->put('cart', $cart);
-
-        // return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 
     /**
@@ -110,8 +67,10 @@ class ProductController extends Controller
             ]);
         $product->save();
         //$products = Product::all();
-        $products = DB::table('products')->simplePaginate(2);
-        return view('shop.viewproducts', ['products' => $products]);
+        $products = DB::table('products')->paginate(2);
+        return view('shop.viewproducts', ['products' => $products],
+                                        ['carts' => $carts]
+    );
 
     }
 

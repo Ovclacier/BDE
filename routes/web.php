@@ -11,18 +11,18 @@
 |
 */
 
- Route::get('create', function(){
-      return view('createproduct');
- });
- Route::get('/products', function(){
-     return view('viewproducts');
- });
+//  Route::get('create', function(){
+//       return view('createproduct');
+//  });
+//  Route::get('/products', function(){
+//      return view('viewproducts');
+//  });
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/cart/add-item/{id}', 'CartController@addItem')->name('cart.addItem');
+//Route::get('/cart/add-item/{id}', 'CartController@addItem')->name('cart.addItem');
 
 Route::get('/send/email', 'HomeController@mail');
 
@@ -33,6 +33,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/posts', 'PostsController');
+
+Route::resource('/cart', 'CartController');
+
+Route::get('cart', 'ProductController@addItem')->name('products.addItem');
+Route::get('add-to-cart/{id}', 'ProductController@addItem');
 
 Route::group(['middleware'=>'auth'], function () {
 	Route::get('permissions-all-users',['middleware'=>'check-permission:user|student|cesi|bde','uses'=>'HomeController@allUsers']);

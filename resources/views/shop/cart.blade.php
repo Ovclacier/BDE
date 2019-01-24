@@ -1,64 +1,105 @@
-@extends('layouts.app')
+<!doctype html>
+<html>
 
-@section('title', 'Cart')
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('content')
+    <title>Create Product | Product Store</title>
 
-<table id="cart" class="table table-hover table-condensed">
-    <thead>
-        <tr>
-            <th style="width:50%">Product</th>
-            <th style="width:10%">Price</th>
-            <th style="width:8%">Quantity</th>
-            <th style="width:22%" class="text-center">Subtotal</th>
-            <th style="width:10%"></th>
-        </tr>
-    </thead>
-    <tbody>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
 
-        <?php $total = 0?>
+    <!-- Styles -->
+    <style>
+        html, body {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
+                height: 100vh;
+                margin: 0;
+            }
 
-        @if(session('cart'))
-        @foreach(session('cart') as $id => $details)
+            .full-height {
+                height: 100vh;
+            }
 
-        <?php $total += $details['price'] * $details['quantity']?>
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
 
-        <tr>
-            <td data-th="Product">
-                <div class="row">
-                    <div class="col-sm-3 hidden-xs"><img src="{{ $details['photo'] }}" width="100" height="100" class="img-responsive" /></div>
-                    <div class="col-sm-9">
-                        <h4 class="nomargin">{{ $details['name'] }}</h4>
-                    </div>
+            .position-ref {
+                position: relative;
+            }
+
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
+
+            .content {
+                text-align: center;
+            }
+
+            .title {
+                font-size: 84px;
+            }
+
+            .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+        </style>
+</head>
+
+<body>
+    <div class="flex-center position-ref full-height">
+        <div class="content">
+            <form action="/products" enctype="multipart/form-data" method="POST">
+
+                @csrf
+                <h1> Enter Details to create a product</h1>
+                <div class="form-input">
+                    <label>Name</label> <input type="text" name="name">
                 </div>
-            </td>
-            <td data-th="Price">${{ $details['price'] }}</td>
-            <td data-th="Quantity">
-                <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity" />
-            </td>
-            <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
-            <td class="actions" data-th="">
-                <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button>
-                <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}"><i class="fa fa-trash-o"></i></button>
-            </td>
-        </tr>
-        @endforeach
-        @endif
 
-    </tbody>
-    <tfoot>
-        <tr class="visible-xs">
-            <td class="text-center"><strong>Total {{ $total }}</strong></td>
-        </tr>
-        <tr>
-            <td><a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-            <td colspan="2" class="hidden-xs"></td>
-            <td class="hidden-xs text-center"><strong>Total ${{ $total }}</strong></td>
-        </tr>
-    </tfoot>
-</table>
+                <div class="form-input">
 
-@endsection
+                    <label>Image</label><input type="file" name="image" id="image">
 
+                </div>
 
-@endsection
+                <div class="form-input">
+                    <label>Description</label> <input type="text" name="description">
+                </div>
+
+                <div class="form-input">
+                    <label>Count</label> <input type="number" name="count">
+                </div>
+
+                <div class="form-input">
+                    <label>Price</label> <input type="number" name="price">
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+
+        </div>
+    </div>
+</body>
+
+</html>
