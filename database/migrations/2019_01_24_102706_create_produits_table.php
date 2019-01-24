@@ -18,7 +18,8 @@ class CreateProduitsTable extends Migration
             $table->char('Nom_article');
             $table->char('description');
             $table->double('prix', 2, 2);
-            $table->char('catégorie');
+            $table->integer('id_categorie')->unsigned();
+            $table->foreign('id_categorie')->references('id_categorie')->on('categories');
             $table->char('URL_image');
         });
     }
