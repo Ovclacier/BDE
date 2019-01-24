@@ -82,6 +82,20 @@
 
               var table;
               table = $("#example").DataTable({
+                dom: 'Bfrtips',
+                buttons: [ {
+                  extend: 'pdf',
+                  title: 'Download as PDF',
+                  filename: 'pdf_data'
+                }, {
+                  extend: 'csv',
+                  title: 'Download as CSV',
+                  filename: 'csv_data'
+                }, {
+                  extend: 'excel',
+                  title: 'Download as Excel',
+                  filename:'excel_data'
+                }],
                "ajax": {
                  "url": 'http://localhost:3000/api/users/',
                  "dataType": "json",
