@@ -1,12 +1,5 @@
-@extends('layouts.app')
 
-@section('content')
 <!doctype html>
-@if(checkPermission(['superadmin']))
-<a href="/"><button>Access All Users</button></a>
-@endif
-
-
     <html lang="{{ app()->getLocale() }}">
     <head>
         <title>View Products | Product Store</title>
@@ -34,7 +27,6 @@
                                 <td class="inner-table">{{$product->description}}</td>
                                 <td class="inner-table">{{ $product->count }}</td>
                                 <td class="inner-table">{{ $product->price }}</td>
-                                <td class="btn-holder"><a href="#" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </td>
                             </tr>
                         @endforeach
                        </section>
@@ -45,4 +37,3 @@
         </div>
     </body>
     </html>
-    @endsection

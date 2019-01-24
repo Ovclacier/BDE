@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
-class PostsController extends Controller
+use Auth;
+
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +14,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(5);
-
-        return view('post.showposts', ['posts'=> $posts]);
+        //
     }
 
     /**
@@ -25,7 +24,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('addpost');
+        
     }
 
     /**
@@ -36,17 +35,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $post = Post::Create([
-            'title' => $request->title, 
-            'content' => $request->content, 
-            'author_id'=> $request->author
-        ]);
-        $post->save();
-        $posts = Post::all();
-
-
-        return view('post.showposts', ['posts'=> $posts]);
+        //
     }
 
     /**
@@ -59,6 +48,7 @@ class PostsController extends Controller
     {
         //
     }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -89,7 +79,7 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
         //
     }
