@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>API National du CESI</title>
+    <link rel="stylesheet" href="/jquery-ui/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="datatables/datatables.min.css" />
 </head>
 
@@ -11,7 +12,10 @@
     <!-- form serves to receive auth token -->
     <h1>Sign in to external Server</h1>
         <div>
-            <input id="field" type="test" name="event" placeholder="Id de l'event">
+            <input id="field" type="test" name="event" placeholder="Nom de l'event">
+        </div>
+        <div id="test">
+
         </div>
         <input id="get" type="button" value="Submit" />
 
@@ -31,15 +35,55 @@
 
         <script src="/js/jquery-3.3.1.js"></script>
         <!-- cookie.js is obsolete -->
-        <script src="/js/cookie.js"></script>
-        <script type="text/javascript" src="datatables/datatables.min.js"></script>
-        <script src="/js/Jquerycookie/jquery.cookie.js"></script>
+        <script type="text/javascript" src="/js/cookie.js"></script>
+        <script type="text/javascript" src="/datatables/datatables.min.js"></script>
+        <script type="text/javascript" src="/jquery-ui/jquery-ui.js"></script>
+        <script type="text/javascript" src="/js/Jquerycookie/jquery.cookie.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+          var arr = [];
+
+          //    alert($.cookie("token"));
+              //form validation
+                  $.ajax({
+                      url: 'http://localhost:3000/api/events/',
+                      type: 'GET',
+                      dataType: 'json',
+                      headers: {"Authorization": $.cookie("token")},
+
+                      success: function(json) {
+                        //  console.log(json);
+                        //  console.log(json.data[0].name); //list names in json
+                        var count = json.data.length; //count length of returned array
+                        console.log(count);
+                        for (i=0; i<count; i++) {
+                           arr.push(json.data[i].name);
+                          //console.log(arr[i]);
+                        };
+
+                          },
+                      error: function(xhr, resp, text) {
+                          console.log(xhr, resp, text);
+                          console.log('error');
+                      }
+                  });
+              //    var widget = new AutoComplete('test', arr);
+                console.log(arr);
+                $("#field").autocomplete({
+                  source: arr
+                })
+
+        })
+
+        </script>
+
         <script type="text/javascript">
             $(document).ready(function() {
+
               var table;
               table = $("#example").DataTable({
                "ajax": {
-                 "url": 'http://localhost:3000/api/participate/1',
+                 "url": 'http://localhost:3000/api/users/',
                  "dataType": "json",
                  "type": "GET",
                  "beforeSend":function(xhr) {
