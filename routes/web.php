@@ -27,7 +27,7 @@ Route::get('/Evenements', function () {
     return view('event');
 });
 
-Route::get('/Boutique', function () {
+Route::get('/Boutique', 'contTest@index', function () {
     return view('boutique');
 });
 

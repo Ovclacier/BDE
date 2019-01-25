@@ -5,6 +5,12 @@
 	<title>Boutique</title>
 	@endsection
 	
+
+
+
+
+
+
 	@section('contenu')
 
 	<div>
@@ -12,18 +18,13 @@
 			<div class="row ble1 menuTop">
 				<h1>Les produits du moments</h1>
 			</div>
-			<div class="col-lg-4 col-md-6 col-sm-12">
-				<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" alt="pile"></a>
-				<div>Pile AA</div>
-			</div>
-			<div class="col-lg-4 col-md-6 col-sm-12">
-				<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" alt="pile"></a>
-				<div>Pile AAA</div>
-			</div>
-			<div class="col-lg-4 col-md-12 col-sm-12">
-				<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" alt="pile"></a>
-				<div>Pile AAAAAAAAAAAA</div>
-			</div>
+			@foreach($bestProduits as $bestproduit)
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div>{{$bestproduit->Nom_article}}</div>
+				</div>
+			@endforeach
+
+
 		</div>
 
 		<div class="container-fluid container blc text-center ">
