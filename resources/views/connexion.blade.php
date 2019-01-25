@@ -103,8 +103,8 @@
 							data: $('#Inscription').serializeArray(),
 							success: function(json) {
 									//    alert("success");
-									console.log("success");
-									console.log(json);
+									//console.log("success");
+									//console.log(json);
 									alert("inscription confirmée. Vous allez être redirigé vers la page d'accueil");
 									window.location = "/";
 							},
@@ -132,26 +132,30 @@
 							document.CxForm.Mdp.focus();
 							return false;
 					}
-
+					//send user Mail and password to nodeJS API
 					$.ajax({
-						url: 'http://localhost:3000/api/users/login',
+						url: 'http://localhost:3000/api/users/login', //API url
 						type: 'POST',
 						dataType: 'json',
-						data: $("#Connexion").serializeArray(),
+						data: $("#Connexion").serializeArray(), //dara from connexion form
 						success: function(json) {
 							console.log('success');
-							console.log(json.data.id);
+						//	console.log(json);
 							setCookie("UserId", json.data.id, 365);
-							var test = listCookies();
-							console.log(test);
-							alert("Vous êtes bien connectés. Vous allez être redirigé(e).")
-							window.location = "/";
+							if(json.data.Grade > 1) {
+								//console.log(json.token);
+								//set jsonwebtoken to allow access to API
+								setCookie("token", json.token, 7);
+							} else {
+								eraseCookie("token");
+							}
+							//var test = listCookies();
+							//console.log(test);
+							//alert("Vous êtes bien connectés. Vous allez être redirigé(e).")
+							//window.location = "/";
 
 						}
 					})
-
-
-
 				})
 			});
 
