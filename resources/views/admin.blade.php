@@ -40,8 +40,10 @@
         <script type="text/javascript" src="/jquery-ui/jquery-ui.js"></script>
         <script type="text/javascript" src="/js/Jquerycookie/jquery.cookie.js"></script>
         <script type="text/javascript">
-        $(document).ready(function(){
+  /*      $(document).ready(function(){
           var arr = [];
+          var test = listCookies();
+          console.log(test);
 
           //    alert($.cookie("token"));
               //form validation
@@ -73,7 +75,7 @@
                   source: arr
                 })
 
-        })
+        }) */
 
         </script>
 
@@ -97,7 +99,7 @@
                   filename:'excel_data'
                 }],
                "ajax": {
-                 "url": 'http://localhost:3000/api/users/',
+                 "url": 'http://localhost:3000/api/users',
                  "dataType": "json",
                  "type": "GET",
                  "beforeSend":function(xhr) {
