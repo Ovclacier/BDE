@@ -11,7 +11,7 @@
     <form id="frm" name="myForm" onsubmit="return(validate());" method="post">
         {{ csrf_field() }}
         <div>
-            <input type="test" name="Name" placeholder="Ville de votre centre">
+            <input type="test" name="Name" placeholder="Votre mail">
         </div>
 
         <div>
@@ -36,7 +36,7 @@
             //eraseCookie("token");
             $("#submit").on('click', function() {
                 if (document.myForm.Name.value == "") {
-                    alert("please provide your name!");
+                    alert("please provide your mail!");
                     document.myForm.Name.focus();
                     return false;
                 }
@@ -47,7 +47,7 @@
                 }
                 //send data to API
                 $.ajax({
-                    url: 'http://localhost:3000/auth/signin',
+                    url: 'http://localhost:3000/auth/admin',
                     type: 'POST',
                     dataType: 'json',
                     //contentType: "application/json",

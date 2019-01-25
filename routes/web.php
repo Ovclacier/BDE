@@ -39,3 +39,6 @@ Route::get('/admin', function() {
 Route::get('/jsp',function() {
   return view('jsp');
 });
+Route::get('/connect',function() {
+  return view('connexion');
+});

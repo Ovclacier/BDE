@@ -29,19 +29,19 @@
 	        </div>
 	        <div class="col-lg-1 col-md-0 col-sm-0"></div>
 			<div class="col-lg-4 col-md-12 col-sm-12 wrapper">
-	            <form id="Inscription">
+	            <form id="Inscription" method="post" action="http://localhost:3000/api/users">
 	                <h2 class="titreEvent">S'inscrire</h2>
 	                <div class="row">
-	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="mail" placeholder="Mail"></div>
-	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="password" name="pwd" placeholder="Mot de passe"></div>
+	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="Mail" placeholder="Mail"></div>
+	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="password" name="Mdp" placeholder="Mot de passe"></div>
 	                </div>
 	                <div class="row">
-	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="nom" placeholder="Nom"></div>
-	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="prénom" placeholder="Prénom"></div>
+	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="Nom" placeholder="Nom"></div>
+	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="Prenom" placeholder="Prénom"></div>
 	                </div>
 	                <br>
 				    <div class="inForm">Localisation :</div>
-				    <select name="place">
+				    <select name="Centre">
 					    <option>Strasbourg</option>
 					    <option>Paris</option>
 					    <option>Poitou-Charentes</option>
@@ -57,5 +57,8 @@
 	<footer class="footerConnexion">
 		<p><a class="lien" href="http://google.com">Mentions légales</a><a class="barre"> | </a><a>BDE@viacesi.fr</a></p>
 	</footer>
+
+	<script type="text/javascript">
+	</script>
 
 </html>
