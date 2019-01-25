@@ -18,11 +18,14 @@
 			<div class="row ble1 menuTop">
 				<h1>Les produits du moments</h1>
 			</div>
-			@foreach($bestProduits as $bestproduit)
-				<div class="col-lg-4 col-md-6 col-sm-12">
-					<div>{{$bestproduit->Nom_article}}</div>
-				</div>
-			@endforeach
+			<div class="adm">
+				@foreach($bestProduits as $key => $bestproduit)
+					<div @if ($key < 2) class="col-lg-4 col-md-6 col-sm-12" @else class="col-lg-4 col-md-12 col-sm-12" @endif>
+						<a href="http://www.google.fr"><img src="{{$bestproduit->URL_image}}" width="200" height="200" alt="pile"></a>
+						<div class="adm">{{$bestproduit->Nom_article}}</div>
+					</div>
+				@endforeach
+			</div>
 
 
 		</div>

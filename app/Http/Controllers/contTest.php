@@ -15,11 +15,13 @@ class contTest extends Controller
      */
     public function index()
     {
-        $produits = Produit::all();
+        $produits = Produit::paginate(5);
 
-        $bestProduits = DB::select(' SELECT s.id_produit, SUM(quantite) as Quantite, produits.Nom_article as Nom_article FROM selectcom as s LEFT JOIN produits ON s.id_produit = produits.id_produit group by id_produit ORDER BY Quantite DESC LIMIT 0,3');
-
+        $bestProduits = DB::select(' SELECT s.id_produit, SUM(quantite) as Quantite, produits.Nom_article as Nom_article, produits.URL_image as URL_image FROM selectcom as s LEFT JOIN produits ON s.id_produit = produits.id_produit group by id_produit ORDER BY Quantite DESC LIMIT 0,3');
         return view('boutique', compact('produits','bestProduits'));
+
+
+
 
     }
 
