@@ -40,15 +40,15 @@
         <script type="text/javascript" src="/jquery-ui/jquery-ui.js"></script>
         <script type="text/javascript" src="/js/Jquerycookie/jquery.cookie.js"></script>
         <script type="text/javascript">
-  /*      $(document).ready(function(){
+        $(document).ready(function(){
           var arr = [];
-          var test = listCookies();
-          console.log(test);
+          //var test = listCookies();
+          //console.log(test);
 
           //    alert($.cookie("token"));
               //form validation
                   $.ajax({
-                      url: 'http://localhost:3000/api/events/',
+                      url: 'http://localhost:3000/api/participate',
                       type: 'GET',
                       dataType: 'json',
                       headers: {"Authorization": $.cookie("token")},
@@ -57,9 +57,9 @@
                         //  console.log(json);
                         //  console.log(json.data[0].name); //list names in json
                         var count = json.data.length; //count length of returned array
-                        console.log(count);
+                        //console.log(count);
                         for (i=0; i<count; i++) {
-                           arr.push(json.data[i].name);
+                           arr.push(json.data[i].title);
                           //console.log(arr[i]);
                         };
 
@@ -75,8 +75,7 @@
                   source: arr
                 })
 
-        }) */
-
+        })
         </script>
 
         <script type="text/javascript">
