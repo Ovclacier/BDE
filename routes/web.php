@@ -11,33 +11,27 @@
 |
 */
 
-//  Route::get('create', function(){
-//       return view('createproduct');
-//  });
-//  Route::get('/products', function(){
-//      return view('viewproducts');
-//  });
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/send/email', 'HomeController@mail');
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/cart/add-item/{id}', 'CartController@addItem')->name('cart.addItem');
+Route::resource('/cart','CartController');
+Route::resource('/products','ProductController');
+Route::resource('/posts','PostController');
+Route::resource('/comments','CommentController');
+Route::resource('/users','UserController');
 
-Route::get('/send/email', 'HomeController@mail');
+Route::get('/connection', 'ConnectionController@connect')->name('connection.connect');
+Route::post('/connection', 'ConnectionController@connectAttempt')->name('connection.connectAttempt');
+Route::get('/disconnect', 'ConnectionController@disconnect')->name('connection.disconnect');
 
-Route::resource('/products', 'ProductController');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::resource('/posts', 'PostsController');
-
-Route::resource('/cart', 'CartController');
-
-Route::get('cart', 'ProductController@addItem')->name('products.addItem');
-Route::get('add-to-cart/{id}', 'ProductController@addItem');
 
 Route::group(['middleware'=>'auth'], function () {
 	Route::get('permissions-all-users',['middleware'=>'check-permission:user|student|cesi|bde','uses'=>'HomeController@allUsers']);
@@ -49,10 +43,22 @@ Route::group(['middleware'=>'auth'], function () {
 	// Route::get('permissions-admin-superadmin',['middleware'=>'check-permission:admin|superadmin','uses'=>'HomeController@adminSuperadmin']);
 	// Route::get('permissions-superadmin',['middleware'=>'check-permission:superadmin','uses'=>'HomeController@superadmin']);
 });
-
+//Route::get('/users/login/', 'UserController@connect')->name('users.connect');
+// Route::post('/users/connect', 'UserController@connectAttempt')->name('users.login');
 // Route::get('/admin', array('as' => 'admin_area', 'uses' => 'PostsController@getAdmin'));
 // Route::get('/posts', array('as' => 'blog', 'uses' => 'PostsController@getIndex'));
 // Route::post('/add', array('as' => 'add_new_post', 'uses' => 'PostsController@postAdd'));
 // Route::patch('update-cart', 'ProductController@update');
 // Route::delete('remove-from-cart', 'ProductController@delete');
 // Route::get('cart', 'ProductController@cart');
+// Route::resource('/products', 'ProductController');
+// Route::post('/products/post/', 'CartController@store');
+// Auth::routes();
+// Route::get('/cart/addItem','CartController@addItem');
+// Route::get('/home', 'HomeController@index')->name('home');
+// Route::resource('/posts', 'PostsController');
+// Route::resource('/cart', 'CartController');
+// Route::get('cart', 'CartController@addItem')->name('cart.addItem');
+// Route::get('add-to-cart/{id}', 'ProductController@addItem');
+// Route::get('ajaxRequest', 'HomeController@ajaxRequest');
+// Route::post('ajaxRequest', 'HomeController@ajaxRequestPost');

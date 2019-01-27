@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Create Product | Product Store</title>
+    <title>Login</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -69,30 +69,17 @@
 <body>
     <div class="flex-center position-ref full-height">
         <div class="content">
-            <form action="/products" enctype="multipart/form-data" method="POST">
+        
+            <form action="/connection" enctype="multipart/form-data" method="POST">
 
                 @csrf
-                <h1> Enter Details to create a product</h1>
+                <h1> Enter Details to login</h1>
+
                 <div class="form-input">
-                    <label>Name</label> <input type="text" name="name">
+                    <label>Email</label> <input type="text" name="email">
                 </div>
-
                 <div class="form-input">
-
-                    <label>Image</label><input type="file" name="image" id="image">
-
-                </div>
-
-                <div class="form-input">
-                    <label>Description</label> <input type="text" name="description">
-                </div>
-
-                <div class="form-input">
-                    <label>Count</label> <input type="number" name="count">
-                </div>
-
-                <div class="form-input">
-                    <label>Price</label> <input type="number" name="price">
+                    <label>Password</label><input type="password" name="password">
                 </div>
 
                 <button type="submit">Submit</button>

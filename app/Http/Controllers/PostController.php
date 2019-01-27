@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Post;
-class PostsController extends Controller
+use App\Comment;
+use Illuminate\Http\Request;
+
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +15,10 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(5);
-
-        return view('post.showposts', ['posts'=> $posts]);
+        $posts = Post::paginate(2);
+  
+        return view('event.index',compact('posts'))
+            ->with('i', (request()->input('page', 1)-1)*2);
     }
 
     /**
@@ -25,7 +28,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('addpost');
+        return view('event.createevent');
     }
 
     /**
@@ -36,26 +39,26 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $post = Post::Create([
-            'title' => $request->title, 
-            'content' => $request->content, 
-            'author_id'=> $request->author
-        ]);
+        $post = Post::Create(
+            ['title' => $request->title,
+            'description' => $request->description,
+            'date_event' => $request->date_event,
+            'author' => $request->author]
+        );
         $post->save();
-        $posts = Post::all();
-
-
-        return view('post.showposts', ['posts'=> $posts]);
+        $posts = Post::paginate(2);
+  
+        return redirect()->route('posts.index',compact('posts'))
+            ->with('i', (request()->input('page', 1)-1)*2);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
         //
     }
@@ -63,10 +66,10 @@ class PostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
         //
     }
@@ -75,10 +78,10 @@ class PostsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
         //
     }
@@ -86,10 +89,10 @@ class PostsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
         //
     }

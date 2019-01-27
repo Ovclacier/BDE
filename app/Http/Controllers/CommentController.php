@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Cart;
-use App\Product;
+use App\comment;
+use App\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 
-class CartController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +15,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        
-        $carts = Cart::all()->where('id_user','=',auth()->user()->id);
-  
-        return view('shop.cart.cartdetails',compact('carts'));
+        //
     }
 
     /**
@@ -41,38 +36,44 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        $cart = Cart::firstOrCreate(
-            ['id_user' => auth()->user()->id],
-            ['datas' => $request->datas]
+        $comment = Comment::Create(
+            ['commentaire' => $request->commentaire,
+            'id_user' => $request->id_user,
+            'id_post' => $request->id_post]
         );
-        $cart->save();
-
-        // $carts = Cart::all();
-       
-        // return view('cart.cartdetails', ['carts' => $carts]);
-        $carts = Cart::all()->where('id_user','=','auth()->user()->id');
+        $comment->save();
+        $comments = Comment::all()->where('id_user', '=', '$id');
+        $posts = Post::find($request->id_post);
   
-        return redirect()->route('cart.index');
+        return redirect()->route('comments.show', "$request->id_post");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Cart  $cart
+     * @param  \App\comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(Cart $cart)
+    public function show($id)
     {
-        //
+        $posts = Post::find($id);
+
+        $comments = Comment::all();
+        $comments->where('id_user', '=', '$id');
+        // $comments = Comment::where('comments',function ($q) {
+        //     $q->where('id_user', '=', '$id');
+        // })->get();
+        return view('event.comment.eventdetails', ['posts' => $posts, 'comments' => $comments]);
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Cart  $cart
+     * @param  \App\comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cart $cart)
+    public function edit(comment $comment)
     {
         //
     }
@@ -81,10 +82,10 @@ class CartController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Cart  $cart
+     * @param  \App\comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cart $cart)
+    public function update(Request $request, comment $comment)
     {
         //
     }
@@ -92,10 +93,10 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Cart  $cart
+     * @param  \App\comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cart $cart)
+    public function destroy(comment $comment)
     {
         //
     }

@@ -1,15 +1,18 @@
 <?php
 
 namespace App;
-
-use Illuminate\Contracts\Auth\CanResetPassword;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use Illuminate\Auth\Authenticatable as BasicAuthenticatable;
+use Illuminate\Contracts\Auth\Authenticatable as Authenticatables;
 class User extends Authenticatable
 {
     use Notifiable;
+    use BasicAuthenticatable;
+    protected $connection = 'mysql2';
 
     /**
      * The attributes that are mass assignable.
@@ -21,13 +24,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'users';
-
-    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
@@ -36,18 +32,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function getAuthIdentifier()
+    public function getRememberTokenName()
     {
-      return $this->getKey();
-    }
-
-    public function getAuthPassword()
-    {
-      return $this->password;
-    }
-
-    public function getReminderEmail()
-    {
-      return $this->email;
+        return '';
     }
 }

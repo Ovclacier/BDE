@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class CheckPermission
+class Access
 {
     /**
      * Handle an incoming request.
@@ -15,14 +15,6 @@ class CheckPermission
      */
     public function handle($request, Closure $next)
     {
-        $permission = explode('|', $permission);
-
-        
-        if(checkPermission($permission)){
-            return $next($request);
-        }
-
-
-        return response()->view('errors.checkpermission');
+        return $next($request);
     }
 }

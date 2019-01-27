@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Product;
-use App\Cart_storage;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -17,26 +17,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $carts = Cart_storage::all();
         $products = Product::paginate(2);
-        return view('shop.viewproducts', ['products' => $products],
-                                        ['carts' => $carts]
-    );
-    }
-
-   
-
-    public function addItem(Request $request)
-    {
-        $products = Product::paginate(2);
-        $carts = Cart_storage::firstOrCreate([
-            'user_id' => $request->user_id],
-            ['cart_data' => $request->cart_data]);
-        $carts->save();
-        
-        return view('shop.viewproducts', ['products' => $products],
-                                        ['carts' => $carts]);
-    
+  
+        return view('shop.viewproducts',compact('products'))
+            ->with('i', (request()->input('page', 1)-1)*2);
+        // $products = Product::all();
+        // return view('shop.viewproducts', ['products' => $products]);
     }
 
     /**
@@ -57,41 +43,38 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $test = explode('/', $request->image->store('public/images'));
-        $product = Product::firstOrCreate([
-            'name' => $request->name],
-            ['image' => $test[2],
-                'description' => $request->description,
-                'price' => $request->price,
-                'count' => $request->count,
-            ]);
+        $product = Product::firstOrCreate(
+            ['name' => $request->name],
+            ['description' => $request->description]
+        );
         $product->save();
-        //$products = Product::all();
-        $products = DB::table('products')->paginate(2);
-        return view('shop.viewproducts', ['products' => $products],
-                                        ['carts' => $carts]
-    );
-
+        $products = Product::paginate(2);
+  
+        return redirect()->route('products.index',compact('products'))
+            ->with('i', (request()->input('page', 1)-1)*2);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        
+        $products = Product::find($id);
+       
+        return view('shop.productdetails', ['products' => $products]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
         //
     }
@@ -100,44 +83,22 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-
-    public function update(Request $request)
+    public function update(Request $request, Product $product)
     {
-        if ($request->id and $request->quantity) {
-            $cart = session()->get('cart');
-
-            $cart[$request->id]["quantity"] = $request->quantity;
-
-            session()->put('cart', $cart);
-
-            session()->flash('success', 'Cart updated successfully');
-        }
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function remove(Request $request)
+    public function destroy(Product $product)
     {
-        if ($request->id) {
-
-            $cart = session()->get('cart');
-
-            if (isset($cart[$request->id])) {
-
-                unset($cart[$request->id]);
-
-                session()->put('cart', $cart);
-            }
-
-            session()->flash('success', 'Product removed successfully');
-        }
+        //
     }
-
 }
