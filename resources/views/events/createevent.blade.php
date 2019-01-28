@@ -69,7 +69,7 @@
 <body>
     <div class="flex-center position-ref full-height">
         <div class="content">
-            <form action="/posts" enctype="multipart/form-data" method="POST">
+            <form action="{{ route('events.store') }}" enctype="multipart/form-data" method="POST">
 
                 @csrf
                 <h1> Enter Details to create an event</h1>

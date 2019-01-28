@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Cart;
+use App\Cart_storage;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +18,7 @@ class CartController extends Controller
     public function index()
     {
         
-        $carts = Cart::all()->where('id_user','=',auth()->user()->id);
+        $carts = Cart_storage::all()->where('user_id','=',auth()->user()->id);
   
         return view('shop.cart.cartdetails',compact('carts'));
     }
@@ -41,16 +41,16 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        $cart = Cart::firstOrCreate(
-            ['id_user' => auth()->user()->id],
-            ['datas' => $request->datas]
+        $cart = Cart_storage::firstOrCreate(
+            ['user_id' => auth()->user()->id],
+            ['cart_data' => $request->cart_data]
         );
         $cart->save();
 
         // $carts = Cart::all();
        
         // return view('cart.cartdetails', ['carts' => $carts]);
-        $carts = Cart::all()->where('id_user','=','auth()->user()->id');
+        $carts = Cart_storage::all()->where('user_id','=','auth()->user()->id');
   
         return redirect()->route('cart.index');
     }
@@ -61,7 +61,7 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function show(Cart $cart)
+    public function show(Cart_storage $cart)
     {
         //
     }
@@ -72,7 +72,7 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cart $cart)
+    public function edit(Cart_storage $cart)
     {
         //
     }
@@ -84,7 +84,7 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cart $cart)
+    public function update(Request $request, Cart_storage $cart)
     {
         //
     }
@@ -95,7 +95,7 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cart $cart)
+    public function destroy(Cart_storage $cart)
     {
         //
     }

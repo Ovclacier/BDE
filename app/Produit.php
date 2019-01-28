@@ -15,7 +15,6 @@ class Produit extends Model
         'prix',
         'id_categorie',
         'URL_image',
-        'deleted_at',
      ];
 
 }

@@ -5,7 +5,7 @@
                 <h2>Event</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('posts.create') }}"> Create New Event</a>
+                <a class="btn btn-success" href="{{ route('events.create') }}"> Create New Event</a>
             </div>
         </div>
     </div>
@@ -24,24 +24,17 @@
             <th width="280px">Action</th>
         </tr>
         
-        @foreach ($posts as $post)
+        @foreach ($event as $events)
         <tr>
             <td>{{ ++$i }}</td>
-            <td>{{ $post->title }}</td>
-            <td>{{ $post->description }}</td>
+            <td>{{ $events->title }}</td>
+            <td>{{ $events->description }}</td>
             <td>
-                <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
-                    <a class="btn btn-info" href="{{ route('comments.show',$post->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('posts.edit',$post->id) }}">Edit</a>
-   
-                    @csrf
-                    @method('DELETE')
-      
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
+                <a class="btn btn-info" href="{{ route('comments.show',$events->id_event) }}">Show</a>
+                <a class="btn btn-primary" href="{{ route('events.edit',$events->id_event) }}">Edit</a>
             </td>
         </tr>
         @endforeach
     </table>
   
-    {!! $posts->links() !!}
+    {!! $event->links() !!}

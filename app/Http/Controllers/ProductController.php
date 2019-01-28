@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Produit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -17,12 +17,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(2);
+        $produits = Produit::paginate(2);
   
-        return view('shop.viewproducts',compact('products'))
+        return view('shop.viewproducts',compact('produits'))
             ->with('i', (request()->input('page', 1)-1)*2);
-        // $products = Product::all();
-        // return view('shop.viewproducts', ['products' => $products]);
+        // $produits = Produit::all();
+        // return view('shop.viewproducts', ['produits' => $produits]);
     }
 
     /**
@@ -43,38 +43,38 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Product::firstOrCreate(
-            ['name' => $request->name],
+        $produit = Produit::firstOrCreate(
+            ['name' => $request->Nom_article],
             ['description' => $request->description]
         );
-        $product->save();
-        $products = Product::paginate(2);
+        $produit->save();
+        $produits = Produit::paginate(2);
   
-        return redirect()->route('products.index',compact('products'))
+        return redirect()->route('produits.index',compact('produits'))
             ->with('i', (request()->input('page', 1)-1)*2);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Produit  $produit
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         
-        $products = Product::find($id);
+        $produits = Produit::find($id);
        
-        return view('shop.productdetails', ['products' => $products]);
+        return view('shop.productdetails', ['produits' => $produits]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Produit  $produit
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Produit $produit)
     {
         //
     }
@@ -83,10 +83,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  \App\Produit  $produit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Produit $produit)
     {
         //
     }
@@ -94,10 +94,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Produit  $produit
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Produit $produit)
     {
         //
     }
