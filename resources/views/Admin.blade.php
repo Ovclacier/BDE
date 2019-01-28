@@ -77,17 +77,11 @@
     <script type="text/javascript" src="/js/Jquerycookie/jquery.cookie.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
-			$("#pop").hide();
-			var id;
-			var Mail;
-			var Nom;
-			var Prenom;
-			var Centre;
-			var Grade;
+
       var arr = [];
       				//autocompletion for search
               $.ajax({
-                  url: 'http://localhost:3000/api/participate',
+                  url: 'http://localhost:3000/api/events',
                   type: 'GET',
                   dataType: 'json',
                   headers: {"Authorization": $.cookie("token")},
@@ -117,6 +111,13 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
+					$("#pop").hide();
+					var id;
+					var Mail;
+					var Nom;
+					var Prenom;
+					var Centre;
+					var Grade;
 					var table;
 					function drawAll() {
 						table = $("#example").DataTable({
@@ -166,7 +167,7 @@
 						table.destroy();
 						 table = $("#example").DataTable({
 							"ajax": {
-								"url": 'http://localhost:3000/api/participate/' + data,
+								"url": 'http://localhost:3000/api/events/' + data,
 								"dataType": "json",
 								"type": "GET",
 								"beforeSend":function(xhr) {
