@@ -35,7 +35,7 @@
 
 			<div class="col-lg-12 col-md-12 col-sm-12 tableau ">
             <table id="example" style="width:80%">
-              <thead style="color: black">
+              <thead style="color:black">
                 <tr>
 									<th>id</th>
                   <th>Mail</th>
@@ -58,8 +58,8 @@
 						<div class="container">
 						    <form id="pop">
 									<input id="mailForm" type="test" name="Mail" placeholder="Mail">
-									<input id="nomForm" type="test" name="Nom" placeholder="Nom">
 									<input id="prenomForm" type="test" name="Prenom" placeholder="Prenom">
+									<input id="nomForm" type="test" name="Nom" placeholder="Nom">
 									<input id="centreForm" type="test" name="Centre" placeholder="Centre">
 									<input id="gradeForm" type="test" name="Grade" placeholder="Grade">
 									<input id="CRUD" type="button" name="submit" value="Submit">
@@ -182,9 +182,7 @@
 							]
 						});
 					}
-
 				drawAll();
-
 				//row selection
 				$('#example tbody').on( 'click', 'tr', function () {
 					if ($(this).hasClass('selected')) {
@@ -227,11 +225,10 @@
 		} else {
 			console.log(table.row('.selected').count());
 			alert("select an user");
-		}
+					 }
 			});
-
 		$("#CRUD").on('click', function() {
-
+			console.log(id);
 			$.ajax({
 				url: "http://localhost:3000/api/users/" + id,
 				type: "PUT",
@@ -239,20 +236,21 @@
 				headers: {"Authorization": $.cookie("token")},
 				data:$('#pop').serializeArray(),
 				success: function(result) {
-					console.log("succes update");
-					console.log(result);
+				//	console.log("succes update");
+				//	console.log(result);
+				table.destroy();
+				$("#pop").hide();
+				drawAll();
 				},
 				error: function(xhr, resp, text) {
 					console.log(xhr, resp, text);
-		console.log('error');
-}
+				}
 			})
 		});
 		$("#All").on('click', function() {
 			table.destroy();
 			drawAll();
 		});
-
 });
     </script>
 
