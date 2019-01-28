@@ -63,6 +63,11 @@
             }
         </style>
     </head>
+    <?php 
+    var_dump(auth()->check());
+    ?>
+    <br>
+    <a href="/disconnect">Disconnect</a>
     <body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
@@ -85,13 +90,13 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <a href="{{ route('products.index') }}">Boutique</a>
+                <a href="{{ route('products.create') }}">Ajouter un produit</a>
+                <a href="{{ route('cart.index') }}">Panier</a>
+                <a href="{{ route('posts.index') }}">Events</a>
+                <a href="{{ route('users.index') }}">Userlist</a>
+                <a href="{{ route('users.create') }}">Sign In</a>
+                <a href="{{ route('connection.connect') }}">Login</a>
                 </div>
             </div>
         </div>

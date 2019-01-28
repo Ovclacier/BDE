@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/Idees', function () {
     return view('BoiteIdee');
 });
@@ -47,3 +48,25 @@ Route::get('/admin', function() {
 Route::get('/fiche', function() {
     return view('Fiche-event');
   });
+
+
+Route::get('/send/email', 'HomeController@mail');
+
+
+Route::resource('/cart','CartController');
+Route::resource('/products','ProductController');
+Route::resource('/posts','PostController');
+Route::resource('/comments','CommentController');
+Route::resource('/users','UserController');
+
+Route::get('/connection', 'ConnectionController@connect')->name('connection.connect');
+Route::post('/connection', 'ConnectionController@connectAttempt')->name('connection.connectAttempt');
+Route::get('/disconnect', 'ConnectionController@disconnect')->name('connection.disconnect');
+
+
+Route::group(['middleware'=>'auth'], function () {
+	Route::get('permissions-all-users',['middleware'=>'check-permission:user|student|cesi|bde','uses'=>'HomeController@allUsers']);
+	Route::get('permissions-student-cesi-bde',['middleware'=>'check-permission:student|cesi|bde','uses'=>'HomeController@studentCesiBde']);
+	Route::get('permissions-cesi-bde',['middleware'=>'check-permission:cesi|bde','uses'=>'HomeController@cesiBde']);
+	Route::get('permissions-bde',['middleware'=>'check-permission:bde','uses'=>'HomeController@bde']);
+
