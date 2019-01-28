@@ -29,9 +29,11 @@
                     </div>
                     <input id="get" type="button" value="Submit" />
 			</div>
-			<div class="col-lg-12 col-md-12 col-sm-12 tableau">
-            <table id="example" class="adm" style="width:80%">
-              <thead style="color: white">
+			<div class="container" style="background-color:white">
+
+			<div class="col-lg-12 col-md-12 col-sm-12 tableau ">
+            <table id="example" class="container-fluid container blc text-center" style="width:80%">
+              <thead style="color: black">
                 <tr>
                   <th>Mail</th>
                   <th>Prenom</th>
@@ -42,8 +44,10 @@
               </thead>
               <tbody>
               </tbody>
+						</table>
 
 			</div>
+		</div>
     </div>
     <script src="/js/jquery-3.3.1.js"></script>
     <!-- cookie.js is obsolete -->
