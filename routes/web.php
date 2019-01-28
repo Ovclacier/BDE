@@ -27,6 +27,7 @@ Route::resource('/products','ProductController');
 Route::resource('/posts','PostController');
 Route::resource('/comments','CommentController');
 Route::resource('/users','UserController');
+Route::resource('/image', 'ImageController');
 
 Route::get('/connection', 'ConnectionController@connect')->name('connection.connect');
 Route::post('/connection', 'ConnectionController@connectAttempt')->name('connection.connectAttempt');

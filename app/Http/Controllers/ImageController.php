@@ -7,7 +7,7 @@ use App\Post;
 use App\Image;
 use Illuminate\Http\Request;
 
-class CommentController extends Controller
+class ImageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,35 +37,41 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $test = explode('/', $request->image->store('images','public'));
+        $image = Image::Create(
+            ['id_author' => $request->id_author,
+            'id_post' => $request->id_post,
+            'image' => $test[1]]
+        );
+        $image->save();
+        //$comments = Comment::all()->where('id_image', '=', '$id');
+        //$posts = Post::find($request->id_image);
+  
+        return back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\comment  $comment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $posts = Post::find($id);
-
-        $images = Image::all();
-        $images->where('id_post', '=', $id);
-        // $comments = Comment::where('comments',function ($q) {
-        //     $q->where('id_user', '=', '$id');
-        // })->get();
-        return view('event.comment.eventdetails', ['posts' => $posts, 'images' => $images]);
-        
+        $image = Image::find($id);
+        $comments = Comment::all();
+        $comments->where('id_image', '=', '$id');
+        return view('event.comment.imagedetails', ['image' => $image,
+            'comments' => $comments]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\comment  $comment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(comment $comment)
+    public function edit($id)
     {
         //
     }
@@ -74,10 +80,10 @@ class CommentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\comment  $comment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, comment $comment)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -85,10 +91,10 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\comment  $comment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(comment $comment)
+    public function destroy($id)
     {
         //
     }
