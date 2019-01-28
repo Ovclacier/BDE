@@ -39,7 +39,8 @@ class CommentController extends Controller
         $comment = Comment::Create(
             ['commentaire' => $request->commentaire,
             'id_user' => $request->id_user,
-            'id_post' => $request->id_post]
+            'id_post' => $request->id_post,
+            'image' => $request->image]
         );
         $comment->save();
         $comments = Comment::all()->where('id_user', '=', '$id');

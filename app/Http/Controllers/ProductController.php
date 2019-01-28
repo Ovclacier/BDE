@@ -43,9 +43,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $test = explode('/', $request->image->store('images','public'));
+        //$test = explode('/', $request->image);
         $product = Product::firstOrCreate(
             ['name' => $request->name],
-            ['description' => $request->description]
+            ['description' => $request->description,
+             'image' => $test[1],
+             'price' => $request->price]
         );
         $product->save();
         $products = Product::paginate(2);

@@ -4,25 +4,23 @@
 
 
 <body>
-    <div>
-        <div>
-            <form action="/products" enctype="multipart/form-data" method="POST">
+            <form action="/products" method="POST" enctype="multipart/form-data">
 
                 @csrf
                 <h1> Enter Details to create a product</h1>
-                <div>
-                    <label>Name</label> <input type="text" name="name">
-                </div>
+               
+                    <label>Name</label> <input type="text" name="name">          
 
-                <div>
+                    <label>Image</label><input type="file" name="image" id="image">
+               
                     <label>Description</label> <input type="text" name="description">
-                </div>
+
+                    <label>Price</label> <input type="number" name="price">
 
                 <button type="submit">Submit</button>
             </form>
 
-        </div>
-    </div>
+      
 </body>
 
 </html>

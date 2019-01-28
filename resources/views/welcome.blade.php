@@ -92,13 +92,19 @@
                 <div class="links">
                 <a href="{{ route('products.index') }}">Boutique</a>
                 <a href="{{ route('products.create') }}">Ajouter un produit</a>
+                @if (auth()->check())
                 <a href="{{ route('cart.index') }}">Panier</a>
+                @endif
                 <a href="{{ route('posts.index') }}">Events</a>
                 <a href="{{ route('users.index') }}">Userlist</a>
                 <a href="{{ route('users.create') }}">Sign In</a>
                 <a href="{{ route('connection.connect') }}">Login</a>
+                <a href="{{ url('/') }}">Menu</a>
                 </div>
             </div>
         </div>
+        @if($errors->any())
+        <h2>{{$errors->first()}}</h2>
+        @endif
     </body>
 </html>

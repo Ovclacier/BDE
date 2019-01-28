@@ -41,7 +41,11 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        $cart = Cart::firstOrCreate(
+        // if (Cart::all()->where('id_user','=','auth()->user()->id'))
+        // {
+        //     return redirect()->route('cart.update');
+        // }else{
+        $cart = Cart::Create(
             ['id_user' => auth()->user()->id],
             ['datas' => $request->datas]
         );
@@ -54,6 +58,7 @@ class CartController extends Controller
   
         return redirect()->route('cart.index');
     }
+    
 
     /**
      * Display the specified resource.

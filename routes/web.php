@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/send/email', 'HomeController@mail');
+//Route::get('/send/email', 'HomeController@mail');
 
 
 Route::get('/', function () {
@@ -32,17 +32,22 @@ Route::get('/connection', 'ConnectionController@connect')->name('connection.conn
 Route::post('/connection', 'ConnectionController@connectAttempt')->name('connection.connectAttempt');
 Route::get('/disconnect', 'ConnectionController@disconnect')->name('connection.disconnect');
 
+Route::get('404', ['as' => '404', 'uses' => 'ErrorController@notfound']);
+Route::get('500', ['as' => '500', 'uses' => 'ErrorController@fatal']);
 
-Route::group(['middleware'=>'auth'], function () {
-	Route::get('permissions-all-users',['middleware'=>'check-permission:user|student|cesi|bde','uses'=>'HomeController@allUsers']);
-	Route::get('permissions-student-cesi-bde',['middleware'=>'check-permission:student|cesi|bde','uses'=>'HomeController@studentCesiBde']);
-	Route::get('permissions-cesi-bde',['middleware'=>'check-permission:cesi|bde','uses'=>'HomeController@cesiBde']);
-	Route::get('permissions-bde',['middleware'=>'check-permission:bde','uses'=>'HomeController@bde']);
+Route::group(['middleware'=>'App\Http\Middleware\Access'], function () {
+	Route::resource('/cart','CartController');
+});
+// Route::group(['middleware'=>'auth'], function () {
+// 	Route::get('permissions-all-users',['middleware'=>'check-permission:user|student|cesi|bde','uses'=>'HomeController@allUsers']);
+// 	Route::get('permissions-student-cesi-bde',['middleware'=>'check-permission:student|cesi|bde','uses'=>'HomeController@studentCesiBde']);
+// 	Route::get('permissions-cesi-bde',['middleware'=>'check-permission:cesi|bde','uses'=>'HomeController@cesiBde']);
+// 	Route::get('permissions-bde',['middleware'=>'check-permission:bde','uses'=>'HomeController@bde']);
 
 	// Route::get('permissions-all-users',['middleware'=>'check-permission:user|admin|superadmin','uses'=>'HomeController@allUsers']);
 	// Route::get('permissions-admin-superadmin',['middleware'=>'check-permission:admin|superadmin','uses'=>'HomeController@adminSuperadmin']);
 	// Route::get('permissions-superadmin',['middleware'=>'check-permission:superadmin','uses'=>'HomeController@superadmin']);
-});
+// });
 //Route::get('/users/login/', 'UserController@connect')->name('users.connect');
 // Route::post('/users/connect', 'UserController@connectAttempt')->name('users.login');
 // Route::get('/admin', array('as' => 'admin_area', 'uses' => 'PostsController@getAdmin'));

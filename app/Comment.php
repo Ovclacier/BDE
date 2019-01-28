@@ -12,9 +12,7 @@ class comment extends Model
         'id_post',
         'id_user',
         'commentaire',
+        'image',
      ];
-     public function comments()
-     {
-         return $this->belongsTo('App\Post');
-     }
+    
 }
