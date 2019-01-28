@@ -55,13 +55,13 @@
 
 
 
-						<div>
+						<div class="container">
 						    <form id="pop">
-									<input id="mailForm" type="test" name="event" placeholder="Mail">
-									<input id="nomForm" type="test" name="event" placeholder="Nom">
-									<input id="prenomForm" type="test" name="event" placeholder="Prenom">
-									<input id="centreForm" type="test" name="event" placeholder="Centre">
-									<input id="gradeForm" type="test" name="event" placeholder="Grade">
+									<input id="mailForm" type="test" name="Mail" placeholder="Mail">
+									<input id="nomForm" type="test" name="Nom" placeholder="Nom">
+									<input id="prenomForm" type="test" name="Prenom" placeholder="Prenom">
+									<input id="centreForm" type="test" name="Centre" placeholder="Centre">
+									<input id="gradeForm" type="test" name="Grade" placeholder="Grade">
 									<input id="CRUD" type="button" name="submit" value="Submit">
 						    </form>
 						</div>
@@ -76,8 +76,15 @@
     <script type="text/javascript" src="/jquery-ui/jquery-ui.js"></script>
     <script type="text/javascript" src="/js/Jquerycookie/jquery.cookie.js"></script>
     <script type="text/javascript">
-//  $(document).ready(function(){
-		/*	var arr = [];
+    $(document).ready(function(){
+			$("#pop").hide();
+			var id;
+			var Mail;
+			var Nom;
+			var Prenom;
+			var Centre;
+			var Grade;
+      var arr = [];
       				//autocompletion for search
               $.ajax({
                   url: 'http://localhost:3000/api/participate',
@@ -106,18 +113,11 @@
               source: arr
             })
 
-    })*/
+    })
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
 					var table;
-					$("#pop").hide();
-					var id;
-					var Mail;
-					var Nom;
-					var Prenom;
-					var Centre;
-					var Grade;
 					function drawAll() {
 						table = $("#example").DataTable({
 							dom: 'Bfrtips',
@@ -192,7 +192,7 @@
 					} else {
 						$('tr.selected').removeClass('selected');
 						$(this).addClass('selected');
-						id = (table.row(this).data.id);
+						id = (table.row(this).data().id);
 						 Mail = (table.row(this).data().Mail);
 						 Nom = (table.row(this).data().Nom);
 						 Prenom = (table.row(this).data().Prenom);
@@ -231,19 +231,20 @@
 			});
 
 		$("#CRUD").on('click', function() {
+
 			$.ajax({
-				url: "localhost:3000/api/users/" + id,
+				url: "http://localhost:3000/api/users/" + id,
 				type: "PUT",
 				dataType: "json",
 				headers: {"Authorization": $.cookie("token")},
 				data:$('#pop').serializeArray(),
 				success: function(result) {
-					console.log("success update");
-					drawAll();
+					console.log("succes update");
+					console.log(result);
 				},
 				error: function(xhr, resp, text) {
 					console.log(xhr, resp, text);
-					console.log('error');
+		console.log('error');
 }
 			})
 		});
