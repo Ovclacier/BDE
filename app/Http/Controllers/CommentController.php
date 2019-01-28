@@ -39,69 +39,39 @@ class CommentController extends Controller
     {
         if($request->react=1)
         {     
-            $tests = Comment::where('react', 1)
+
+
+            
+            $isLiked = Comment::where('react', 1)
                                     ->where('id_user', $request->id_user)
                                     ->where('id_image', $request->id_image)
                                     ->first();
             
-            if($tests){
-
-                return $tests->id_image;
+            if($isLiked){
+                $dislike = Comment::find($isLiked->id);
+                $dislike->react = 0;
+                $dislike->save();
+                return "l'utilisateur vient de dislike";
             }else{
-                return "non";
+                $rowExists = Comment::where('react', 0)
+                                ->where('id_user', $request->id_user)
+                                ->where('id_image', $request->id_image)
+                                ->where('commentaire', null)
+                                ->first();
+                if($rowExists)
+                {
+                    $like = Comment::find($rowExists->id);
+                    $like->react = 1;
+                    $like->save();
+                    return "l'utilisateur vient de like";
+                }else{
+                    $firstLike = Comment::Create(['id_user' => $request->id_user,
+                                     'id_image' => $request->id_image,
+                                     'react' => $request->react]);
+                    return "l'utilisateur qui n'a jamais like vient de like";
+                }   
             }
-
-            // $liketry = Comment::Create(['id_user' => $request->id_user,
-            //                 'id_image' => $request->id_image,
-            //                 'react' => $request->react]);
-                            
-            //                 $liketry->save();
-            
-            
-            
-            //         return view('testimg', compact('tests'));
-        }else{
-
         }
-       
-        
-        // if($test == false && $request->reacts == 1){
-        // $comment = Comment::Create(
-        //     ['id_user' => $request->id_user,
-        //     'id_image' => $request->id_image,
-        //     'commentaire' => $request->commentaire,
-        //     'react' => $request->reacts
-        //     ]);
-        
-        // }elseif($test == true && $request->reacts == 1){
-
-        //     $dislike = Comment::where(  ['id_image','=', $request->id_image],
-        //                                 ['id_user','=', $request->id_user],
-        //                                 ['react','=', 1]);
-
-        //     $dislike->react = 0;
-
-        //     $comment = Comment::Create(
-        //         ['id_user' => $request->id_user,
-        //         'id_image' => $request->id_image,
-        //         'commentaire' => $request->commentaire
-        //         ]);
-
-        // }else{
-
-        //     $comment = Comment::Create(
-        //         ['id_user' => $request->id_user,
-        //         'id_image' => $request->id_image,
-        //         'commentaire' => $request->commentaire
-        //         ]);
-
-        // }
-    
-        // $comment->save();
-        // //$comments = Comment::all()->where('id_image', '=', '$id');
-        // //$posts = Post::find($request->id_image);
-  
-        // return back()->with('message',dd($test->react));
     }
 
     /**
