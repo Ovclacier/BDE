@@ -39,8 +39,6 @@ class CommentController extends Controller
     {
         if($request->react=1)
         {     
-
-
             
             $isLiked = Comment::where('react', 1)
                                     ->where('id_user', $request->id_user)
@@ -51,7 +49,7 @@ class CommentController extends Controller
                 $dislike = Comment::find($isLiked->id);
                 $dislike->react = 0;
                 $dislike->save();
-                return "l'utilisateur vient de dislike";
+               // return "l'utilisateur vient de dislike";
             }else{
                 $rowExists = Comment::where('react', 0)
                                 ->where('id_user', $request->id_user)
@@ -63,15 +61,22 @@ class CommentController extends Controller
                     $like = Comment::find($rowExists->id);
                     $like->react = 1;
                     $like->save();
-                    return "l'utilisateur vient de like";
+                   // return "l'utilisateur vient de like";
                 }else{
                     $firstLike = Comment::Create(['id_user' => $request->id_user,
                                      'id_image' => $request->id_image,
                                      'react' => $request->react]);
-                    return "l'utilisateur qui n'a jamais like vient de like";
+                  //  return "l'utilisateur qui n'a jamais like vient de like";
                 }   
             }
         }
+        $countrows = Comment::where('react', 1)
+                                    ->where('id_image', $request->id_image)
+                                    ->count();
+        $totalLike = Image::find($request->id_image);
+        $totalLike->reacts = $countrows;
+        $totalLike->save();
+        return $totalLike->reacts;
     }
 
     /**
