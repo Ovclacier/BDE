@@ -22,17 +22,17 @@
             <button type="button">Download to .pdf</button>
           </div> -->
                     <div>
-                        <input id="field" type="test" name="event" placeholder="Nom de l'event">
+                        <input id="field" type="test" name="event" placeholder="Nom de l'event" style="width:20%">
                     </div>
                     <div id="test">
-
+										<!--	<input id="get" type="button" value="Submit" style="width:20%"/> -->
+											<button id="get" type="button" name="button" style="width:20%"> Sumbit </button>
                     </div>
-                    <input id="get" type="button" value="Submit" />
 			</div>
 			<div class="container" style="background-color:white">
 
 			<div class="col-lg-12 col-md-12 col-sm-12 tableau ">
-            <table id="example" class="container-fluid container blc text-center" style="width:80%">
+            <table id="example" style="width:80%">
               <thead style="color: black">
                 <tr>
                   <th>Mail</th>
@@ -46,6 +46,10 @@
               </tbody>
 						</table>
 
+						<button id="new" type="button" name="button-edit"> edit </button>
+						<button id="edit" type="button" name="button-new"> new </button>
+
+
 			</div>
 		</div>
     </div>
@@ -58,11 +62,7 @@
     <script type="text/javascript">
     $(document).ready(function(){
       var arr = [];
-      //var test = listCookies();
-      //console.log(test);
-
-      //    alert($.cookie("token"));
-          //form validation
+      				//autocompletion for search
               $.ajax({
                   url: 'http://localhost:3000/api/participate',
                   type: 'GET',
@@ -78,7 +78,6 @@
                        arr.push(json.data[i].title);
                       //console.log(arr[i]);
                     };
-
                       },
                   error: function(xhr, resp, text) {
                       console.log(xhr, resp, text);
@@ -93,13 +92,13 @@
 
     })
     </script>
-
     <script type="text/javascript">
         $(document).ready(function() {
 
           var table;
           table = $("#example").DataTable({
             dom: 'Bfrtips',
+
             buttons: [ {
               extend: 'pdf',
               title: 'Download as PDF',
@@ -129,36 +128,47 @@
              {"data":"Grade"}
            ]
          });
-
-          $("#get").on('click', function() {
-              var data = $('#field').val();
-              console.log(data);
-              if (data == "") {
-                alert('please specify an event!');
-                return false;
-              }
-          //    console.log(data);
-              table.destroy();
-               table = $("#example").DataTable({
-                "ajax": {
-                  "url": 'http://localhost:3000/api/participate/' + data,
-                  "dataType": "json",
-                  "type": "GET",
-                  "beforeSend":function(xhr) {
-                    xhr.setRequestHeader("Authorization", $.cookie("token"));
-                  }
-                },
-                "columns": [
-                  {"data":"Mail"},
-                  {"data":"Prenom"},
-                  {"data":"Nom"},
-                  {"data":"Centre"},
-                  {"data":"Grade"}
-                ]
-              });
-            });
         });
 
-    </script>
+				//row selection
+				$('#example tbody').on( 'click', 'tr', function () {
+					if ($(this).hasClass('selected')) {
+							$(this).removeClass('selected');
+					} else {
+						$('tr.selected').removeClass('selected');
+						$(this).addClass('selected');
+					}
 
+
+			    });
+						//destory table and fetch new data
+					 	$("#get").on('click', function() {
+					 			var data = $('#field').val();
+					 			console.log(data);
+					 			if (data == "") {
+					 				alert('please specify an event!');
+					 				return false;
+					 			}
+					 	//    console.log(data);
+					 			table.destroy();
+					 			 table = $("#example").DataTable({
+					 				"ajax": {
+					 					"url": 'http://localhost:3000/api/participate/' + data,
+					 					"dataType": "json",
+					 					"type": "GET",
+					 					"beforeSend":function(xhr) {
+					 						xhr.setRequestHeader("Authorization", $.cookie("token"));
+					 					}
+					 				},
+					 				"columns": [
+					 					{"data":"Mail"},
+					 					{"data":"Prenom"},
+					 					{"data":"Nom"},
+					 					{"data":"Centre"},
+					 					{"data":"Grade"}
+					 				]
+					 			});
+					 		});
+
+    </script>
 @endsection

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\comment;
+use App\Reacts;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -36,13 +36,13 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $comment = Comment::Create(
+        $comment = Reacts::Create(
             ['commentaire' => $request->commentaire,
             'id_user' => $request->id_user,
             'id_post' => $request->id_post]
         );
         $comment->save();
-        $comments = Comment::all()->where('id_user', '=', '$id');
+        $comments = Reacts::all()->where('id_user', '=', '$id');
         $posts = Post::find($request->id_post);
   
         return redirect()->route('comments.show', "$request->id_post");
@@ -58,7 +58,7 @@ class CommentController extends Controller
     {
         $posts = Post::find($id);
 
-        $comments = Comment::all();
+        $comments = Reacts::all();
         $comments->where('id_user', '=', '$id');
         // $comments = Comment::where('comments',function ($q) {
         //     $q->where('id_user', '=', '$id');
@@ -73,7 +73,7 @@ class CommentController extends Controller
      * @param  \App\comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(comment $comment)
+    public function edit(Reacts $comment)
     {
         //
     }
@@ -85,7 +85,7 @@ class CommentController extends Controller
      * @param  \App\comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, comment $comment)
+    public function update(Request $request, Reacts $comment)
     {
         //
     }
@@ -96,7 +96,7 @@ class CommentController extends Controller
      * @param  \App\comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(comment $comment)
+    public function destroy(Reacts $comment)
     {
         //
     }
