@@ -1,6 +1,6 @@
 
     <h2>Shop</h2>
-    <a href="{{ route('products.create') }}"> Create New Product</a>
+    <a href="{{ route('produits.create') }}"> Create New Produit</a>
     <table>
         <tr>
             <th>No</th>                             
@@ -9,15 +9,15 @@
             <th>Action</th>
         </tr>
         <a href="{{ route('cart.index') }}">Cart</a>
-        @foreach ($products as $product)
+        @foreach ($produits as $produit)
         <tr>
             <td>{{ ++$i }}</td>
-            <td>{{ $product->name }}</td>
-            <td>{{ $product->description }}</td>
+            <td>{{ $produit->name }}</td>
+            <td>{{ $produit->description }}</td>
             <td>
-                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
-                    <a href="{{ route('products.show',$product->id) }}">Show</a>
-                    <a href="{{ route('products.edit',$product->id) }}">Edit</a>
+                <form action="{{ route('produits.destroy',$produit->id) }}" method="POST">
+                    <a href="{{ route('produits.show',$produit->id) }}">Show</a>
+                    <a href="{{ route('produits.edit',$produit->id) }}">Edit</a>
    
                     @csrf
                     @method('DELETE')
@@ -29,5 +29,5 @@
         @endforeach
     </table>
   
-    {!! $products->links() !!}
+    {!! $produits->links() !!}
       

@@ -3,15 +3,15 @@
     <table>
         <tr>
                                          
-            <th>datas</th>
+            <th>data</th>
             <th>id user</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($carts as $cart)
         <tr>
            
-            <td>{{ $cart->datas }}</td>
-            <td>{{ $cart->id_user }}</td>
+            <td>{{ $cart->cart_data }}</td>
+            <td>{{ $cart->user_id }}</td>
             <td>
                 <form action="{{ route('cart.destroy',$cart->id) }}" method="POST">
    

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
+use App\Events;
 use App\Comment;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(2);
+        $event = Events::paginate(2);
   
-        return view('event.index',compact('posts'))
+        return view('events.index',compact('event'))
             ->with('i', (request()->input('page', 1)-1)*2);
     }
 
@@ -28,7 +28,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('event.createevent');
+        return view('events.createevent');
     }
 
     /**
@@ -39,26 +39,26 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = Post::Create(
+        $eventRequest = Events::Create(
             ['title' => $request->title,
             'description' => $request->description,
             'date_event' => $request->date_event,
             'author' => $request->author]
         );
-        $post->save();
-        $posts = Post::paginate(2);
+        $eventRequest->save();
+        $event = Events::paginate(2);
   
-        return redirect()->route('posts.index',compact('posts'))
+        return redirect()->route('events.index',compact('event'))
             ->with('i', (request()->input('page', 1)-1)*2);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Events  $Events
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Events $Events)
     {
         //
     }
@@ -66,10 +66,10 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Events  $Events
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Events $Events)
     {
         //
     }
@@ -78,10 +78,10 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Post  $post
+     * @param  \App\Events  $Events
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Events $Events)
     {
         //
     }
@@ -89,10 +89,10 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Events  $Events
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Events $Events)
     {
         //
     }

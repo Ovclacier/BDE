@@ -13,7 +13,7 @@ class CreateProduitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('produits', function (Blueprint $table) {
+        Schema::connection('mysql')->create('produits', function (Blueprint $table) {
             $table->increments('id_produit');
             $table->char('Nom_article');
             $table->char('description');
@@ -21,6 +21,7 @@ class CreateProduitsTable extends Migration
             $table->integer('id_categorie')->unsigned();
             $table->foreign('id_categorie')->references('id_categorie')->on('categories');
             $table->char('URL_image');
+            $table->date('deleted_at')->nullable();
         });
     }
 

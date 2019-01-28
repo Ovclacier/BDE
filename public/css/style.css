@@ -221,7 +221,6 @@ div.centerImg div{
 .wrapper{
     
      background-color:rgb(242,242,242);
-
     padding: 3em;
     margin: 2em;
     text-align: center;
@@ -229,8 +228,6 @@ div.centerImg div{
 
 
 .footerConnexion{
-    position: absolute;
-    bottom: 0;
     background-color: black;
     color: white;
     font-size: 10px;
@@ -238,6 +235,24 @@ div.centerImg div{
     padding-top: 5px;
     padding-right: 20px;
 }
+
+@media (min-width: 1100px) {
+    .footerConnexion{
+        position: absolute;
+        bottom: 0;
+        background-color: black;
+        color: white;
+        font-size: 10px;
+        text-align: right;
+        padding-top: 5px;
+        padding-right: 20px;
+    }
+    .wrapper{
+        height: 400px;
+        width: 400px;
+    }
+}
+
 
 footer{
 
@@ -269,3 +284,4 @@ footer{
     .barre{
         color: gold;
     }
+   

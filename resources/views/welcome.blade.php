@@ -67,7 +67,7 @@
     var_dump(auth()->check());
     ?>
     <br>
-    <a href="/disconnect">Disconnect</a>
+    <a href="{{ route('connection.disconnect') }}">disconnect</a>
     <body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
@@ -90,10 +90,10 @@
                 </div>
 
                 <div class="links">
-                <a href="{{ route('products.index') }}">Boutique</a>
-                <a href="{{ route('products.create') }}">Ajouter un produit</a>
+                <a href="{{ route('produits.index') }}">Boutique</a>
+                <a href="{{ route('produits.create') }}">Ajouter un produit</a>
                 <a href="{{ route('cart.index') }}">Panier</a>
-                <a href="{{ route('posts.index') }}">Events</a>
+                <a href="{{ route('events.index') }}">Events</a>
                 <a href="{{ route('users.index') }}">Userlist</a>
                 <a href="{{ route('users.create') }}">Sign In</a>
                 <a href="{{ route('connection.connect') }}">Login</a>

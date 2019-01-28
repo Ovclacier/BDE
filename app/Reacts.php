@@ -4,12 +4,13 @@ namespace App;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class reacts extends Model
 {
     use SoftDeletes;
     
     protected $fillable = [
-        'name',
-        'description',
+        'id_image',
+        'id_user',
+        'commentaire',
      ];
 }
