@@ -43,7 +43,7 @@ Route::get('/test', function () {
 });
 
 Route::get('/admin', function() {
-  return view('admin');
+  return view('Admin');
 });
 Route::get('/fiche', function() {
     return view('Fiche-event');
@@ -69,4 +69,4 @@ Route::group(['middleware'=>'auth'], function () {
 	Route::get('permissions-student-cesi-bde',['middleware'=>'check-permission:student|cesi|bde','uses'=>'HomeController@studentCesiBde']);
 	Route::get('permissions-cesi-bde',['middleware'=>'check-permission:cesi|bde','uses'=>'HomeController@cesiBde']);
 	Route::get('permissions-bde',['middleware'=>'check-permission:bde','uses'=>'HomeController@bde']);
-
+});
