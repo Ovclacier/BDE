@@ -43,7 +43,7 @@ Route::get('/test', function () {
 });
 
 Route::get('/admin', function() {
-  return view('admin');
+  return view('Admin');
 });
 Route::get('/fiche', function() {
     return view('Fiche-event');
@@ -62,3 +62,8 @@ Route::post('/connection', 'ConnectionController@connectAttempt')->name('connect
 Route::get('/disconnect', 'ConnectionController@disconnect')->name('connection.disconnect');
 
 
+
+Route::get('/mentions', function () {
+    return view('mentions');
+    
+});
