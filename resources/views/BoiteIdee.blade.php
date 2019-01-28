@@ -5,8 +5,10 @@
 	@endsection
 
 	@section('contenu')
-	<div class="container container-fluid blc">
-		<h1 class="row text-center ble1">Boîte à idées</h1>
+	<div class="container-fluid container blc text-center">
+	<div class="row ble1 menuTop">
+				<h1>Boite a idées</h1>
+			</div>
 		<div class="row">
 			<div class="col-lg-6 col-md-12 col-sm-12 idee">
 				<div class="row rowidee">
