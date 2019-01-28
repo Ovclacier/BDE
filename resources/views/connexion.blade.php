@@ -140,7 +140,7 @@
 						data: $("#Connexion").serializeArray(), //dara from connexion form
 						success: function(json) {
 							console.log('success');
-						//	console.log(json);
+							console.log(json);
 							setCookie("UserId", json.data.id, 365);
 							if(json.data.Grade > 1) {
 								//console.log(json.token);
