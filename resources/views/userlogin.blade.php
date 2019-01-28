@@ -18,7 +18,7 @@
     </form>
 
     @if($errors->any())
-        <h2>{{$error->first()}}</h2>
+        <h2>{{$errors->first()}}</h2>
     @endif
 </body>
 

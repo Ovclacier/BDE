@@ -14,5 +14,9 @@ class comment extends Model
         'commentaire',
         'react',
      ];
+     public function getSomeDatas()
+     {
+        return $this->id_user;
+     }
     
 }
