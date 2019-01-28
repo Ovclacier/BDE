@@ -70,3 +70,8 @@ Route::group(['middleware'=>'auth'], function () {
 	Route::get('permissions-cesi-bde',['middleware'=>'check-permission:cesi|bde','uses'=>'HomeController@cesiBde']);
 	Route::get('permissions-bde',['middleware'=>'check-permission:bde','uses'=>'HomeController@bde']);
 });
+
+Route::get('/mentions', function () {
+    return view('mentions');
+    
+});
