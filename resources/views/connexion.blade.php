@@ -23,7 +23,7 @@
 	                    <div><input type="text" name="Mail" placeholder="Mail"></div>
 	                    <div><input type="password" name="Mdp" placeholder="Mot de passe"></div>
 
-	                    <div><br><button id="connect">Connexion</button></div>
+	                    <div><br><button id="connect" type="button">Connexion</button></div>
 	                </div>
 	            </form>
 	        </div>
@@ -54,7 +54,7 @@
 											J'accepte les <a href="mentions" style="color:blue">conditions d'utilisation</a>
 											</div>
 
-                    <div><br><button id="register">S'inscrire</button></div>
+                    <div><br><button id="register" type="button" >S'inscrire</button></div>
 	            </form>
 	        </div>
         </div>
