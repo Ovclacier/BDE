@@ -26,7 +26,7 @@
     @csrf
     <input type="hidden" name="id_image" value="{{ $image->id }}">
     <input type="hidden" name="id_user" value="{{ $iduser }}">
-    <input type="hidden" name="react" value="1">Like {{ $image->reacts }}
+    <input type="hidden" name="liked" value="1">Like {{ $image->liketotal }}
     <button type="submit">like</button><br><br>
 </form>
 

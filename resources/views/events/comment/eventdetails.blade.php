@@ -28,7 +28,7 @@
             @endif
         @foreach ($images as $image)
         <tr>
-            <td><img src="/storage/images/{{ $image->image }}" height=100px width=100px/></td>
+            <td><img src="/storage/images/{{ $image->url_image }}" height=100px width=100px/></td>
             <td>{{ $image->id_author }}</td>
             <a class="btn btn-info" href="{{ route('image.show', $image->id) }}">Show</a>
             <form action="{{ route('events.destroy',$events->id) }}" method="POST">

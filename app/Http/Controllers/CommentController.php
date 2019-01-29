@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Reacts;
+use App\Reactimage;
 use App\Event;
 use App\Image;
 use Illuminate\Http\Request;
@@ -37,49 +37,50 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-
+        
+        
         if($request->liked !=null)
         {     
             
-            $isLiked = Reacts::where('liked', 1)
+            $isLiked = Reactimage::where('liked', 1)
                                     ->where('id_user', $request->id_user)
                                     ->where('id_image', $request->id_image)
                                     ->first();
             
             if($isLiked){
-                $dislike = Reacts::find($isLiked->id);
+                $dislike = Reactimage::find($isLiked->id);
                 $dislike->liked = 0;
                 $dislike->save();
                // return "l'utilisateur vient de dislike";
             }else{
-                $rowExists = Reacts::where('liked', 0)
+                $rowExists = Reactimage::where('liked', 0)
                                 ->where('id_user', $request->id_user)
                                 ->where('id_image', $request->id_image)
                                 ->where('commentaire', null)
                                 ->first();
                 if($rowExists)
                 {
-                    $like = Reacts::find($rowExists->id);
+                    $like = Reactimage::find($rowExists->id);
                     $like->liked = 1;
                     $like->save();
                    // return "l'utilisateur vient de like";
                 }else{
-                    $firstLike = Reacts::Create(['id_user' => $request->id_user,
+                    $firstLike = Reactimage::Create(['id_user' => $request->id_user,
                                      'id_image' => $request->id_image,
                                      'liked' => $request->liked]);
                   //  return "l'utilisateur qui n'a jamais like vient de like";
                 }   
             }
-            $countrows = Reacts::where('liked', 1)
+            $countrows = Reactimage::where('liked', 1)
             ->where('id_image', $request->id_image)
             ->count();
             $totalLike = Image::find($request->id_image);
-            $totalLike->reacts = $countrows;
+            $totalLike->liketotal = $countrows;
             $totalLike->save();
             return redirect()->back();
         }
             if($request->commentaire != null){
-                $comment = Reacts::Create(
+                $comment = Reactimage::Create(
                              ['id_user' => $request->id_user,
                              'id_image' => $request->id_image,
                              'commentaire' => $request->commentaire
@@ -95,7 +96,7 @@ class CommentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Reacts  $Reacts
+     * @param  \App\Reactimage  $Reactimage
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -107,7 +108,7 @@ class CommentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Reacts  $Reacts
+     * @param  \App\Reactimage  $Reactimage
      * @return \Illuminate\Http\Response
      */
     
@@ -115,10 +116,10 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Reacts  $Reacts
+     * @param  \App\Reactimage  $Reactimage
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reacts $Reacts)
+    public function edit(Reactimage $Reactimage)
     {
         //
     }
@@ -127,10 +128,10 @@ class CommentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Reacts  $Reacts
+     * @param  \App\Reactimage  $Reactimage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reacts $Reacts)
+    public function update(Request $request, Reactimage $Reactimage)
     {
         //
     }
@@ -138,10 +139,10 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Reacts  $Reacts
+     * @param  \App\Reactimage  $Reactimage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reacts $Reacts)
+    public function destroy(Reactimage $Reactimage)
     {
         //
     }

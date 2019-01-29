@@ -4,7 +4,7 @@ namespace App;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class ReactEvent extends Model
+class Reactevent extends Model
 {
     use SoftDeletes;
     
