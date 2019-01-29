@@ -9,12 +9,6 @@
 
 
 
-    @if(session()->has('message'))
-        <div class="alert alert-success">
-            oui
-            {{ session()->get('message') }}
-        </div>
-    @endif
 </div>
 {{ $iduser = auth()->user()->id }}
 <!-- Form to comment the image -->

@@ -23,6 +23,11 @@ class CartController extends Controller
         return view('shop.cart.cartdetails',compact('carts'));
     }
 
+    public function cartValidation()
+    {
+        $carts = Cart::all()->where();
+    }
+
     /**
      * Show the form for creating a new resource.
      *

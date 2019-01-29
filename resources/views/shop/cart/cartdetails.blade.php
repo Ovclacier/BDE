@@ -5,13 +5,17 @@
                                          
             <th>datas</th>
             <th>id user</th>
-            <th width="280px">Action</th>
+            <th>quantité</th>
+            <th>état</th>
+            <th>Action</th>
         </tr>
         @foreach ($carts as $cart)
         <tr>
            
             <td>{{ $cart->datas }}</td>
             <td>{{ $cart->id_user }}</td>
+            <td>{{ $cart->quantité }}</td>
+            <td>{{ $cart->état }}</td>
             <td>
                 <form action="{{ route('cart.destroy',$cart->id) }}" method="POST">
    

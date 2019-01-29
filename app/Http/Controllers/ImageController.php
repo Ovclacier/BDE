@@ -59,7 +59,7 @@ class ImageController extends Controller
     public function show($id)
     {
         $image = Image::find($id);
-        $comments = Comment::all()->where('id_image', '=', $id);;
+        $comments = Comment::all()->where('id_image', '=', $id);
         
         return view('event.comment.imagedetails', ['image' => $image,
             'comments' => $comments]);
