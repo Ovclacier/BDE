@@ -9,7 +9,6 @@ class Image extends Model
     use SoftDeletes;
     
     protected $fillable = [
-        'id_post',
         'id_author',
         'image',
         'id_event'

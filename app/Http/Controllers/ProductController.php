@@ -17,10 +17,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $produits = Produit::paginate(2);
+        $produits = Produit::all();
         $bestProduits = DB::select(' SELECT s.id_produit, SUM(quantite) as Quantite, produits.Nom_article as Nom_article, produits.URL_image as URL_image FROM selectcom as s LEFT JOIN produits ON s.id_produit = produits.id_produit group by id_produit ORDER BY Quantite DESC LIMIT 0,3');
   
-        return view('boutique', compact('Produits','bestProduits'))
+        return view('boutique', ['produits' => $produits,'bestProduits' => $bestProduits])
             ->with('i', (request()->input('page', 1)-1)*2);
         // $produits = Produit::all();
         // return view('shop.viewproducts', ['produits' => $produits]);
@@ -110,3 +110,5 @@ class ProductController extends Controller
         //
     }
 }
+
+

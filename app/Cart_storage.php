@@ -11,6 +11,5 @@ class Cart_storage extends Model
     protected $fillable = [
         'cart_data',
         'user_id',
-        'quantity',
      ];
 }
