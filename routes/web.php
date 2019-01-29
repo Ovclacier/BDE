@@ -45,6 +45,9 @@ Route::get('/Connexion', function () {
 Route::get('/CGV', function() {
   return view('CGV');
 });
+Route::get('/CGU', function() {
+    return view('CGU');
+  });
 Route::get('/admin', function() {
     return view('Admin');
   });

@@ -51,7 +51,7 @@
 						<div class="col-lg-6 col-md-12 col-sm-12">
 											<input type="checkbox" id="check_form"></div>
 											<div class="col-lg-6 col-md-12 col-sm-12" style="font-size:10px">
-											J'accepte les <a href="mentions" style="color:blue">conditions d'utilisation</a>
+											J'accepte les <a href="CGU" style="color:blue">conditions d'utilisation</a>
 											</div>
 
                     <div><br><button id="register" type="button" >S'inscrire</button></div>
