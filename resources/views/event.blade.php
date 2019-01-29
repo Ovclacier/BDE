@@ -1,5 +1,6 @@
+
 @extends('layout')
-<html>
+
 	@section('titre')
 	<title>Évènements</title>
 	@endsection

@@ -1,4 +1,5 @@
-<p align="center">
+<!DOCTYPE html>
+<p text-align="center">
     <strong>Conditions Générales de Vente</strong>
 </p>
 <p>

@@ -1,5 +1,5 @@
 @extends('layout')
-<html>
+
 	@section('titre')
 	<title>Test fiche</title>
 	@endsection

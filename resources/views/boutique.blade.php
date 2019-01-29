@@ -1,6 +1,5 @@
-<!DOCTYPE html>
 @extends('layout')
-<html>
+
 	@section('title')
 	<title>Boutique</title>
 	@endsection

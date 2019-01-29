@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang=fr>
 	<head>
 		<title>Inscription/Connexion</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -23,7 +23,7 @@
 	                    <div><input type="text" name="Mail" placeholder="Mail"></div>
 	                    <div><input type="password" name="Mdp" placeholder="Mot de passe"></div>
 
-	                    <div><br><button id="connect" form="">Connexion</button></div>
+	                    <div><br><button id="connect" type="button">Connexion</button></div>
 	                </div>
 	            </form>
 	        </div>
@@ -54,17 +54,15 @@
 											J'accepte les <a href="mentions" style="color:blue">conditions d'utilisation</a>
 											</div>
 
-                    <div><br><button id="register" form="" >S'inscrire</button></div>
+                    <div><br><button id="register" type="button" >S'inscrire</button></div>
 	            </form>
 	        </div>
         </div>
-	</body>
-
-	<footer class="footerConnexion">
+		<footer class="footerConnexion">
 		<p><a class="lien" href="/BDE/public/mentions">Mentions légales</a><a class="barre"> | </a><a>BDE@viacesi.fr</a></p>
 	</footer>
-		<script type="text/javascript" src="{{asset('/js/Jquerycookie/jquery.cookie.js')}}"></script>
-		<script type="text/javascript">
+		<script src="{{asset('/js/Jquerycookie/jquery.cookie.js')}}"></script>
+		<script>
 		$(document).ready(function() {
 
 
@@ -97,7 +95,7 @@
 
 		</script>
 		<script src="{{ asset('/js/cookie.js') }}"></script>
-		<script type="text/javascript">
+		<script>
 		$(document).ready(function() {
 				//form validation
 				$("#connect").on('click', function() {
@@ -144,6 +142,5 @@
 				});
 
 		</script>
-
-
+	</body>
 </html>
