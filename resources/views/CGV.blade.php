@@ -9,33 +9,19 @@
     Préambule :
 </p>
 <p>
-    L’association Bureau des étudiants cesi Strasbourg propose à la vente des
-    produits destinés à (par exemple : contribuer au financement de son
-    activité). Les offres sont valables dans la limite des stocks disponibles
-    et pour autant qu’elles figurent sur le site. La vente n’est proposée que
-    pour les acheteurs résidants et se faisant livrer sur le territoire
-    métropolitain. En passant commande sur le site, nos clients reconnaissent
-    en avoir pris connaissance et les avoir acceptées.
+L’association Bureau des étudiants Cesi Strasbourg propose à la vente des produits destinés la prolongation de ses activités. Les offres sont valables dans la limite des stocks disponibles et pour autant qu’elles figurent sur le site. La vente n’est proposée que pour les acheteurs résidants ou se faisant livrer dans un rayon de 20 kilomètres autour du bâtiment principal. En passant commande sur le site, nos clients reconnaissent en avoir pris connaissance et les avoir acceptées.
 </p>
 <p>
     Données personnelles :
 </p>
 <p>
-    Les données collectées ne sont utilisées que pour pouvoir honorer la
-    commande ; elles sont accessibles par les personnes chargées de la
-    préparation et de l’envoi de la commande. Elles peuvent être transmises aux
-    établissements bancaires pour exécution du paiement. Le responsable du
-    traitement est Romain Koffmann conformément à la Loi informatique et
-    Libertés du 6 janvier 1978, un droit d’accès et de rectification est
-    possible en nous contactant à l’adresse suivante BDE-Strasbourg@cesi.fr
+Les données collectées ne sont utilisées que pour pouvoir honorer la commande ; elles sont accessibles par les personnes chargées de la préparation et de l’envoi de la commande. Elles peuvent être transmises aux établissements bancaires pour exécution du paiement. Le responsable du traitement est [le président du BDE actuel] conformément à la Loi informatique et Libertés du 6 janvier 1978, un droit d’accès et de rectification est possible en nous contactant à l’adresse suivante BDE-Strasbourg@cesi.fr
 </p>
 <p>
     Objet :
 </p>
 <p>
-    Les présentes conditions générales de vente régissent exclusivement les
-    ventes réalisées sur son site internet par l’association [coordonnées
-    complètes de l'association] et dont la présidente est Romain Kaufmann
+Les présentes conditions générales de vente régissent exclusivement les ventes réalisées sur son site internet par l’association [coordonnées complètes de l'association] et dont le président est Romain Kaufmann
 </p>
 <p>
     Produits :
@@ -72,7 +58,7 @@
 <p>
     4) Une fois la commande validée, l’association Bureaux des Etudiants Cesi
     Strasbourg envoie dans les meilleurs délais un accusé de réception de la
-    commande.
+    commande contenant un lieu et une date de rendez-vous.
 </p>
 <p>
     Paiement :
@@ -108,9 +94,8 @@
 </p>
 <p>
     Pour exercer le droit de rétractation, vous devez nous notifier à
-    BDE-Strasbourg@cesi.fr votre décision de rétractation, au moyen d'une
-    déclaration dénuée d'ambiguïté (par exemple, lettre envoyée par la poste,
-    télécopie ou courrier électronique).
+    BDE-Strasbourg@cesi.fr ou la l'adresse postale citée ci-dessus votre décision de rétractation, au moyen d'une
+    déclaration dénuée d'ambiguïté.
 </p>
 <p>
     Pour que le délai de rétractation soit respecté, il suffit que vous
@@ -122,7 +107,7 @@
 </p>
 <p>
     En cas de rétractation de votre part, nous vous rembourserons tous les
-    paiements reçus de vous, y compris les frais de livraison.
+    paiements reçus de vous.
 </p>
 <p>
     Ce remboursement sera fait sans retard excessif et au plus tard quatorze
@@ -177,10 +162,7 @@
 </p>
 <p>
     Vous pouvez également nous téléphoner au
-    <a
-        href="https://www.google.com/search?q=numero+BDE+cesi&amp;rlz=1C1CHBF_frFR821FR821&amp;oq=numero+BDE+cesi&amp;aqs=chrome..69i57.4700j0j7&amp;sourceid=chrome&amp;ie=UTF-8"
-        title="Appeler avec Hangouts"
-    >
+    <a>
         03 88 10 35 60
     </a>
 </p>
@@ -188,7 +170,4 @@
     Si la réponse que nous vous apportons ne vous satisfait pas, vous pouvez
     contacter la plateforme de règlement des litiges en ligne mise en place par
     la commission européenne.
-</p>
-<p>
-    https://webgate.ec.europa.eu/odr/main/index.cfm?event=main.adr.show
 </p>

@@ -42,9 +42,15 @@ Route::get('/Connexion', function () {
     return view('connexion');/*ok*/
 });
 
-Route::get('/admin', function() {
-  return view('Admin');
+Route::get('/CGV', function() {
+  return view('CGV');
 });
+Route::get('/CGU', function() {
+    return view('CGU');
+  });
+Route::get('/admin', function() {
+    return view('Admin');
+  });
 Route::get('/fiche', function() {
     return view('Fiche-event');
   });
