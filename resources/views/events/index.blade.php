@@ -1,9 +1,7 @@
 
 
-                <h2>Event</h2>
-          
-                <a class="btn btn-success" href="{{ route('events.create') }}"> Create New Event</a>
-   
+                <h2>Event</h2>          
+                <a href="{{ route('events.create') }}"> Create New Event</a>  
    
     <table>
         <tr>

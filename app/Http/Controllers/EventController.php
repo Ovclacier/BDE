@@ -92,7 +92,7 @@ class EventController extends Controller
             'recurence' => $request->recurence]
         );
         $event->save();
-        $events = Events::paginate(2);
+        $events = Event::paginate(2);
   
         return redirect()->route('events.index',compact('events'));
     }
