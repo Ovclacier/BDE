@@ -1,7 +1,7 @@
 
 @extends('layout')
 
-	@section('titre')
+	@section('title')
 	<title>Évènements</title>
 	@endsection
 
@@ -13,7 +13,7 @@
 			</div>
 			<div class="row blc menuTop">
 				<div class="col-lg-3 col-md-3 col-sm-12">
-				<a href="fiche"><img src="img/party.jpg" width="200" height="200" alt="pile"></a>
+				<a href="fiche"><img src="img/party.jpg" alt="" width="200" height="200" alt="pile"></a>
 				</div>
 				<div class="col-lg-9 col-md-9 col-sm-12">
 					<div class="row">
@@ -24,7 +24,7 @@
 							<h4>Soirée nouveau membre de l'équipe</h4>
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-12">
-							<h4>18<img src="img/like.png" width="20" height="20"></h4>
+							<h4>18<img src="img/like.png" alt="" width="20" height="20"></h4>
 						</div>
 					</div>
 					<h4>Ceci est la description trololololoolololololololloololollololololo lololololollo lol lol olololollolol lo lolo l olo l ol ol ol o lo lo l o ol ol olololololo </h4>
@@ -32,7 +32,7 @@
 			</div>
 			<div class="row blc menuTop">
 				<div class="col-lg-3 col-md-3 col-sm-12">
-				<a href="fiche"><img src="img/party.jpg" width="200" height="200" alt="pile"></a>
+				<a href="fiche"><img src="img/party.jpg" alt="" width="200" height="200" alt="pile"></a>
 				</div>
 				<div class="col-lg-9 col-md-9 col-sm-12">
 					<div class="row">
@@ -43,7 +43,7 @@
 							<h4>Soirée nouveau membre de l'équipe</h4>
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-12">
-							<h4>18<img src="img/like.png" width="20" height="20"></h4>
+							<h4>18<img src="img/like.png" alt="" width="20" height="20"></h4>
 						</div>
 					</div>
 					<h4>Ceci est la description trololololoolololololololloololollololololo lololololollo lol lol olololollolol lo lolo l olo l ol ol ol o lo lo l o ol ol olololololo </h4>
@@ -51,7 +51,7 @@
 			</div>
 			<div class="row blc menuTop">
 				<div class="col-lg-3 col-md-3 col-sm-12">
-				<a href="fiche"><img src="img/party.jpg" width="200" height="200" alt="pile"></a>
+				<a href="fiche"><img src="img/party.jpg" alt="" width="200" height="200" alt="pile"></a>
 				</div>
 				<div class="col-lg-9 col-md-9 col-sm-12">
 					<div class="row">
@@ -62,7 +62,7 @@
 							<h4>Soirée nouveau membre de l'équipe</h4>
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-12">
-							<h4>18<img src="img/like.png" width="20" height="20"></h4>
+							<h4>18<img src="img/like.png" alt="" width="20" height="20"></h4>
 						</div>
 					</div>
 					<h4>Ceci est la description trololololoolololololololloololollololololo lololololollo lol lol olololollolol lo lolo l olo l ol ol ol o lo lo l o ol ol olololololo </h4>
@@ -70,7 +70,7 @@
 			</div>
 			<div class="row blc menuTop">
 				<div class="col-lg-3 col-md-3 col-sm-12">
-				<a href="fiche"><img src="img/party.jpg" width="200" height="200" alt="pile"></a>
+				<a href="fiche"><img src="img/party.jpg" alt="" width="200" height="200" alt="pile"></a>
 				</div>
 				<div class="col-lg-9 col-md-9 col-sm-12">
 					<div class="row">
@@ -81,7 +81,7 @@
 							<h4>Soirée nouveau membre de l'équipe</h4>
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-12">
-							<h4>18<img src="img/like.png" width="20" height="20"></h4>
+							<h4>18<img src="img/like.png" alt="" width="20" height="20"></h4>
 						</div>
 					</div>
 					<h4>Ceci est la description trololololoolololololololloololollololololo lololololollo lol lol olololollolol lo lolo l olo l ol ol ol o lo lo l o ol ol olololololo </h4>
