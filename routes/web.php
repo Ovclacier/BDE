@@ -67,6 +67,9 @@ Route::get('/connection', 'ConnectionController@connect')->name('connection.conn
 Route::post('/connection', 'ConnectionController@connectAttempt')->name('connection.connectAttempt');
 Route::get('/disconnect', 'ConnectionController@disconnect')->name('connection.disconnect');
 
+Route::get('tri/{id}', 'ProductController@triCategorie')->name('produits.triCategorie');
+
+
 
 Route::get('/mentions', function () {
     return view('mentions');    
