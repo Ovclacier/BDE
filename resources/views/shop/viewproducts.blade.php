@@ -16,8 +16,8 @@
             <td>{{ ++$i }}</td>
 
             <td><img src="storage/images/{{$produit->URL_image}}" height=100px width=100px />
-            <td>{{ $produit->Nom_article }}</td>
-            <td>{{ $produit->description }}</td>
+            <td>{{ $produit->Nom_article}}</td>
+            <td>{{ $produit->description}}</td>
             <td>{{ $produit->prix }}</td>
             <td>
                 <form action="{{ route('produits.destroy',$produit->id) }}" method="POST">
