@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventimgTable extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateEventimgTable extends Migration
      */
     public function up()
     {
-        Schema::create('eventimg', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
+            $table->increments('id_image', true);
+            $table->string('url_image');
+            $table->integer('id_auteur');
             $table->integer('id_event')->unsigned();
-            $table->integer('id_image')->unsigned();
+            
+        });
+         Schema::table('images',function($table){
             $table->foreign('id_event')->references('id_event')->on('events');
-            $table->foreign('id_image')->references('id_image')->on('images');
-            $table->integer('etat');
         });
     }
 
@@ -29,6 +32,6 @@ class CreateEventimgTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eventimg');
+        Schema::dropIfExists('images');
     }
 }

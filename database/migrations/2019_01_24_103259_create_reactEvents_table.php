@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInscritsTable extends Migration
+class CreateReactEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,16 @@ class CreateInscritsTable extends Migration
      */
     public function up()
     {
-        Schema::create('inscrits', function (Blueprint $table) {
+        Schema::create('reactEvents', function (Blueprint $table) {
+            $table->increments('id_reactEvent', true);
             $table->integer('id_event')->unsigned();
-            $table->foreign('id_event')->references('id_event')->on('events');
+            
+            $table->integer('inscrit');
+            $table->integer('liked');
             $table->integer('id_user');
+        });
+        Schema::table('reactEvents',function($table){
+           $table->foreign('id_event')->references('id_event')->on('events');
         });
     }
 

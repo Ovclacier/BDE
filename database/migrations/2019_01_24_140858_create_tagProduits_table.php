@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePosstagTable extends Migration
+class CreateTagProduitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreatePosstagTable extends Migration
      */
     public function up()
     {
-        Schema::create('posstag', function (Blueprint $table) {
+        Schema::create('tagProduits', function (Blueprint $table) {
             $table->integer('id_tag')->unsigned();
-            $table->integer('id_prod')->unsigned();
-            $table->foreign('id_tag')->references('id_tag')->on('tags');
-            $table->foreign('id_prod')->references('id_produit')->on('produits');
+            $table->integer('id_produit')->unsigned();
+        });
+        Schema::table('tagProduits',function($table){
+           $table->foreign('id_tag')->references('id_tag')->on('tags');
+           $table->foreign('id_produit')->references('id_produit')->on('produits');
         });
     }
 

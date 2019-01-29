@@ -14,8 +14,8 @@ class CreateCategoriesTable extends Migration
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->increments('id_categorie');
-            $table->char('categorie',50);
+            $table->increments('id_categorie', true);
+            $table->string('categorie');
         });
     }
 

@@ -13,15 +13,19 @@ class CreateProduitsTable extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql')->create('produits', function (Blueprint $table) {
-            $table->increments('id_produit');
-            $table->char('Nom_article');
-            $table->char('description');
-            $table->double('prix', 2, 2);
+        Schema::create('produits', function (Blueprint $table) {
+            $table->increments('id_produit', true);
+            $table->string('Nom_article');
+            $table->longText('description');
+            $table->float('prix');
             $table->integer('id_categorie')->unsigned();
+            $table->integer('id_image')->unsigned();
+            $table->timestamp('deleted_at')->nullable();
+        });
+        
+         Schema::table('produits',function($table){
+            $table->foreign('id_image')->references('id_image')->on('images');
             $table->foreign('id_categorie')->references('id_categorie')->on('categories');
-            $table->char('URL_image');
-            $table->date('deleted_at')->nullable();
         });
     }
 

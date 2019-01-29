@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReactsTable extends Migration
+class CreateReactImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,16 @@ class CreateReactsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reacts', function (Blueprint $table) {
+        Schema::create('reactImages', function (Blueprint $table) {
+            $table->increments('id_reactImage', true);
             $table->integer('id_image')->unsigned();
-            $table->foreign('id_image')->references('id_image')->on('images');
+            
             $table->longText('commentaire');
+            $table->integer('liked');
             $table->integer('id_user');
+        });
+         Schema::table('reactImages',function($table){
+           $table->foreign('id_image')->references('id_image')->on('images');
         });
     }
 

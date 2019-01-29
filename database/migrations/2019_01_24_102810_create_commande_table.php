@@ -14,10 +14,18 @@ class CreateCommandeTable extends Migration
     public function up()
     {
         Schema::create('commande', function (Blueprint $table) {
-            $table->increments('id_commande');
-            $table->boolean('Panier');
-            $table->char('id_acheteur');
-            $table->date('rendez_vous');
+            $table->increments('id_commande', true);
+            $table->integer('user_id');
+            $table->integer('id_produit')->unsigned();
+            
+            $table->integer('quantity');
+            $table->integer('state');
+            $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
+            
+        });
+        Schema::table('commande',function($table){
+           $table->foreign('id_produit')->references('id_produit')->on('produits');
         });
     }
 
