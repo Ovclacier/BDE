@@ -43,6 +43,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        
         $test = explode('/', $request->image->store('images','public'));
         //$test = explode('/', $request->image);
         $product = Product::firstOrCreate(

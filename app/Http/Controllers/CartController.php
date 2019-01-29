@@ -52,7 +52,7 @@ class CartController extends Controller
         // }else{
         $cart = Cart::Create(
             ['id_user' => auth()->user()->id],
-            ['datas' => $request->datas]
+            ['datas' => $request->datas],['quantité' => $request->quantité]
         );
         $cart->save();
 

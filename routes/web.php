@@ -39,6 +39,7 @@ Route::get('500', ['as' => '500', 'uses' => 'ErrorController@fatal']);
 Route::group(['middleware'=>'App\Http\Middleware\Access'], function () {
 	Route::resource('/cart','CartController');
 });
+
 // Route::group(['middleware'=>'auth'], function () {
 // 	Route::get('permissions-all-users',['middleware'=>'check-permission:user|student|cesi|bde','uses'=>'HomeController@allUsers']);
 // 	Route::get('permissions-student-cesi-bde',['middleware'=>'check-permission:student|cesi|bde','uses'=>'HomeController@studentCesiBde']);
