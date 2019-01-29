@@ -40,7 +40,7 @@
   @yield('contenu')
 
   <footer>
-    <p><a class="lien" href="/BDE/public/mentions">Mentions légales</a><a class="barre"> | </a><a>BDE@viacesi.fr</a></p>
+    <p><a class="lien" style="width=100%" href="/BDE/public/mentions">Mentions légales</a><a class="barre"> | </a><a>BDE@viacesi.fr</a></p>
   </footer>
 </body>
 </html>

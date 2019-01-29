@@ -26,16 +26,16 @@
                     </div>
                     <div id="test">
 										<!--	<input id="get" type="button" value="Submit" style="width:20%"/> -->
-											<button id="get" type="button" name="button" style="width:20%"> Sumbit </button>
+											<button id="get" type="button" name="button" style="width:20%"> Get event members </button>
                     </div>
 			</div>
 			<div class="container" style="background-color:white">
-				<button id="All" type="button" name="button-edit"> get all users </button>
+				<button id="All" type="button" name="button-edit"> Get all users </button>
 
 
 			<div class="col-lg-12 col-md-12 col-sm-12 tableau ">
             <table id="example" style="width:80%">
-              <thead style="color: black">
+              <thead style="color:black">
                 <tr>
 									<th>id</th>
                   <th>Mail</th>
@@ -49,17 +49,16 @@
               </tbody>
 						</table>
 
-						<button id="edit" type="button" name="button-edit"> edit </button>
-						<button id="new" type="button" name="button-new"> new </button>
-
-
+						<button id="edit" type="button" name="button-edit"> Edit </button>
+						<button id="new" type="button" name="button-new"> New </button>
+						<button id="del" type="button" name="button-del"> Delete selected </button>
 
 
 						<div class="container">
 						    <form id="pop">
 									<input id="mailForm" type="test" name="Mail" placeholder="Mail">
-									<input id="nomForm" type="test" name="Nom" placeholder="Nom">
 									<input id="prenomForm" type="test" name="Prenom" placeholder="Prenom">
+									<input id="nomForm" type="test" name="Nom" placeholder="Nom">
 									<input id="centreForm" type="test" name="Centre" placeholder="Centre">
 									<input id="gradeForm" type="test" name="Grade" placeholder="Grade">
 									<input id="CRUD" type="button" name="submit" value="Submit">
@@ -77,17 +76,11 @@
     <script type="text/javascript" src="/js/Jquerycookie/jquery.cookie.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
-			$("#pop").hide();
-			var id;
-			var Mail;
-			var Nom;
-			var Prenom;
-			var Centre;
-			var Grade;
+
       var arr = [];
       				//autocompletion for search
               $.ajax({
-                  url: 'http://localhost:3000/api/participate',
+                  url: 'http://localhost:3000/api/events',
                   type: 'GET',
                   dataType: 'json',
                   headers: {"Authorization": $.cookie("token")},
@@ -117,7 +110,17 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
+					$("#pop").hide();
+					var id;
+					var Mail;
+					var Nom;
+					var Prenom;
+					var Centre;
+					var Grade;
 					var table;
+					var target_url;
+					var method;
+
 					function drawAll() {
 						table = $("#example").DataTable({
 							dom: 'Bfrtips',
@@ -153,8 +156,6 @@
 						 ],
 					 });
 					}
-
-
 					function getEvents() {
 						var data = $('#field').val();
 						console.log(data);
@@ -165,8 +166,23 @@
 				//    console.log(data);
 						table.destroy();
 						 table = $("#example").DataTable({
+							 dom: 'Bfrtips',
+
+							 buttons: [ {
+								 extend: 'pdf',
+								 title: 'Download as PDF',
+								 filename: 'pdf_data'
+							 }, {
+								 extend: 'csv',
+								 title: 'Download as CSV',
+								 filename: 'csv_data'
+							 }, {
+								 extend: 'excel',
+								 title: 'Download as Excel',
+								 filename:'excel_data'
+							 }],
 							"ajax": {
-								"url": 'http://localhost:3000/api/participate/' + data,
+								"url": 'http://localhost:3000/api/events/' + data,
 								"dataType": "json",
 								"type": "GET",
 								"beforeSend":function(xhr) {
@@ -174,6 +190,7 @@
 								}
 							},
 							"columns": [
+								{"data": "id"},
 								{"data":"Mail"},
 								{"data":"Prenom"},
 								{"data":"Nom"},
@@ -182,42 +199,42 @@
 							]
 						});
 					}
-
 				drawAll();
-
 				//row selection
 				$('#example tbody').on( 'click', 'tr', function () {
 					if ($(this).hasClass('selected')) {
 							$(this).removeClass('selected');
+							id = null;
+ 						 Mail = null;
+ 						 Nom = null;
+ 						 Prenom = null;
+ 						 Centre = null;
+ 						 Grade = null;
+						 $("#pop").hide();
 					} else {
 						$('tr.selected').removeClass('selected');
 						$(this).addClass('selected');
-						id = (table.row(this).data().id);
+						 id = (table.row(this).data().id);
 						 Mail = (table.row(this).data().Mail);
 						 Nom = (table.row(this).data().Nom);
 						 Prenom = (table.row(this).data().Prenom);
 						 Centre = (table.row(this).data().Centre);
 						 Grade = (table.row(this).data().Grade);
-
 								}
 			    });
-
 						//destory table and fetch new data
 					 	$("#get").on('click', function() {
 								getEvents();
 					 		});
-
-
 	 	$("#new").on('click', function() {
-			alert("placeholder");
+			$("#pop").show();
+			target_url = "http://localhost:3000/api/users";
+			method = "POST";
 		});
 		$("#edit").on('click', function() {
 			if (table.row('.selected').count() > 0) {
-			console.log(Mail);
-			console.log(Nom);
-			console.log(Prenom);
-			console.log(Centre);
-			console.log(Grade);
+			target_url = "http://localhost:3000/api/users/" + id;
+			method = "PUT";
 			$("#mailForm").val(Mail);
 			$("#nomForm").val(Nom);
 			$("#prenomForm").val(Prenom);
@@ -227,25 +244,27 @@
 		} else {
 			console.log(table.row('.selected').count());
 			alert("select an user");
-		}
+		 }
 			});
-
 		$("#CRUD").on('click', function() {
-
+			console.log(method);
+			//console.log(id);
 			$.ajax({
-				url: "http://localhost:3000/api/users/" + id,
-				type: "PUT",
+				url: target_url,
+				type: method,
 				dataType: "json",
 				headers: {"Authorization": $.cookie("token")},
 				data:$('#pop').serializeArray(),
 				success: function(result) {
-					console.log("succes update");
-					console.log(result);
+				//	console.log("succes update");
+				//	console.log(result);
+				table.destroy();
+				$("#pop").hide();
+				drawAll();
 				},
 				error: function(xhr, resp, text) {
 					console.log(xhr, resp, text);
-		console.log('error');
-}
+				}
 			})
 		});
 		$("#All").on('click', function() {
@@ -253,10 +272,27 @@
 			drawAll();
 		});
 
+		$("#del").on('click', function() {
+			if (id == null) {
+				confirm("no user selected");
+			} else {
+			confirm("Are you sure you want to delete?");
+			$.ajax({
+				url: "http://localhost:3000/api/users/" + id,
+				type: "DELETE",
+				dataType: "json",
+				headers: {"Authorization": $.cookie("token")},
+				//data:$('#pop').serializeArray(),
+				success: function(result) {
+					console.log(result);
+				},
+				error: function(xhr, resp, text) {
+					console.log(xhr, resp, text);
+				}
+			})
+
+		}
+		})
 });
     </script>
-
-		<script type="text/javascript">
-
-		</script>
 @endsection

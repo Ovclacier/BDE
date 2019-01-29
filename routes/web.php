@@ -13,31 +13,28 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+});/*
+ok
+*/
 
 
 Route::get('/Idees', function () {
-    return view('BoiteIdee');
+    return view('BoiteIdee');/*ok*/
 });
 Route::get('/testIdee', function () {
-    return view('ficheIdee');
+    return view('ficheIdee');/*ok*/
 });
 
 
 Route::get('/Evenements', function () {
-    return view('event');
+    return view('event');/*ok*/
 });
+
 
 Route::get('/Boutique', 'contTest@index');
 
 Route::get('/Connexion', function () {
-    return view('connexion');
-});
-Route::get('/header', function () {
-    return view('header');
-});
-Route::get('/test', function () {
-    return view('bladetest');
+    return view('connexion');/*ok*/
 });
 
 Route::get('/admin', function() {
