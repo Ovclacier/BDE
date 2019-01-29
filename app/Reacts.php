@@ -12,5 +12,6 @@ class reacts extends Model
         'id_image',
         'id_user',
         'commentaire',
+        'liked',
      ];
 }

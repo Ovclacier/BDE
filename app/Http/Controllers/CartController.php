@@ -49,7 +49,7 @@ class CartController extends Controller
         $cart = Cart_storage::Create(
             ['user_id' => auth()->user()->id],
             ['cart_data' => $request->cart_data],
-            ['quantity' => $request->quantity]
+            ['quantity' => $request->quantity]);
         // if (Cart::all()->where('id_user','=','auth()->user()->id'))
         // {
         //     return redirect()->route('cart.update');

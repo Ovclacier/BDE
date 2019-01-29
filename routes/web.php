@@ -34,7 +34,9 @@ Route::get('/Evenements', function () {
 });
 
 
-Route::get('/Boutique', 'contTest@index');
+//Route::get('/Boutique', function () {
+ //   return view('boutique');
+//});
 
 Route::get('/Connexion', function () {
     return view('connexion');/*ok*/
@@ -53,15 +55,12 @@ Route::resource('/events','EventController');
 Route::resource('/comments','CommentController');
 Route::resource('/users','UserController');
 Route::resource('/image', 'ImageController');
+Route::resource('/produits', 'ProductController'); 
 
 Route::get('/connection', 'ConnectionController@connect')->name('connection.connect');
 Route::post('/connection', 'ConnectionController@connectAttempt')->name('connection.connectAttempt');
 Route::get('/disconnect', 'ConnectionController@disconnect')->name('connection.disconnect');
 
-
-Route::get('/createProd', 'ProductController@create')->name('produits.create');
-Route::get('/storeProd', 'ProductController@store')->name('produits.store');
-Route::get('/showProd', 'ProductController@show')->name('produits.show');
 
 Route::get('/mentions', function () {
     return view('mentions');    
