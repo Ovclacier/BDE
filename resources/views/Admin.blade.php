@@ -26,11 +26,11 @@
                     </div>
                     <div id="test">
 										<!--	<input id="get" type="button" value="Submit" style="width:20%"/> -->
-											<button id="get" type="button" name="button" style="width:20%"> Sumbit </button>
+											<button id="get" type="button" name="button" style="width:20%"> Get event members </button>
                     </div>
 			</div>
 			<div class="container" style="background-color:white">
-				<button id="All" type="button" name="button-edit"> get all users </button>
+				<button id="All" type="button" name="button-edit"> Get all users </button>
 
 
 			<div class="col-lg-12 col-md-12 col-sm-12 tableau ">
@@ -49,10 +49,9 @@
               </tbody>
 						</table>
 
-						<button id="edit" type="button" name="button-edit"> edit </button>
-						<button id="new" type="button" name="button-new"> new </button>
-
-
+						<button id="edit" type="button" name="button-edit"> Edit </button>
+						<button id="new" type="button" name="button-new"> New </button>
+						<button id="del" type="button" name="button-del"> Delete selected </button>
 
 
 						<div class="container">
@@ -119,6 +118,9 @@
 					var Centre;
 					var Grade;
 					var table;
+					var target_url;
+					var method;
+
 					function drawAll() {
 						table = $("#example").DataTable({
 							dom: 'Bfrtips',
@@ -154,8 +156,6 @@
 						 ],
 					 });
 					}
-
-
 					function getEvents() {
 						var data = $('#field').val();
 						console.log(data);
@@ -166,6 +166,21 @@
 				//    console.log(data);
 						table.destroy();
 						 table = $("#example").DataTable({
+							 dom: 'Bfrtips',
+
+							 buttons: [ {
+								 extend: 'pdf',
+								 title: 'Download as PDF',
+								 filename: 'pdf_data'
+							 }, {
+								 extend: 'csv',
+								 title: 'Download as CSV',
+								 filename: 'csv_data'
+							 }, {
+								 extend: 'excel',
+								 title: 'Download as Excel',
+								 filename:'excel_data'
+							 }],
 							"ajax": {
 								"url": 'http://localhost:3000/api/events/' + data,
 								"dataType": "json",
@@ -175,6 +190,7 @@
 								}
 							},
 							"columns": [
+								{"data": "id"},
 								{"data":"Mail"},
 								{"data":"Prenom"},
 								{"data":"Nom"},
@@ -188,35 +204,37 @@
 				$('#example tbody').on( 'click', 'tr', function () {
 					if ($(this).hasClass('selected')) {
 							$(this).removeClass('selected');
+							id = null;
+ 						 Mail = null;
+ 						 Nom = null;
+ 						 Prenom = null;
+ 						 Centre = null;
+ 						 Grade = null;
+						 $("#pop").hide();
 					} else {
 						$('tr.selected').removeClass('selected');
 						$(this).addClass('selected');
-						id = (table.row(this).data().id);
+						 id = (table.row(this).data().id);
 						 Mail = (table.row(this).data().Mail);
 						 Nom = (table.row(this).data().Nom);
 						 Prenom = (table.row(this).data().Prenom);
 						 Centre = (table.row(this).data().Centre);
 						 Grade = (table.row(this).data().Grade);
-
 								}
 			    });
-
 						//destory table and fetch new data
 					 	$("#get").on('click', function() {
 								getEvents();
 					 		});
-
-
 	 	$("#new").on('click', function() {
-			alert("placeholder");
+			$("#pop").show();
+			target_url = "http://localhost:3000/api/users";
+			method = "POST";
 		});
 		$("#edit").on('click', function() {
 			if (table.row('.selected').count() > 0) {
-			console.log(Mail);
-			console.log(Nom);
-			console.log(Prenom);
-			console.log(Centre);
-			console.log(Grade);
+			target_url = "http://localhost:3000/api/users/" + id;
+			method = "PUT";
 			$("#mailForm").val(Mail);
 			$("#nomForm").val(Nom);
 			$("#prenomForm").val(Prenom);
@@ -226,13 +244,14 @@
 		} else {
 			console.log(table.row('.selected').count());
 			alert("select an user");
-					 }
+		 }
 			});
 		$("#CRUD").on('click', function() {
-			console.log(id);
+			console.log(method);
+			//console.log(id);
 			$.ajax({
-				url: "http://localhost:3000/api/users/" + id,
-				type: "PUT",
+				url: target_url,
+				type: method,
 				dataType: "json",
 				headers: {"Authorization": $.cookie("token")},
 				data:$('#pop').serializeArray(),
@@ -252,10 +271,28 @@
 			table.destroy();
 			drawAll();
 		});
+
+		$("#del").on('click', function() {
+			if (id == null) {
+				confirm("no user selected");
+			} else {
+			confirm("Are you sure you want to delete?");
+			$.ajax({
+				url: "http://localhost:3000/api/users/" + id,
+				type: "DELETE",
+				dataType: "json",
+				headers: {"Authorization": $.cookie("token")},
+				//data:$('#pop').serializeArray(),
+				success: function(result) {
+					console.log(result);
+				},
+				error: function(xhr, resp, text) {
+					console.log(xhr, resp, text);
+				}
+			})
+
+		}
+		})
 });
     </script>
-
-		<script type="text/javascript">
-
-		</script>
 @endsection
