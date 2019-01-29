@@ -59,10 +59,7 @@
 	<footer class="footerConnexion">
 		<p><a class="lien" href="/BDE/public/mentions">Mentions légales</a><a class="barre"> | </a><a>BDE@viacesi.fr</a></p>
 	</footer>
-
-	<script src="/js/jquery-3.3.1.js"></script>
-		<script src="/js/cookie.js"></script>
-		<script type="text/javascript" src="/js/Jquerycookie/jquery.cookie.js"></script>
+		<script type="text/javascript" src="{{asset(' /js/Jquerycookie/jquery.cookie.js ')}}"></script>
 		<script type="text/javascript">
 		$(document).ready(function() {
 
@@ -103,7 +100,7 @@
 		});
 
 		</script>
-		<script src="/js/cookie.js"></script>
+		<script src="{{ asset('/js/cookie.js') }}"></script>
 		<script type="text/javascript">
 		$(document).ready(function() {
 				//form validation
