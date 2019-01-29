@@ -7,8 +7,10 @@
   <link rel="stylesheet" href="{{ asset('/css/bootstrap-theme.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
   <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
   <script src="{{ asset('/js/jquery-3.3.1.js') }}"></script>
   <script src="{{ asset('/js/bootstrap.js') }}"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 @yield('title')
 
@@ -43,4 +45,26 @@
     <p><a class="lien" style="width=100%" href="/BDE/public/mentions">Mentions légales</a><a class="barre"> | </a><a>BDE@viacesi.fr</a></p>
   </footer>
 </body>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#000"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f1d600",
+      "border": "#f1d600"
+    }
+  },
+  "showLink": false,
+  "type": "opt-in",
+  "content": {
+    "message": "Nous utilisons des cookies pour améliorer votre expérience sur notre site",
+    "dismiss": "Non.",
+    "allow": "J'accepte"
+  }
+})});
+</script>
 </html>
