@@ -11,6 +11,12 @@
 		  <script src="{{ asset('/js/jquery-3.3.1.js') }}"></script>
 		  <script src="{{ asset('/js/bootstrap.js') }}"></script>
 		  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+			<style media="screen">
+			form .error {
+				font-size: 10px;
+			}
+
+			</style>
 	</head>
 	<body class="bckConnexion">
 		<br><br><br><br><br>
@@ -65,15 +71,8 @@
 		<script>
 		$(document).ready(function() {
 
-
 				//form validation
 				$("#register").on('click', function() {
-					console.log($("#check_form").is(":checked"));
-						if (document.RegForm.Mail.value == "" || document.RegForm.Nom.value == "" || document.RegForm.Prenom.value == "" || document.RegForm.Centre.value == "" || document.RegForm.Mdp.value == "") {
-								alert("Veuillez remplir toutes les cases!");
-								document.RegForm.Mail.focus();
-								return false;
-						}
 
 						if ($("#check_form").is(":checked") == false) {
 							alert("please check the box");
@@ -94,6 +93,75 @@
 		});
 
 		</script>
+		<script src="{{ asset('/js/jqueryValidate/dist/jquery.validate.min.js') }}"></script>
+		<script>
+		$(document).ready(function() {
+			$("form[name='CxForm']").validate({
+				rules: {
+					Mail: {
+						required: true,
+						email: true
+					},
+					Mdp: {
+						required: true
+					},
+				messages: {
+
+					Mail: {
+						required: "enter an email address",
+					},
+					Mdp: {
+						required: "please provide a password"
+							}
+				}
+
+			},
+
+				submitHandler: function(form) {
+					form.submit();
+				}
+			});
+
+				$("form[name='RegForm']").validate({
+					rules: {
+						Mail: {
+							required: true,
+							email: true
+						},
+
+						Nom: {
+							required: true
+						},
+
+						Prenom: {
+							required: true
+						},
+
+						Mdp: {
+							required: true,
+							minlength: 5
+						},
+
+						Centre: {
+							required: true
+						}
+					},
+
+					messages: {
+
+
+					},
+					submitHandler: function(form) {
+						form.submit();
+					}
+
+
+				});
+
+		});
+
+		</script>
+
 		<script src="{{ asset('/js/cookie.js') }}"></script>
 		<script>
 		$(document).ready(function() {
