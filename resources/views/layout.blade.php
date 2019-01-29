@@ -16,6 +16,7 @@
 
 </head>
 <body>
+
   <nav class="navbar navbar-fixed-top back">
     <div class="container-fluid-bis">
       <div class="navbar-header">
@@ -38,7 +39,6 @@
       </div>
     </div>
   </nav>
-
   @yield('contenu')
 
   <footer>
