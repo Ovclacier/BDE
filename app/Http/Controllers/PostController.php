@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
 use App\Comment;
+use App\Post;
+use App\Image;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -39,6 +40,49 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // Placeholder pour le système de upvote
+
+        // if($request->upvotes !=null)
+        // {     
+            
+        //     $isLiked = Comment::where('react', 1)
+        //                             ->where('id_user', $request->id_user)
+        //                             ->where('id_image', $request->id_image)
+        //                             ->first();
+            
+        //     if($isLiked){
+        //         $dislike = Comment::find($isLiked->id);
+        //         $dislike->react = 0;
+        //         $dislike->save();
+        //        // return "l'utilisateur vient de dislike";
+        //     }else{
+        //         $rowExists = Comment::where('react', 0)
+        //                         ->where('id_user', $request->id_user)
+        //                         ->where('id_image', $request->id_image)
+        //                         ->where('commentaire', null)
+        //                         ->first();
+        //         if($rowExists)
+        //         {
+        //             $like = Comment::find($rowExists->id);
+        //             $like->react = 1;
+        //             $like->save();
+        //            // return "l'utilisateur vient de like";
+        //         }else{
+        //             $firstLike = Comment::Create(['id_user' => $request->id_user,
+        //                              'id_image' => $request->id_image,
+        //                              'react' => $request->react]);
+        //           //  return "l'utilisateur qui n'a jamais like vient de like";
+        //         }   
+        //     }
+        //     $countrows = Comment::where('react', 1)
+        //     ->where('id_image', $request->id_image)
+        //     ->count();
+        //     $totalLike = Image::find($request->id_image);
+        //     $totalLike->reacts = $countrows;
+        //     $totalLike->save();
+        //     return redirect()->back();
+        // }
+        
         $post = Post::Create(
             ['title' => $request->title,
             'description' => $request->description,
@@ -60,7 +104,11 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $posts = Post::find($id);
+
+        $images = Image::where('id_post', $id)->get();
+        
+        return view('event.comment.eventdetails', ['posts' => $posts, 'images' => $images]);
     }
 
     /**

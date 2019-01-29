@@ -23,7 +23,6 @@
     <input type="text" name="commentaire" required>Votre Commentaire<br>
     <input type="hidden" name="id_user" value="{{ $iduser}} ">
     <input type="hidden" name="id_image" value="{{ $image->id }}">
-
     <br><br>
     <button type="submit">Add comment</button><br><br>
 </form>

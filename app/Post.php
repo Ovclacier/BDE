@@ -13,6 +13,6 @@ class Post extends Model
         'description',
         'author',
         'date_event',
-
+        'upvotes',
      ];
 }

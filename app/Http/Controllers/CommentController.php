@@ -37,7 +37,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->react=1)
+        if($request->react !=null)
         {     
             
             $isLiked = Comment::where('react', 1)
@@ -69,14 +69,25 @@ class CommentController extends Controller
                   //  return "l'utilisateur qui n'a jamais like vient de like";
                 }   
             }
+            $countrows = Comment::where('react', 1)
+            ->where('id_image', $request->id_image)
+            ->count();
+            $totalLike = Image::find($request->id_image);
+            $totalLike->reacts = $countrows;
+            $totalLike->save();
+            return redirect()->back();
         }
-        $countrows = Comment::where('react', 1)
-                                    ->where('id_image', $request->id_image)
-                                    ->count();
-        $totalLike = Image::find($request->id_image);
-        $totalLike->reacts = $countrows;
-        $totalLike->save();
-        return $totalLike->reacts;
+            if($request->commentaire != null){
+                $comment = Comment::Create(
+                             ['id_user' => $request->id_user,
+                             'id_image' => $request->id_image,
+                             'commentaire' => $request->commentaire
+                             ]);
+                $comment->save();
+
+            return redirect()->back();
+        }
+        
     }
 
     /**
@@ -87,15 +98,7 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        $posts = Post::find($id);
-
-        $images = Image::all();
-        $images->where('id_post', '=', '$id');
-        // $comments = Comment::where('comments',function ($q) {
-        //     $q->where('id_user', '=', '$id');
-        // })->get();
-        return view('event.comment.eventdetails', ['posts' => $posts, 'images' => $images]);
-        
+        //   
     }
 
 
