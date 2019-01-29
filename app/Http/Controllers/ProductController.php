@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Produits;
+use App\Produit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $produits = Produits::paginate(2);
+        $produits = Produit::paginate(2);
         $bestProduits = DB::select(' SELECT s.id_produit, SUM(quantite) as Quantite, produits.Nom_article as Nom_article, produits.URL_image as URL_image FROM selectcom as s LEFT JOIN produits ON s.id_produit = produits.id_produit group by id_produit ORDER BY Quantite DESC LIMIT 0,3');
   
         return view('boutique', compact('Produits','bestProduits'))
@@ -44,12 +44,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $test = explode('/', $request->URL_image->store('images','public'));
+
         $produit = Produits::firstOrCreate(
-            ['name' => $request->Nom_article],
-            ['description' => $request->description]
+            ['Nom_article' => $request->Nom_article],
+            ['description' => $request->description,
+            'price' => $request->price,
+            'URL_image' => $test[1] ]
         );
+        //$test = explode('/', $request->image);
+
+        
         $produit->save();
-        $produits = Produits::paginate(2);
+        $produits = Produit::paginate(2);
   
         return redirect()->route('produits.index',compact('produits'))
             ->with('i', (request()->input('page', 1)-1)*2);

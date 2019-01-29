@@ -40,11 +40,10 @@ class ConnectionController extends Controller
      
          if ($connexion)
          {
-             return redirect()->route('users.index',compact('users'))
-             ->with('i', (request()->input('page', 1)-1)*2);
+             return view('welcome');
 
          }else{
-             return view('welcome');
+             return redirect('/connection')->withError('error','You must enter the correct login');
          }
     }
 }

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Reacts;
-use App\Post;
+use App\Event;
+use App\Image;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -36,44 +37,88 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $comment = Reacts::Create(
-            ['commentaire' => $request->commentaire,
-            'id_user' => $request->id_user,
-            'id_post' => $request->id_post]
-        );
-        $comment->save();
-        $comments = Reacts::all()->where('id_user', '=', '$id');
-        $posts = Post::find($request->id_post);
-  
-        return redirect()->route('comments.show', "$request->id_post");
+
+        if($request->liked !=null)
+        {     
+            
+            $isLiked = Reacts::where('liked', 1)
+                                    ->where('id_user', $request->id_user)
+                                    ->where('id_image', $request->id_image)
+                                    ->first();
+            
+            if($isLiked){
+                $dislike = Reacts::find($isLiked->id);
+                $dislike->liked = 0;
+                $dislike->save();
+               // return "l'utilisateur vient de dislike";
+            }else{
+                $rowExists = Reacts::where('liked', 0)
+                                ->where('id_user', $request->id_user)
+                                ->where('id_image', $request->id_image)
+                                ->where('commentaire', null)
+                                ->first();
+                if($rowExists)
+                {
+                    $like = Reacts::find($rowExists->id);
+                    $like->liked = 1;
+                    $like->save();
+                   // return "l'utilisateur vient de like";
+                }else{
+                    $firstLike = Reacts::Create(['id_user' => $request->id_user,
+                                     'id_image' => $request->id_image,
+                                     'liked' => $request->liked]);
+                  //  return "l'utilisateur qui n'a jamais like vient de like";
+                }   
+            }
+            $countrows = Reacts::where('liked', 1)
+            ->where('id_image', $request->id_image)
+            ->count();
+            $totalLike = Image::find($request->id_image);
+            $totalLike->reacts = $countrows;
+            $totalLike->save();
+            return redirect()->back();
+        }
+            if($request->commentaire != null){
+                $comment = Reacts::Create(
+                             ['id_user' => $request->id_user,
+                             'id_image' => $request->id_image,
+                             'commentaire' => $request->commentaire
+                             ]);
+                $comment->save();
+
+            return redirect()->back();
+        }
+        
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\comment  $comment
+     * @param  \App\Reacts  $Reacts
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $posts = Post::find($id);
-
-        $comments = Reacts::all();
-        $comments->where('id_user', '=', '$id');
-        // $comments = Comment::where('comments',function ($q) {
-        //     $q->where('id_user', '=', '$id');
-        // })->get();
-        return view('event.comment.eventdetails', ['posts' => $posts, 'comments' => $comments]);
-        
+       
     }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Reacts  $Reacts
+     * @return \Illuminate\Http\Response
+     */
+    
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\comment  $comment
+     * @param  \App\Reacts  $Reacts
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reacts $comment)
+    public function edit(Reacts $Reacts)
     {
         //
     }
@@ -82,10 +127,10 @@ class CommentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\comment  $comment
+     * @param  \App\Reacts  $Reacts
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reacts $comment)
+    public function update(Request $request, Reacts $Reacts)
     {
         //
     }
@@ -93,10 +138,10 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\comment  $comment
+     * @param  \App\Reacts  $Reacts
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reacts $comment)
+    public function destroy(Reacts $Reacts)
     {
         //
     }

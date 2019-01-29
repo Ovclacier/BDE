@@ -24,14 +24,21 @@
             <th width="280px">Action</th>
         </tr>
         
-        @foreach ($event as $events)
+        @foreach ($events as $event)
         <tr>
             <td>{{ ++$i }}</td>
-            <td>{{ $events->title }}</td>
-            <td>{{ $events->description }}</td>
+            <td>{{ $event->title }}</td>
+            <td>{{ $event->description }}</td>
             <td>
-                <a class="btn btn-info" href="{{ route('comments.show',$events->id_event) }}">Show</a>
-                <a class="btn btn-primary" href="{{ route('events.edit',$events->id_event) }}">Edit</a>
+                <form action="{{ route('events.destroy',$event->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('events.show',$event->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('events.edit',$event->id) }}">Edit</a>
+   
+                    @csrf
+                    @method('DELETE')
+      
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </td>
         </tr>
         @endforeach

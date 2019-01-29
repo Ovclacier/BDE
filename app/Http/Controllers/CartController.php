@@ -23,6 +23,11 @@ class CartController extends Controller
         return view('shop.cart.cartdetails',compact('carts'));
     }
 
+    public function cartValidation()
+    {
+        $carts = Cart_storage::all()->where();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -41,10 +46,14 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        $cart = Cart_storage::firstOrCreate(
+        $cart = Cart_storage::Create(
             ['user_id' => auth()->user()->id],
-            ['cart_data' => $request->cart_data]
-        );
+            ['cart_data' => $request->cart_data],
+            ['quantity' => $request->quantity]
+        // if (Cart::all()->where('id_user','=','auth()->user()->id'))
+        // {
+        //     return redirect()->route('cart.update');
+        // }else{
         $cart->save();
 
         // $carts = Cart::all();
@@ -54,6 +63,7 @@ class CartController extends Controller
   
         return redirect()->route('cart.index');
     }
+    
 
     /**
      * Display the specified resource.

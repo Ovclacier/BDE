@@ -97,8 +97,12 @@
                 <a href="{{ route('users.index') }}">Userlist</a>
                 <a href="{{ route('users.create') }}">Sign In</a>
                 <a href="{{ route('connection.connect') }}">Login</a>
+                <a href="{{ url('/') }}">Menu</a>
                 </div>
             </div>
         </div>
+        @if($errors->any())
+        <h2>{{$errors->first()}}</h2>
+        @endif
     </body>
 </html>
