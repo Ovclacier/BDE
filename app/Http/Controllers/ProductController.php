@@ -17,8 +17,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $produits = Produit::all();
-        $bestProduits = DB::select(' SELECT s.id_produit, SUM(quantite) as Quantite, produits.Nom_article as Nom_article, produits.URL_image as URL_image FROM selectcom as s LEFT JOIN produits ON s.id_produit = produits.id_produit group by id_produit ORDER BY Quantite DESC LIMIT 0,3');
+        $produits = Produit::paginate(5);
+        $bestProduits = DB::select(' SELECT s.id_produit, SUM(quantity) as Quantite, produits.Nom_article as Nom_article, produits.URL_image as URL_image FROM commande as s LEFT JOIN produits ON s.id_produit = produits.id group by id_produit ORDER BY Quantite DESC LIMIT 0,3');
   
         return view('boutique', ['produits' => $produits,'bestProduits' => $bestProduits])
             ->with('i', (request()->input('page', 1)-1)*2);
@@ -68,10 +68,10 @@ class ProductController extends Controller
      * @param  \App\Produit  $produit
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_produit)
     {
         
-        $produits = Produits::find($id);
+        $produits = Produit::find($id_produit);
        
         return view('shop.productdetails', ['produits' => $produits]);
     }

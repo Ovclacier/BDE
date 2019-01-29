@@ -239,6 +239,10 @@ div.centerImg div{
     text-align: center;
 }
 
+a.linkNoir{
+    color: black;
+}
+
 
 .footerConnexion{
     background-color: black;

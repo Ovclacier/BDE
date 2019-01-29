@@ -20,8 +20,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('user.showuserpage', ['users' => $users]);
+       // $users = User::all();
+       // return view('user.showuserpage', ['users' => $users]);
     }
 
     /**
@@ -31,7 +31,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.signIn');
+        return view('connexion');
     }
 
     /**
@@ -42,20 +42,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->password == $request->password_confirm)
-        {
+        
         $user = User::firstOrCreate(
             ['email' => $request->email],
-            ['name' => $request->name,
-            'password' => Hash::make($request['password'])]
+            ['nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'centre' => $request->centre,
+            'password' => Hash::make($request['password']) ]
         );
         $user->save();
         $users = User::paginate(2);
         return redirect()->route('users.index',compact('users'))
             ->with('i', (request()->input('page', 1)-1)*2);
-        }else{
-            return "nope";
-        }
+        
 
     }
 

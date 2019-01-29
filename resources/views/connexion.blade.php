@@ -17,31 +17,34 @@
 		<div class = "container-fluid container text-center">
 			<div class="col-lg-1 col-md-0 col-sm-0"></div>
 			<div class="col-lg-4 col-md-12 col-sm-12 wrapper">
-				<form id="Connexion" name="CxForm">
+				<form action="{{route('connection.connectAttempt')}}" enctype="multipart/form-data" method="POST">
+        		@csrf
 	                <h2 class="titreEvent">Connexion</h2>
 	                <div class="formContainer">
-	                    <div><input type="text" name="Mail" placeholder="Mail"></div>
-	                    <div><input type="password" name="Mdp" placeholder="Mot de passe"></div>
-
-	                    <div><br><button id="connect" type="button">Connexion</button></div>
+	                    <div><input type="text" name="email" placeholder="Mail" required></div>
+	                    <div><input type="password" name="password" placeholder="Mot de passe" required></div>
+	                    <button type="submit">Connexion</button>
 	                </div>
-	            </form>
+	           		
+  				</form>
 	        </div>
 	        <div class="col-lg-1 col-md-0 col-sm-0"></div>
 			<div class="col-lg-4 col-md-12 col-sm-12 wrapper">
-	            <form id="Inscription" name="RegForm">
+	            <form action="{{route('users.store')}}" enctype="multipart/form-data" method="POST">
+                @csrf
+
 	                <h2 class="titreEvent">S'inscrire</h2>
 	                <div class="row">
-	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="Mail" placeholder="Mail"></div>
-	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="password" name="Mdp" placeholder="Mot de passe"></div>
+	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="email" placeholder="Mail" required></div>
+	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="password" name="password" placeholder="Mot de passe" required></div>
 	                </div>
 	                <div class="row">
-	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="Nom" placeholder="Nom"></div>
-	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="Prenom" placeholder="Prénom"></div>
+	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="nom" placeholder="Nom" required></div>
+	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="prenom" placeholder="Prénom" required></div>
 	                </div>
 	                <br>
 				    <div class="inForm">Localisation :</div>
-				    <select name="Centre">
+				    <select name="centre">
 					    <option>Strasbourg</option>
 					    <option>Paris</option>
 					    <option>Poitou-Charentes</option>
@@ -54,93 +57,12 @@
 											J'accepte les <a href="mentions" style="color:blue">conditions d'utilisation</a>
 											</div>
 
-                    <div><br><button id="register" type="button" >S'inscrire</button></div>
-	            </form>
+                    <button type="submit">S'inscrire</button>
+            	</form>
 	        </div>
         </div>
-		<footer class="footerConnexion">
+	</body>
+	<footer class="footerConnexion">
 		<p><a class="lien" href="/BDE/public/mentions">Mentions légales</a><a class="barre"> | </a><a>BDE@viacesi.fr</a></p>
 	</footer>
-		<script src="{{asset('/js/Jquerycookie/jquery.cookie.js')}}"></script>
-		<script>
-		$(document).ready(function() {
-
-
-				//form validation
-				$("#register").on('click', function() {
-					console.log($("#check_form").is(":checked"));
-						if (document.RegForm.Mail.value == "" || document.RegForm.Nom.value == "" || document.RegForm.Prenom.value == "" || document.RegForm.Centre.value == "" || document.RegForm.Mdp.value == "") {
-								alert("Veuillez remplir toutes les cases!");
-								document.RegForm.Mail.focus();
-								return false;
-						}
-
-						if ($("#check_form").is(":checked") == false) {
-							alert("please check the box");
-							return false;
-						}
-						//send data to API
-						$.ajax({
-								url: 'http://localhost:3000/api/users',
-								type: 'POST',
-								dataType: 'json',
-								//contentType: "application/json",
-								data: $('#Inscription').serializeArray(),
-								success: function(json) {
-										alert("inscription confirmée. Vous allez être redirigé vers la page d'accueil");
-								}
-						})
-				})
-		});
-
-		</script>
-		<script src="{{ asset('/js/cookie.js') }}"></script>
-		<script>
-		$(document).ready(function() {
-				//form validation
-				$("#connect").on('click', function() {
-						if (document.CxForm.Mail.value == "") {
-								alert("Veuillez remplir toutes les cases!");
-								document.CxForm.Mail.focus();
-								return false;
-						}
-						if (document.CxForm.Mdp.value == "") {
-								alert("Veuillez remplir toutes les cases!");
-								document.CxForm.Mdp.focus();
-								return false;
-						}
-						//send user Mail and password to nodeJS API
-						$.ajax({
-							url: 'http://localhost:3000/api/users/login', //API url
-							type: 'POST',
-							dataType: 'json',
-							data: $("#Connexion").serializeArray(), //dara from connexion form
-							success: function(json) {
-								console.log('success');
-								console.log(json);
-								setCookie("UserId", json.data.id, 365);
-								if(json.data.Grade > 1) {
-									//console.log(json.token);
-									//set jsonwebtoken to allow access to API
-									setCookie("token", json.token, 7);
-								} else {
-									eraseCookie("token");
-								}
-							},
-								error: function(xhr, resp, text) {
-										console.log(xhr, resp, text);
-										console.log('error');
-										window.location = "/404";
-								//var test = listCookies();
-								//console.log(test);
-								//alert("Vous êtes bien connectés. Vous allez être redirigé(e).")
-								//window.location = "/";
-
-							}
-						})
-					})
-				});
-
-		</script>
-	</body>
-</html>
+</html> 

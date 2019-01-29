@@ -1,18 +1,31 @@
+@extends('layout')
 
-                <h2> Show Product</h2>
-                <a href="{{ route('products.index') }}"> Back</a>
+    @section('title')
+    <title>Produit sélectionné</title>
+    @endsection
+    
 
-                <strong>Name:</strong>
-                {{ $products->name }}
-                <strong>Details:</strong>
-                {{ $products->description }}
-          
-            <form method="post" action="{{ route('cart.store') }}">
-             @csrf
-            <input type="text" value="{{ $products->name }}" name="datas" readonly>
-            <input type="text" value="{{ $products->id }}" name="id_user" readonly>
-          
-            <button type="submit">Submit</button>
-           </form>
-        </div>
+
+
+
+
+
+@section('contenu')
+    <div class="MarginTop25">
+        <h2> Show Product</h2>
+        <a href="{{ route('produits.index') }}"> Back</a>
+
+        <strong>Name:</strong>
+        {{ $produits->Nom_produit }}
+        <strong>Details:</strong>
+        {{ $produits->description }}
+      
+        <form method="post" action="{{ route('cart.store') }}">
+         @csrf
+        <input type="text" value="{{ $produits->Nom_produit }}" name="datas" readonly>
+        <input type="text" value="{{ $produits->id }}" name="id_user" readonly>
+      
+        <button type="submit">Submit</button>
+       </form>
     </div>
+@endsection
