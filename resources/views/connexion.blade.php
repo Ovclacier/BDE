@@ -17,39 +17,44 @@
 		<div class = "container-fluid container text-center">
 			<div class="col-lg-1 col-md-0 col-sm-0"></div>
 			<div class="col-lg-4 col-md-12 col-sm-12 wrapper">
-				<form id="Connexion">
+				<form id="Connexion" name="CxForm">
 	                <h2 class="titreEvent">Connexion</h2>
 	                <div class="formContainer">
-	                    <div><input type="text" name="mail" placeholder="Mail"></div>
-	                    <div><input type="password" name="pwd" placeholder="Mot de passe"></div>
+	                    <div><input type="text" name="Mail" placeholder="Mail"></div>
+	                    <div><input type="password" name="Mdp" placeholder="Mot de passe"></div>
 
-	                    <div><br><button form="Connexion">Connexion</button></div>
+	                    <div><br><button id="connect" form="">Connexion</button></div>
 	                </div>
 	            </form>
 	        </div>
 	        <div class="col-lg-1 col-md-0 col-sm-0"></div>
 			<div class="col-lg-4 col-md-12 col-sm-12 wrapper">
-	            <form id="Inscription">
+	            <form id="Inscription" name="RegForm">
 	                <h2 class="titreEvent">S'inscrire</h2>
 	                <div class="row">
-	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="mail" placeholder="Mail"></div>
-	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="password" name="pwd" placeholder="Mot de passe"></div>
+	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="Mail" placeholder="Mail"></div>
+	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="password" name="Mdp" placeholder="Mot de passe"></div>
 	                </div>
 	                <div class="row">
-	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="nom" placeholder="Nom"></div>
-	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="prénom" placeholder="Prénom"></div>
+	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="Nom" placeholder="Nom"></div>
+	                    <div class="col-lg-6 col-md-12 col-sm-12"><input class="logInput blackInput" type="text" name="Prenom" placeholder="Prénom"></div>
 	                </div>
 	                <br>
 				    <div class="inForm">Localisation :</div>
-				    <select name="place">
+				    <select name="Centre">
 					    <option>Strasbourg</option>
 					    <option>Paris</option>
 					    <option>Poitou-Charentes</option>
 					    <option>San Fransisco</option>
 					    <option>Tokyo</option>
 				    </select>
-							<input type="checkbox" id="check_form" name="" value="">
-                    <div><br><button form="Inscription">S'inscrire</button></div>
+						<div class="col-lg-6 col-md-12 col-sm-12">
+											<input type="checkbox" id="check_form"></div>
+											<div class="col-lg-6 col-md-12 col-sm-12" style="font-size:10px">
+											J'accepte les <a href="mentions" style="color:blue">conditions d'utilisation</a>
+											</div>
+
+                    <div><br><button id="register" form="" >S'inscrire</button></div>
 	            </form>
 	        </div>
         </div>
@@ -84,15 +89,7 @@
 								//contentType: "application/json",
 								data: $('#Inscription').serializeArray(),
 								success: function(json) {
-										//    alert("success");
-										//console.log("success");
-										//console.log(json);
 										alert("inscription confirmée. Vous allez être redirigé vers la page d'accueil");
-								//		window.location = "/";
-								},
-								error: function(xhr, resp, text) {
-										console.log(xhr, resp, text);
-										console.log('error');
 								}
 						})
 				})
@@ -131,6 +128,11 @@
 								} else {
 									eraseCookie("token");
 								}
+							},
+								error: function(xhr, resp, text) {
+										console.log(xhr, resp, text);
+										console.log('error');
+										window.location = "/404";
 								//var test = listCookies();
 								//console.log(test);
 								//alert("Vous êtes bien connectés. Vous allez être redirigé(e).")
