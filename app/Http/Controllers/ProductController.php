@@ -38,7 +38,7 @@ class ProductController extends Controller
 
     public function triCategorie($id)
     {
-        $triProduits = Produit::where('id_categorie', $id)->paginate(2);
+        $triProduits = Produit::where('id_categorie', $id)->paginate(5);
         $categories = Categorie::all();
         $bestProduits = DB::select(' SELECT s.id_produit, SUM(quantity) as Quantite, produits.Nom_article as Nom_article, produits.URL_image as URL_image FROM commandes as s LEFT JOIN produits ON s.id_produit = produits.id group by id_produit ORDER BY Quantite DESC LIMIT 0,3');
 
