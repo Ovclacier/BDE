@@ -58,9 +58,7 @@
 	            </form>
 	        </div>
         </div>
-	</body>
-
-	<footer class="footerConnexion">
+		<footer class="footerConnexion">
 		<p><a class="lien" href="/BDE/public/mentions">Mentions légales</a><a class="barre"> | </a><a>BDE@viacesi.fr</a></p>
 	</footer>
 		<script type="text/javascript" src="{{asset('/js/Jquerycookie/jquery.cookie.js')}}"></script>
@@ -144,6 +142,5 @@
 				});
 
 		</script>
-
-
+	</body>
 </html>
