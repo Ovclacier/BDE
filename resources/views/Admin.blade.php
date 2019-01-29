@@ -50,7 +50,7 @@
 						</table>
 
 						<button id="edit" type="button" name="button-edit"> Edit </button>
-						<button id="new" type="button" name="button-new"> New </button>
+					<!--	<button id="new" type="button" name="button-new"> New </button> -->
 						<button id="del" type="button" name="button-del"> Delete selected </button>
 
 
@@ -277,6 +277,7 @@
 				confirm("no user selected");
 			} else {
 			confirm("Are you sure you want to delete?");
+			confirm("Are you ABSOLUTELY sure? this action is not reversible.");
 			$.ajax({
 				url: "http://localhost:3000/api/users/" + id,
 				type: "DELETE",
