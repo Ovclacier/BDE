@@ -11,13 +11,13 @@
         </tr>
         @foreach ($carts as $cart)
         <tr>
-           
-            <td>{{ $cart->id_produit }}</td>
-            <td>{{ $cart->user_id }}</td>
-            <td>{{ $cart->quantity }}</td>
-            <td>{{ $cart->state }}</td>
+            <td>{{ $cart->id}}</td>
+            <td>{{ $cart->url_image }}</td>
+            
+            <td>oui</td>
+            
             <td>
-                <form action="{{ route('cart.destroy',$cart->id) }}" method="POST">
+                <form action="{{ route('cart.index') }}" method="POST">
    
                     @csrf
                     @method('DELETE')

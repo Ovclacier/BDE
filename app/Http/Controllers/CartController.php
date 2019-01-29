@@ -18,13 +18,14 @@ class CartController extends Controller
     public function index()
     {
         
-        $carts = Commande::where('user_id',auth()->user()->id)->get();
-        foreach($carts as $cart){
-        $image[] = $cart->id_produit;
+        $produits = Commande::where('user_id',auth()->user()->id)->get();
+        $i = 0;
+        foreach($produits as $produit){
+        $carts[] = Produit::find($produit->id_produit);
         
         }
-        return $image;
-        return view('shop.cart.cartdetails',compact('carts'));
+        
+        return view('shop.cart.cartdetails',['carts' => $carts]);
     }
 
     public function cartValidation()

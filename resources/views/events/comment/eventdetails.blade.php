@@ -26,6 +26,7 @@
             You must login to add an image 
             <a href="{{ route('connection.connect') }}">Login</a><br>
             @endif
+            
         @foreach ($images as $image)
         <tr>
             <td><img src="/storage/images/{{ $image->url_image }}" height=100px width=100px/></td>
