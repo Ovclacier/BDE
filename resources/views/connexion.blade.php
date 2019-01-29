@@ -48,6 +48,7 @@
 					    <option>San Fransisco</option>
 					    <option>Tokyo</option>
 				    </select>
+							<input type="checkbox" id="check_form" name="" value="">
                     <div><br><button form="Inscription">S'inscrire</button></div>
 	            </form>
 	        </div>
