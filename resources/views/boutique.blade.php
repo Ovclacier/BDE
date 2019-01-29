@@ -35,7 +35,7 @@
 			<div class="row ble1">
 				<h2>Liste produit</h2>
 			</div>
-			<div class="row ble2">
+			<div class="row blc">
 				<div class="col-lg-3 col-mg-12 col-sm-12 ble2 text-left marginMenu fontSizeMenu"style="min-height: 100%;">
 					<h3 class="text-center">Coucou</h3>
 					<div>Catégories :</div>
@@ -48,42 +48,18 @@
 				</div>
 			
 				<div class="col-lg-9 col-mg-12 col-sm-12 blc">
-					<div class="row">
-						<div class="col-lg-3 col-md-6 col-sm-6">
-							<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" width="200" height="200" alt="pile"></a>
-							<div>Pile AA</div>
+					@foreach($Produits as $produit)
+						<div class="row marginTop10">
+							<div class="col-lg-3 col-md-6 col-sm-6">
+								<a href="http://www.google.fr"><img src="{{$produit->URL_image}}" width="200" height="200" alt="pile"></a>
+							</div>
+							<div class="col-lg-9 col-md-6 col-sm-6">
+								<div class="titreProduit col-lg-8 col-md-8 col-sm-8">{{$produit->Nom_article}}</div>
+								<div class="col-lg-4 col-md-4 col-sm-4">{{$produit->prix}}</div>
+								<div>{{$produit->description}}</div>
+							</div>
 						</div>
-						<div class="col-lg-3 col-md-6 col-sm-6">
-							<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" width="200" height="200" alt="pile"></a>
-							<div>Pile AAA</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-sm-6">
-							<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" width="200" height="200" alt="pile"></a>
-							<div>Pile AAAA</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-sm-6">
-							<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" width="200" height="200" alt="pile"></a>
-							<div>Pile B</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-3 col-md-6 col-sm-6">
-							<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" width="200" height="200" alt="pile"></a>
-							<div>Pile AA</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-sm-6">
-							<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" width="200" height="200" alt="pile"></a>
-							<div>Pile AAA</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-sm-6">
-							<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" width="200" height="200" alt="pile"></a>
-							<div>Pile AAAA</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-sm-6">
-							<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" width="200" height="200" alt="pile"></a>
-							<div>Pile B</div>
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 </div>

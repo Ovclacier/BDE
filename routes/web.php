@@ -28,9 +28,7 @@ Route::get('/Evenements', function () {
     return view('event');
 });
 
-Route::get('/Boutique', 'contTest@index', function () {
-    return view('boutique');
-});
+Route::get('/Boutique', 'contTest@index');
 
 Route::get('/Connexion', function () {
     return view('connexion');
@@ -50,9 +48,7 @@ Route::get('/fiche', function() {
   });
 
 
-
 Route::resource('/cart','CartController');
-Route::resource('/produits','ProductController');
 Route::resource('/events','EventController');
 Route::resource('/comments','CommentController');
 Route::resource('/users','UserController');
@@ -61,7 +57,9 @@ Route::get('/connection', 'ConnectionController@connect')->name('connection.conn
 Route::post('/connection', 'ConnectionController@connectAttempt')->name('connection.connectAttempt');
 Route::get('/disconnect', 'ConnectionController@disconnect')->name('connection.disconnect');
 
-
+Route::get('/createProd', 'ProductController@create')->name('produits.create');
+Route::get('/storeProd', 'ProductController@store')->name('produits.store');
+Route::get('/showProd', 'ProductController@show')->name('produits.show');
 
 Route::get('/mentions', function () {
     return view('mentions');

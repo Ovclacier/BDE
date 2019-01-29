@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Produit;
+use App\Produits;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -17,9 +17,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $produits = Produit::paginate(2);
+        $produits = Produits::paginate(2);
+        $bestProduits = DB::select(' SELECT s.id_produit, SUM(quantite) as Quantite, produits.Nom_article as Nom_article, produits.URL_image as URL_image FROM selectcom as s LEFT JOIN produits ON s.id_produit = produits.id_produit group by id_produit ORDER BY Quantite DESC LIMIT 0,3');
   
-        return view('shop.viewproducts',compact('produits'))
+        return view('boutique', compact('Produits','bestProduits'))
             ->with('i', (request()->input('page', 1)-1)*2);
         // $produits = Produit::all();
         // return view('shop.viewproducts', ['produits' => $produits]);
@@ -43,12 +44,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $produit = Produit::firstOrCreate(
+        $produit = Produits::firstOrCreate(
             ['name' => $request->Nom_article],
             ['description' => $request->description]
         );
         $produit->save();
-        $produits = Produit::paginate(2);
+        $produits = Produits::paginate(2);
   
         return redirect()->route('produits.index',compact('produits'))
             ->with('i', (request()->input('page', 1)-1)*2);
@@ -63,7 +64,7 @@ class ProductController extends Controller
     public function show($id)
     {
         
-        $produits = Produit::find($id);
+        $produits = Produits::find($id);
        
         return view('shop.productdetails', ['produits' => $produits]);
     }
@@ -74,7 +75,7 @@ class ProductController extends Controller
      * @param  \App\Produit  $produit
      * @return \Illuminate\Http\Response
      */
-    public function edit(Produit $produit)
+    public function edit(Produits $produit)
     {
         //
     }
@@ -86,7 +87,7 @@ class ProductController extends Controller
      * @param  \App\Produit  $produit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Produit $produit)
+    public function update(Request $request, Produits $produit)
     {
         //
     }
@@ -97,7 +98,7 @@ class ProductController extends Controller
      * @param  \App\Produit  $produit
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Produit $produit)
+    public function destroy(Produits $produit)
     {
         //
     }
