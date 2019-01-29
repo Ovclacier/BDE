@@ -55,8 +55,8 @@ Route::get('/fiche', function() {
     return view('Fiche-event');
   });
 
-
-Route::resource('/cart','CartController');
+Route::post('/productss', 'CartController@stores')->name('cart.stores');
+//Route::resource('/cart','CartController');
 Route::resource('/events','EventController');
 Route::resource('/comments','CommentController');
 Route::resource('/users','UserController');
@@ -78,9 +78,9 @@ Route::get('/mentions', function () {
 Route::get('404', ['as' => '404', 'uses' => 'ErrorController@notfound']);
 Route::get('500', ['as' => '500', 'uses' => 'ErrorController@fatal']);
 
-Route::group(['middleware'=>'App\Http\Middleware\Access'], function () {
-	Route::resource('/cart','CartController');
-});
+ Route::group(['middleware'=>'App\Http\Middleware\Access'], function () {
+ 	Route::resource('/cart','CartController');
+ });
 
 // Route::group(['middleware'=>'auth'], function () {
 // 	Route::get('permissions-all-users',['middleware'=>'check-permission:user|student|cesi|bde','uses'=>'HomeController@allUsers']);

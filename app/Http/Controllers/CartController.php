@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Cart_storage;
-use App\Product;
+use App\Commande;
+use App\Produit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -18,8 +18,12 @@ class CartController extends Controller
     public function index()
     {
         
-        $carts = Cart_storage::all()->where('user_id','=',auth()->user()->id);
-  
+        $carts = Commande::where('user_id',auth()->user()->id)->get();
+        foreach($carts as $cart){
+        $image[] = $cart->id_produit;
+        
+        }
+        return $image;
         return view('shop.cart.cartdetails',compact('carts'));
     }
 
@@ -38,6 +42,18 @@ class CartController extends Controller
         //
     }
 
+    public function stores(Request $request)
+    {
+        $idproduit = $request->id_produit;
+        $cart = Commande::Create(
+            ['user_id' => auth()->user()->id,
+            'id_produit' => $idproduit,
+            'quantity' => $request->quantity]);
+        $cart->save();
+        
+  
+        return redirect()->route('cart.index');
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -46,20 +62,15 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+
         $cart = Cart_storage::Create(
             ['user_id' => auth()->user()->id],
             ['cart_data' => $request->cart_data],
             ['quantity' => $request->quantity]);
-        // if (Cart::all()->where('id_user','=','auth()->user()->id'))
-        // {
-        //     return redirect()->route('cart.update');
-        // }else{
+       
         $cart->save();
 
-        // $carts = Cart::all();
-       
-        // return view('cart.cartdetails', ['carts' => $carts]);
-        $carts = Cart_storage::all()->where('user_id','=','auth()->user()->id');
+        
   
         return redirect()->route('cart.index');
     }

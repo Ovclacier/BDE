@@ -45,7 +45,7 @@ class ImageController extends Controller
              'url_image' => $test[1]]
          );
         $image->save();
-        $comments = ReactImage::all()->where('id_image', '=', '$id');
+        $comments = ReactImage::all()->where('id_image', $id);
         $posts = Event::find($request->id_image);
   
         return $test[1];
