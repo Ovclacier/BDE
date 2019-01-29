@@ -57,5 +57,90 @@
 	<footer class="footerConnexion">
 		<p><a class="lien" href="/BDE/public/mentions">Mentions légales</a><a class="barre"> | </a><a>BDE@viacesi.fr</a></p>
 	</footer>
+		<script type="text/javascript" src="{{asset(' /js/Jquerycookie/jquery.cookie.js ')}}"></script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+
+
+				//form validation
+				$("#register").on('click', function() {
+					console.log($("#check_form").is(":checked"));
+						if (document.RegForm.Mail.value == "" || document.RegForm.Nom.value == "" || document.RegForm.Prenom.value == "" || document.RegForm.Centre.value == "" || document.RegForm.Mdp.value == "") {
+								alert("Veuillez remplir toutes les cases!");
+								document.RegForm.Mail.focus();
+								return false;
+						}
+
+						if ($("#check_form").is(":checked") == false) {
+							alert("please check the box");
+							return false;
+						}
+						//send data to API
+						$.ajax({
+								url: 'http://localhost:3000/api/users',
+								type: 'POST',
+								dataType: 'json',
+								//contentType: "application/json",
+								data: $('#Inscription').serializeArray(),
+								success: function(json) {
+										//    alert("success");
+										//console.log("success");
+										//console.log(json);
+										alert("inscription confirmée. Vous allez être redirigé vers la page d'accueil");
+								//		window.location = "/";
+								},
+								error: function(xhr, resp, text) {
+										console.log(xhr, resp, text);
+										console.log('error');
+								}
+						})
+				})
+		});
+
+		</script>
+		<script src="{{ asset('/js/cookie.js') }}"></script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+				//form validation
+				$("#connect").on('click', function() {
+						if (document.CxForm.Mail.value == "") {
+								alert("Veuillez remplir toutes les cases!");
+								document.CxForm.Mail.focus();
+								return false;
+						}
+						if (document.CxForm.Mdp.value == "") {
+								alert("Veuillez remplir toutes les cases!");
+								document.CxForm.Mdp.focus();
+								return false;
+						}
+						//send user Mail and password to nodeJS API
+						$.ajax({
+							url: 'http://localhost:3000/api/users/login', //API url
+							type: 'POST',
+							dataType: 'json',
+							data: $("#Connexion").serializeArray(), //dara from connexion form
+							success: function(json) {
+								console.log('success');
+								console.log(json);
+								setCookie("UserId", json.data.id, 365);
+								if(json.data.Grade > 1) {
+									//console.log(json.token);
+									//set jsonwebtoken to allow access to API
+									setCookie("token", json.token, 7);
+								} else {
+									eraseCookie("token");
+								}
+								//var test = listCookies();
+								//console.log(test);
+								//alert("Vous êtes bien connectés. Vous allez être redirigé(e).")
+								//window.location = "/";
+
+							}
+						})
+					})
+				});
+
+		</script>
+
 
 </html>
