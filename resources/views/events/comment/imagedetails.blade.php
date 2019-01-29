@@ -1,4 +1,16 @@
+@extends('layout')
 
+	@section('title')
+	<title>Error 500 - Server not found</title>
+	@endsection
+	
+
+
+
+
+
+
+	@section('contenu')
 <body>
 
 <h2></h2>
@@ -54,5 +66,4 @@
 @endforeach
 
 
-
-</body>
+@endsection

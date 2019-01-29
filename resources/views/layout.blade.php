@@ -29,9 +29,9 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class=" nav navbar-nav">
-  		<li><a class="texte" href="Boutique">Boutique</a></li>
+  		<li><a class="texte" href="{{ route('produits.index') }}">Boutique</a></li>
           <li><a class="texte" href="Idees">Boite à idées</a></li>
-          <li><a class="texte" href="Evenements">Events</a></li>
+          <li><a class="texte" href="{{ route('events.index') }}">Events</a></li>
         </ul>
         <ul class=" nav navbar-nav navbar-right">
           <li><a class="texte" href="Connexion">Connexion/Inscription</a></li>
