@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Produit;
+use App\Categorie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -18,12 +19,11 @@ class ProductController extends Controller
     public function index()
     {
         $produits = Produit::paginate(5);
+        $categories = Categorie::all();
         $bestProduits = DB::select(' SELECT s.id_produit, SUM(quantity) as Quantite, produits.Nom_article as Nom_article, produits.URL_image as URL_image FROM commande as s LEFT JOIN produits ON s.id_produit = produits.id group by id_produit ORDER BY Quantite DESC LIMIT 0,3');
   
-        return view('boutique', ['produits' => $produits,'bestProduits' => $bestProduits])
+        return view('boutique', ['produits' => $produits,'bestProduits' => $bestProduits, 'categories' => $categories])
             ->with('i', (request()->input('page', 1)-1)*2);
-        // $produits = Produit::all();
-        // return view('shop.viewproducts', ['produits' => $produits]);
     }
 
     /**
@@ -34,6 +34,17 @@ class ProductController extends Controller
     public function create()
     {
         return view('shop.createproduct');
+    }
+
+    public function triCategorie($id)
+    {
+        $triProduits = Produit::all()->where('id_categorie' == $id);
+
+
+
+
+  
+        return redirect()->view('boutique', ['triProduits' => $triProduits]);
     }
 
     /**
@@ -56,7 +67,7 @@ class ProductController extends Controller
 
         
         $produit->save();
-        $produits = Produit::paginate(2);
+        $produits = Produit::paginate(5);
   
         return redirect()->route('produits.index',compact('produits'))
             ->with('i', (request()->input('page', 1)-1)*2);

@@ -38,10 +38,9 @@
 				<div class="col-lg-3 col-mg-12 col-sm-12 ble2 text-left marginMenu fontSizeMenu"style="min-height: 100%;">
 					<div class="marginTop25">Catégories :</div>
 					<ul>
-						<li><a href="#" class="linkNoir">Pile</a></li>
-						<li><a href="#" class="linkNoir">Saucisse</a></li>
-						<li><a href="#" class="linkNoir">Fruits</a></li>
-						<li><a href="#" class="linkNoir">Pâtisserie</a></li>
+						@foreach($categories as $categorie)
+						<li><a href="{{route('produits.triCategorie',$categorie->id)}}" class="linkNoir">{{$categorie->categorie}}</a></li>
+						@endforeach
 					</ul>
 				</div>
 			
