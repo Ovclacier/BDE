@@ -1,7 +1,7 @@
 @extends('layout')
 
     @section('title')
-    <title>Produit sélectionné</title>
+    <title>{{ $produits->Nom_article }}</title>
     @endsection
     
 
@@ -11,21 +11,28 @@
 
 
 @section('contenu')
-    <div class="MarginTop25">
-        <h2> Show Product</h2>
-        <a href="{{ route('produits.index') }}"> Back</a>
+    <div class="container container-fluid blc">
+        <div class="row ble1 menuTop text-center">
+            <h1>{{ $produits->Nom_article }}</h1>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 marginTop25"><a class="back" href="{{ route('produits.index') }}"> Back</a></div>
+        <div class="col-lg-10 col-md-10 col-sm-10 text-center marginTop25"><img src="{{$produits->url_image}}" width="300" height="300"></div>
+        <div class="col-lg-1 col-md-1 col-sm-1"></div>
+        <div class="col-lg-12 text-center marginTop25">
+            Details: <br>{{ $produits->description }}
+        </div>
+        <div class="row">
+            <form method="post" action="{{ route('cart.store') }}">
+             @csrf
+                <div class="col-lg-4 col-md-4 col-sm-4"></div>
+                <div class="col-lg-2 col-md-2 col-sm-2 text-center marginTop25">Quantité :</div>
+                <div class="col-lg-2 col-md-2 col-sm-2 text-center marginTop25"><input type="number" value="1" min="1" step="1"></div>
+                <div class="col-lg-4 col-md-4 col-sm-4"></div>
 
-        <strong>Name:</strong>
-        {{ $produits->Nom_produit }}
-        <strong>Details:</strong>
-        {{ $produits->description }}
-      
-        <form method="post" action="{{ route('cart.store') }}">
-         @csrf
-        <input type="text" value="{{ $produits->Nom_produit }}" name="datas" readonly>
-        <input type="text" value="{{ $produits->id }}" name="id_user" readonly>
-      
-        <button type="submit">Submit</button>
-       </form>
+                <div class="col-lg-12 text-center"><input type="hidden" value="{{ $produits->id }}" name="id_user" readonly>
+          
+                <button type="submit" class="marginTop25">Submit</button></div>
+            </form>
+        </div>
     </div>
 @endsection
