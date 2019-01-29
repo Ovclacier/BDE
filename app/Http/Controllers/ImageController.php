@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\comment;
-use App\Post;
+use App\Reactimage;
+use App\Event;
 use App\Image;
 use Illuminate\Http\Request;
 
@@ -37,17 +37,18 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        $test = explode('/', $request->image->store('images','public'));
+        $link = $request->url_image->store('images','public');
+        $test = explode('/', $link);
         $image = Image::Create(
-            ['id_author' => $request->id_author,
-            'id_post' => $request->id_post,
-            'image' => $test[1]]
-        );
+             ['id_auteur' => $request->id_auteur,
+             'id_event' => $request->id_event,
+             'url_image' => $test[1]]
+         );
         $image->save();
-        //$comments = Comment::all()->where('id_image', '=', '$id');
-        //$posts = Post::find($request->id_image);
+        $comments = ReactImage::all()->where('id_image', '=', '$id');
+        $posts = Event::find($request->id_image);
   
-        return back();
+        return $test[1];
     }
 
     /**
@@ -59,9 +60,9 @@ class ImageController extends Controller
     public function show($id)
     {
         $image = Image::find($id);
-        $comments = Comment::all()->where('id_image', '=', $id);
+        $comments = Reactimage::all()->where('id_image', '=', $id);
         
-        return view('event.comment.imagedetails', ['image' => $image,
+        return view('events.comment.imagedetails', ['image' => $image,
             'comments' => $comments]);
     }
 

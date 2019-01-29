@@ -16,9 +16,9 @@ class EventController extends Controller
      */
     public function index()
     {
-        $event = Event::paginate(2);
+        $events = Event::paginate(2);
   
-        return view('events.index',compact('event'))
+        return view('events.index',compact('events'))
             ->with('i', (request()->input('page', 1)-1)*2);
     }
 
@@ -88,13 +88,13 @@ class EventController extends Controller
             ['title' => $request->title,
             'description' => $request->description,
             'date_event' => $request->date_event,
-            'author' => $request->author,
+            'id_author' => $request->id_author,
             'recurence' => $request->recurence]
         );
-        $eventRequest->save();
-        $event = Events::paginate(2);
+        $event->save();
+        $events = Events::paginate(2);
   
-        return redirect()->route('events.index',compact('event'));
+        return redirect()->route('events.index',compact('events'));
     }
 
     /**

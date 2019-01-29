@@ -9,8 +9,6 @@ class Categorie extends Model
     use SoftDeletes;
     
     protected $fillable = [
-        'categorie'
+        'categorie',
      ];
-
 }
-

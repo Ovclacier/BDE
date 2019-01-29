@@ -3,7 +3,7 @@
 
 <h2></h2>
 
-<a href="{{ route('posts.index') }}"> Return to events' page</a><br>
+<a href="{{ route('events.index') }}"> Return to events' page</a><br>
 
 @if(auth()->check()) 
 
@@ -37,7 +37,7 @@
 <tr>
 <td></td>
 <td>
-<img src="/storage/images/{{ $image->image }}" height=100px width=100px/>
+<img src="/storage/images/{{ $image->url_image }}" height=100px width=100px/>
 
 </td>
 </tr>

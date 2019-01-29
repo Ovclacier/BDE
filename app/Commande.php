@@ -4,15 +4,14 @@ namespace App;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Cart_storage extends Model
 {
     use SoftDeletes;
     
     protected $fillable = [
-        'title',
-        'description',
-        'author',
-        'date_event',
-        'upvotes',
+        'id_produit',
+        'user_id',
+        'quantity',
+        'state',
      ];
 }
