@@ -20,8 +20,10 @@ class CartController extends Controller
         
         $carts = Commande::where('user_id',auth()->user()->id)->get();
         foreach($carts as $cart){
-        $image[] = $cart->id_produit;
-        
+            $produits[] = $cart->id_produit;
+        }
+        foreach($produits as $produit){
+            $image[] = Produit::where('id', $produit);
         }
         return $image;
         return view('shop.cart.cartdetails',compact('carts'));
