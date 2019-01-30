@@ -1,6 +1,10 @@
 
 @extends('layout')
 
+@section('title')
+<title>Création produit</title>
+@endsection
+
 	@section('contenu')
 
 
