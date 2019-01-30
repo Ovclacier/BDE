@@ -34,8 +34,9 @@
             <input type="hidden" name="id_auteur" value="{{ auth()->user()->id }}"><br><br>
             
             <input type="file" name="url_image">
-          
+         
             <button type="submit">Add an image</button><br><br>
+           
            </form>
             <!--  il faudrait mettre l'option pour ajouter des photos à coter de "Photos" ou en dessous 			
 				

@@ -51,6 +51,7 @@ Route::get('/CGU', function() {
 Route::get('/admin', function() {
     return view('Admin');
   });
+  
 Route::get('/fiche', function() {
     return view('Fiche-event');
   });
