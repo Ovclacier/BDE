@@ -45,7 +45,7 @@
         </ul>
         <ul class=" nav navbar-nav navbar-right">
         @if (auth()->guest()!=true)
-        <li><a class="texte">Connecté</a></li>
+        <li><a href="{{ route('connection.disconnect') }}">Deconnexion</a></li>
           @else
           <li><a class="texte" href="Connexion">Connexion/Inscription</a></li>
           @endif
