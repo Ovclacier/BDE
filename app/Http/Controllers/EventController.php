@@ -9,22 +9,36 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    
+    public function indexPasses()
     {
-        $events = Event::paginate(2);
+        $events = Event::where('state', 3)->paginate(2);
   
         return view('events.index',compact('events'))
             ->with('i', (request()->input('page', 1)-1)*2);
     }
 
+
+    public function index()
+    {
+        $events = Event::where('state', 2)->paginate(2);
+  
+        return view('events.index',compact('events'))
+            ->with('i', (request()->input('page', 1)-1)*2);
+    }
+
+   
     public function indexIdees()
     {
         $events = Event::where('state', 1)->paginate(2);
+  
+        return view('events.index',compact('events'))
+            ->with('i', (request()->input('page', 1)-1)*2);
+    }
+
+    public function indexAttente()
+    {
+        $events = Event::where('state', 0)->paginate(2);
   
         return view('events.index',compact('events'))
             ->with('i', (request()->input('page', 1)-1)*2);
