@@ -33,64 +33,10 @@
             {{ $events->description }}
             </div>
 		</div>
-
-
-
-	</div>
-
-		<div class="container-fluid container blc text-center ">
-		
-			<div class="row ble1">
-				<h2>Photos</h2>
-			</div>
-			<div class="row">
-			
-				<div class="col-lg-12 col-mg-12 col-sm-12 blc">
-					<div class="row">
-						<div class="col-lg-3 col-md-6 col-sm-6">
-							<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" alt="" width="200" height="200" alt="pile"></a>
-						</div>
-						<div class="col-lg-3 col-md-6 col-sm-6">
-							<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" alt="" width="200" height="200" alt="pile"></a>
-							
-						</div>
-						<div class="col-lg-3 col-md-6 col-sm-6">
-							<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" alt="" width="200" height="200" alt="pile"></a>
-							
-						</div>
-						<div class="col-lg-3 col-md-6 col-sm-6">
-							<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" alt="" width="200" height="200" alt="pile"></a>
-							
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-3 col-md-6 col-sm-6">
-							<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" alt="" width="200" height="200" alt="pile"></a>
-							
-						</div>
-						<div class="col-lg-3 col-md-6 col-sm-6">
-							<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" alt="" width="200" height="200" alt="pile"></a>
-							
-						</div>
-						<div class="col-lg-3 col-md-6 col-sm-6">
-							<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" alt="" width="200" height="200" alt="pile"></a>
-							
-						</div>
-						<div class="col-lg-3 col-md-6 col-sm-6">
-							<a href="http://www.google.fr"><img src="{{ asset('/img/pile.png') }}" alt="" width="200" height="200" alt="pile"></a>
-							
-						</div>
-					</div>
-				</div>
-			</div>
-			</div>
-</div>
-
-
-            
-                <a class="btn btn-primary" href="{{ route('events.index') }}"> Return to events' page</a>
-
-            @if(auth()->check()) 
+            <!--  il faudrait mettre l'option pour ajouter des photos à coter de "Photos" ou en dessous 
+				
+				
+			@if(auth()->check()) 
             <form method="post" action="{{ route('image.store') }}" enctype="multipart/form-data">
              @csrf
             <input type="hidden" name="id_event" value="{{ $events->id }}">
@@ -104,24 +50,30 @@
            @elseif(auth()->guest())
             You must login to add an image 
             <a href="{{ route('connection.connect') }}">Login</a><br>
-            @endif
-            
-        @foreach ($images as $image)
-        <tr>
-            <td><img src="/storage/images/{{ $image->url_image }}" height=100px width=100px/></td>
-            <td>{{ $image->id_author }}</td>
-            <a class="btn btn-info" href="{{ route('image.show', $image->id) }}">Show</a>
-            <form action="{{ route('events.destroy',$events->id) }}" method="POST">
-   
-                    @csrf
-                    @method('DELETE')
-      
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form><br>            
-        </tr>
-       
-        @endforeach
-        
-            
+            @endif -->
+
+
+	</div>
+	@foreach ($images as $image)
+		<div class="container-fluid container blc text-center ">
+		
+			<div class="row ble1">
+				<h2>Photos</h2>
+			</div>
+			<div class="row">
+			
+				<div class="col-lg-12 col-mg-12 col-sm-12 blc">
+					<div class="row">
+						<div class="col-lg-3 col-md-6 col-sm-6">
+							<a href="{{ route('image.show', $image->id) }}"><img src="/storage/images/{{ $image->url_image }}" alt="" width="200" height="200" alt="pile"></a>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			</div>
+			@endforeach
+</div>    
+                 
 </div>
 @endsection

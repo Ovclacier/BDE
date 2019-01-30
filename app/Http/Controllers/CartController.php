@@ -24,7 +24,6 @@ class CartController extends Controller
             $carts[] = Produit::find($produit->id_produit);
 
         }
-
         return view('shop.cart.cartdetails',['carts' => $carts, 'produits' => $produits]);
     }
 

@@ -69,7 +69,7 @@ Route::get('/disconnect', 'ConnectionController@disconnect')->name('connection.d
 
 Route::get('tri/{id}', 'ProductController@triCategorie')->name('produits.triCategorie');
 
-
+Route::get('/boiteIdee', 'EventController@indexIdees')->name('events.idees');
 
 Route::get('/mentions', function () {
     return view('mentions');    

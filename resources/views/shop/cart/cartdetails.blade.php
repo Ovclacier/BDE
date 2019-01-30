@@ -21,10 +21,10 @@
             <div class="col-lg-2 col-md-2"></div>
         </div>
         @foreach ($carts as $index => $cart)
-            <div class="row MarginTop10 MarginBottom10">
+            <div class="row MarginTop10 MarginTop10">
                 <div class="col-lg-2 col-md-2"></div>
                 <div class="field-label col-lg-3 col-md-3">{{ $cart->Nom_article}}</div>
-                <div class="field-label col-lg-2 col-md-2"><a href="{{ $cart->url_image }}"><img src="{{ $cart->url_image }}" width="50" height="50"></div></a>      
+                <div class="field-label col-lg-2 col-md-2"><a href="{{ $cart->url_image }}"><img src="{{ $cart->url_image }}" width="50" height="50"></a></div>      
                 <div class="field-label col-lg-3 col-md-3">
                      {{ $produits[$index]->quantity }}
                 </div>
@@ -32,8 +32,5 @@
                 
             </div>
             @endforeach
-        </table>
     </div>
-  
  
-      
