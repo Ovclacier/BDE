@@ -1,19 +1,17 @@
 @extends('layout')
 
 	@section('title')
-	<title>Error 500 - Server not found</title>
+	<title>Image</title>
 	@endsection
 	
 
 
-
-
-
-
 	@section('contenu')
-<body>
+<div class="container container-fluid blc text-center">
 
-<h2></h2>
+<div class="row ble1 menuTop">
+	<h1>Image</h1>
+</div>
 
 <a href="{{ route('events.index') }}"> Return to events' page</a><br>
 
@@ -21,7 +19,6 @@
 
 
 
-</div>
 {{ $iduser = auth()->user()->id }}
 <!-- Form to comment the image -->
 <form method="post" action="{{ route('comments.store') }}" enctype="multipart/form-data">
@@ -62,7 +59,7 @@
 
 
 </tr>
-
+</div>
 @endforeach
 
 

@@ -20,7 +20,7 @@ class ConnectionController extends Controller
 
     public function disconnect(){
         auth()->logout();
-        return redirect('/');
+        return redirect()->route('produits.index');
     }
 
     public function myaccount(){
@@ -40,7 +40,7 @@ class ConnectionController extends Controller
      
          if ($connexion)
          {
-             return view('welcome');
+            return redirect()->route('produits.index');
 
          }else{
              return redirect('/connection')->withError('error','You must enter the correct login');

@@ -52,8 +52,7 @@ class UserController extends Controller
         );
         $user->save();
         $users = User::paginate(2);
-        return redirect()->route('users.index',compact('users'))
-            ->with('i', (request()->input('page', 1)-1)*2);
+        return redirect()->route('produits.index');
         
 
     }
