@@ -37,7 +37,8 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-       return $request;
+       
+
         $link = $request->url_image->store('images','public');
         $test = explode('/', $link);
         $image = Image::Create(
