@@ -22,11 +22,12 @@ if (strpos($url,'boiteIdee') !== false) {
     <div class="row ble1 menuTop">
         <h1>Liste d'events</h1>
     </div>
+    @if (auth()->guest()!=true && auth()->user()->grade>1)
     <div class="row blc menuTop">
         <a class="btn btn-success" href="{{ route('events.create') }}" style="margin-top:10px; margin-bottom:10px;">
             Create New Event</a>
     </div>
-
+    @endif
     <table>
 
         @foreach ($events as $event)
