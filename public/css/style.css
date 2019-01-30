@@ -95,6 +95,11 @@ h2{
     text-align: center;
     font-size: 1.5em;
 }
+.titreCart{
+    font-size: 1.2em;
+    border-bottom: solid lightgrey 1px;
+    background-color: orange;
+}
 
 .paddingRight25{
 padding-right: 25px;
@@ -107,8 +112,11 @@ padding-right: 25px;
 }
 .marginTop25{
     margin-top: 25px;
-
 }
+.marginBottom10{
+    margin-bottom: 10px;    
+}
+
 .like img{
     margin-top: -10px;
 }

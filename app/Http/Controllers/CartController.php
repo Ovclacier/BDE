@@ -21,11 +21,11 @@ class CartController extends Controller
         $produits = Commande::where('user_id',auth()->user()->id)->get();
         $i = 0;
         foreach($produits as $produit){
-        $carts[] = Produit::find($produit->id_produit);
-        
+            $carts[] = Produit::find($produit->id_produit);
+
         }
-        
-        return view('shop.cart.cartdetails',['carts' => $carts]);
+
+        return view('shop.cart.cartdetails',['carts' => $carts, 'produits' => $produits]);
     }
 
     public function cartValidation()
