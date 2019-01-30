@@ -72,7 +72,7 @@ Route::get('tri/{id}', 'ProductController@triCategorie')->name('produits.triCate
 Route::get('/boiteIdee', 'EventController@indexIdees')->name('events.idees');
 Route::get('/attente', 'EventController@indexAttente')->name('events.attente');
 Route::get('/eventPasse', 'EventController@indexPasses')->name('events.passes');
-
+Route::post('/creer', 'ProductController@stores')->name('produits.stores');
 Route::get('/mentions', function () {
     return view('mentions');    
 });

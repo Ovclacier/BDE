@@ -5,12 +5,6 @@
 <title>Events</title>
 @endsection
 
-
-
-
-
-
-
 @section('contenu')
 <div>
 	<div class="container-fluid container blc text-center">
@@ -33,8 +27,17 @@
             {{ $events->description }}
             </div>
 		</div>
-            <!--  il faudrait mettre l'option pour ajouter des photos à coter de "Photos" ou en dessous 
-				
+		<form method="post" action="{{ route('image.store') }}" enctype="multipart/form-data">
+             @csrf
+            <input type="hidden" name="id_event" value="{{ $events->id }}">
+                  
+            <input type="hidden" name="id_auteur" value="{{ auth()->user()->id }}"><br><br>
+            
+            <input type="file" name="url_image">
+          
+            <button type="submit">Add an image</button><br><br>
+           </form>
+            <!--  il faudrait mettre l'option pour ajouter des photos à coter de "Photos" ou en dessous 			
 				
 			@if(auth()->check()) 
             <form method="post" action="{{ route('image.store') }}" enctype="multipart/form-data">
@@ -51,8 +54,6 @@
             You must login to add an image 
             <a href="{{ route('connection.connect') }}">Login</a><br>
             @endif -->
-
-
 	</div>
 	@foreach ($images as $image)
 		<div class="container-fluid container blc text-center ">
