@@ -55,12 +55,14 @@ class ProductController extends Controller
         
        $link = $request->url_image->store('images','public');
        $test = explode('/', $link);
-
+        $categorie = Categorie::where('categorie', $request->categorie)->first();
+     
         $produit = Produit::firstOrCreate(
             ['Nom_article' => $request->Nom_article],
             ['description' => $request->description,
-            'price' => $request->price,
-            'url_image' => $test[1]]
+            'prix' => $request->price,
+            'url_image' => $test[1],
+            'id_categorie' => $categorie->id]
         );
         //$test = explode('/', $request->image);
 
