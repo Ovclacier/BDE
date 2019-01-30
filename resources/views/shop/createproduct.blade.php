@@ -13,24 +13,20 @@
             <form method="post" action="{{ route('produits.stores') }}"  enctype="multipart/form-data">
 
                 @csrf
-               
-                    <div class="col-lg-3 col-md-3 col-sm-3"><label>Name</label> <input type="text" name="Nom_article"></div>        
+               		<div class="marginTop25">
+	                    <div class="col-lg-3 col-md-3 col-sm-3"><label>Name</label> <input type="text" name="Nom_article"></div>            
+	                	<div class="col-lg-3 col-md-3 col-sm-3"><label>Price</label> <input type="number" name="price"></div>
+	                    <div class="col-lg-3 col-md-3 col-sm-3"><label>Description</label><input type="text" name="description"></div> 
+	                    <div class="col-lg-3 col-md-3 col-sm-3">
+	                    	<label>Categorie</label><select name="categorie">
+	                   		@foreach( $categories as $categorie)
+	                    		<option>{{ $categorie->categorie }}</option>
+	                   		@endforeach</select>
+	                   	</div> 
+					</div>
+                   	<div class="row"><label>Image</label><input type="file" name="url_image"></div>
 
-                @csrf 
-                <h1> Enter Details to create a product</h1>
-               
-                    <label>Name</label> <input type="text" name="Nom_article">          
-
-                    <label>Image</label><input type="file" name="url_image">
                     
-                    <label>Description</label> <input type="text" name="description">
-
-                    <label>Categorie</label><select name="categorie">
-                    @foreach( $categories as $categorie)
-                    <option>{{ $categorie->categorie }}</option>
-                    @endforeach</select>
-
-                    <label>Price</label> <input type="number" name="price">
 
 
 
