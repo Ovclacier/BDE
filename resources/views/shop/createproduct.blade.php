@@ -4,12 +4,13 @@
 	@section('contenu')
 
 
+
 		<div class="container container-fluid blc text-center">
 			<div class="row ble1 menuTop">
 				<h1>Ajouter un produit</h1>
 			</div>
 
-            <form method="post" action="{{ route('produits.stores') }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('produits.stores') }}"  enctype="multipart/form-data">
 
                 @csrf
                

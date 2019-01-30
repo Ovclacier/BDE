@@ -33,7 +33,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('shop.createproduct');
+        $categories = Categorie::all();
+        return view('shop.createproduct', ['categories' => $categories]);
     }
 
     public function triCategorie($id)
@@ -53,6 +54,7 @@ class ProductController extends Controller
     public function stores(Request $request)
     {
         
+        
        $link = $request->url_image->store('images','public');
        $test = explode('/', $link);
         $categorie = Categorie::where('categorie', $request->categorie)->first();
@@ -64,7 +66,7 @@ class ProductController extends Controller
             'url_image' => $test[1],
             'id_categorie' => $categorie->id]
         );
-        //$test = explode('/', $request->image);
+        return redirect()->route('produits.index');
 }
 
     /**
@@ -75,9 +77,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        return $request;
         $test = explode('/', $request->URL_image->store('images','public'));
 
-        $produit = Produits::firstOrCreate(
+        $produit = Produit::firstOrCreate(
             ['Nom_article' => $request->Nom_article],
             ['description' => $request->description,
             'price' => $request->price,
