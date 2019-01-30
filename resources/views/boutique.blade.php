@@ -20,7 +20,7 @@
 			<div class="adm">
 				@foreach($bestProduits as $key => $bestproduit)
 					<div @if ($key < 2) class="col-lg-4 col-md-6 col-sm-12" @else class="col-lg-4 col-md-12 col-sm-12" @endif>
-						<a href="http://www.google.fr"><img src="{{$bestproduit->URL_image}}" width="300" height="300" alt="pile"></a>
+						<a href="{{$bestproduit->URL_image}}"><img src="{{$bestproduit->URL_image}}" width="300" height="300" alt="pile"></a>
 						<div class="adm">{{$bestproduit->Nom_article}}</div>
 					</div>
 				@endforeach
@@ -56,7 +56,9 @@
 									<div class ="col-lg-8 col-md-8 col-sm-8">{{$produit->description}}</div>
 									<div class="col-lg-4 col-md-4 col-sm-4">{{$produit->prix}} €</div>
 									<div class="row">
-										<a href="{{route('produits.show',$produit->id)}}"><button>Voir détails produit</button></a>
+										@if(auth()->guest() == false)
+											<a href="{{route('produits.show',$produit->id)}}"><button>Voir détails produit</button></a>
+										@endif
 									</div>
 								</div>
 							</div>
