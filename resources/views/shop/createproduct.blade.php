@@ -1,9 +1,9 @@
-
 @extends('layout')
 
 	@section('title')
 	<title>Ajouter Produit</title>
 	@endsection
+
 
 	@section('contenu')
 
@@ -13,7 +13,7 @@
 				<h1>Ajouter un produit</h1>
 			</div>
 
-            <form action="{{route('produits.store')}}" method="POST" enctype="multipart/form-data">
+            <form method="post" action="{{ route('produits.stores') }}" enctype="multipart/form-data">
                 @csrf
                
                     <div class="col-lg-3 col-md-3 col-sm-3"><label>Name</label> <input type="text" name="Nom_article"></div>        
@@ -27,3 +27,6 @@
                 <div class="row marginTop25"><button type="submit">Submit</button></div>
             </form>
 		</div>
+            
+
+                
