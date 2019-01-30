@@ -25,7 +25,7 @@ class CartController extends Controller
         
         }
         
-        return view('shop.cart.cartdetails',['carts' => $carts]);
+        return view('shop.cart.cartdetails',['carts' => $carts, 'produits' => $produits]);
     }
 
     public function cartValidation()

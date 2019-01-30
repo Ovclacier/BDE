@@ -22,6 +22,13 @@ class EventController extends Controller
             ->with('i', (request()->input('page', 1)-1)*2);
     }
 
+    public function indexIdees()
+    {
+        $events = Event::where('state', 1)->paginate(2);
+  
+        return view('events.index',compact('events'))
+            ->with('i', (request()->input('page', 1)-1)*2);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -40,49 +47,6 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-
-        // Placeholder pour le système de upvote
-
-        // if($request->upvotes !=null)
-        // {     
-            
-        //     $isLiked = Comment::where('react', 1)
-        //                             ->where('id_user', $request->id_user)
-        //                             ->where('id_image', $request->id_image)
-        //                             ->first();
-            
-        //     if($isLiked){
-        //         $dislike = Comment::find($isLiked->id);
-        //         $dislike->react = 0;
-        //         $dislike->save();
-        //        // return "l'utilisateur vient de dislike";
-        //     }else{
-        //         $rowExists = Comment::where('react', 0)
-        //                         ->where('id_user', $request->id_user)
-        //                         ->where('id_image', $request->id_image)
-        //                         ->where('commentaire', null)
-        //                         ->first();
-        //         if($rowExists)
-        //         {
-        //             $like = Comment::find($rowExists->id);
-        //             $like->react = 1;
-        //             $like->save();
-        //            // return "l'utilisateur vient de like";
-        //         }else{
-        //             $firstLike = Comment::Create(['id_user' => $request->id_user,
-        //                              'id_image' => $request->id_image,
-        //                              'react' => $request->react]);
-        //           //  return "l'utilisateur qui n'a jamais like vient de like";
-        //         }   
-        //     }
-        //     $countrows = Comment::where('react', 1)
-        //     ->where('id_image', $request->id_image)
-        //     ->count();
-        //     $totalLike = Image::find($request->id_image);
-        //     $totalLike->reacts = $countrows;
-        //     $totalLike->save();
-        //     return redirect()->back();
-        // }
         
         $event = Event::Create(
             ['title' => $request->title,
@@ -103,7 +67,6 @@ class EventController extends Controller
      * @param  \App\Events  $Events
      * @return \Illuminate\Http\Response
      */
-
     public function show($id)
     {
         $events = Event::find($id);

@@ -9,13 +9,14 @@
             <th>état</th>
             <th>Action</th>
         </tr>
-        @foreach ($carts as $cart)
+        
+        @foreach ($carts as $index => $cart)
         <tr>
             <td>{{ $cart->id}}</td>
             <td>{{ $cart->url_image }}</td>
             
             <td>oui</td>
-            
+            {{ $produits[$index]->quantity }}
             <td>
                 <form action="{{ route('cart.index') }}" method="POST">
    
@@ -27,6 +28,7 @@
             </td>
         </tr>
         @endforeach
+        
     </table>
   
  
