@@ -33,7 +33,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('shop.createproduct');
+        $categories = Categorie::all();
+        return view('shop.createproduct', ['categories' => $categories]);
     }
 
     public function triCategorie($id)
@@ -49,10 +50,25 @@ class ProductController extends Controller
                                 'categories' => $categories])
                     ->with('i', (request()->input('page', 1)-1)*2);
     }
+
     public function stores(Request $request)
     {
-        return $request;
-    }
+        
+        
+       $link = $request->url_image->store('images','public');
+       $test = explode('/', $link);
+        $categorie = Categorie::where('categorie', $request->categorie)->first();
+     
+        $produit = Produit::firstOrCreate(
+            ['Nom_article' => $request->Nom_article],
+            ['description' => $request->description,
+            'prix' => $request->price,
+            'url_image' => $test[1],
+            'id_categorie' => $categorie->id]
+        );
+        return redirect()->route('produits.index');
+}
+
     /**
      * Store a newly created resource in storage.
      *
@@ -64,11 +80,11 @@ class ProductController extends Controller
         return $request;
         $test = explode('/', $request->URL_image->store('images','public'));
 
-        $produit = Produits::firstOrCreate(
+        $produit = Produit::firstOrCreate(
             ['Nom_article' => $request->Nom_article],
             ['description' => $request->description,
             'price' => $request->price,
-            'URL_image' => $test[1]]
+            'URL_image' => $test[1] ]
         );
         //$test = explode('/', $request->image);
 

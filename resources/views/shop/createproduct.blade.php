@@ -1,23 +1,36 @@
 
+@extends('layout')
+
+	@section('contenu')
 
 
 
-<body>
-            <form enctype="multipart/form-data" action="{{ route('produits.stores') }}" method="POST">
+		<div class="container container-fluid blc text-center">
+			<div class="row ble1 menuTop">
+				<h1>Ajouter un produit</h1>
+			</div>
 
-                @csrf 
-                <h1> Enter Details to create a product</h1>
-               
-                    <label>Name</label> <input type="text" name="name">          
+            <form method="post" action="{{ route('produits.stores') }}"  enctype="multipart/form-data">
 
-                    <label>Image</label><input type="file" name="image">
-                    <input type="file" name="oiu">
-                    <label>Description</label> <input type="text" name="description">
+                @csrf
+               		<div class="marginTop25">
+	                    <div class="col-lg-3 col-md-3 col-sm-3"><label>Name</label> <input type="text" name="Nom_article"></div>            
+	                	<div class="col-lg-3 col-md-3 col-sm-3"><label>Price</label> <input type="number" name="price"></div>
+	                    <div class="col-lg-3 col-md-3 col-sm-3"><label>Description</label><input type="text" name="description"></div> 
+	                    <div class="col-lg-3 col-md-3 col-sm-3">
+	                    	<label>Categorie</label><select name="categorie">
+	                   		@foreach( $categories as $categorie)
+	                    		<option>{{ $categorie->categorie }}</option>
+	                   		@endforeach</select>
+	                   	</div> 
+					</div>
+                   	<div class="row"><label>Image</label><input type="file" name="url_image"></div>
 
-                    <label>Price</label> <input type="number" name="price">
+                    
+
+
 
                 <button type="submit">Submit</button>
             </form>
+		</div>
 
-      
-</body>
