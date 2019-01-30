@@ -6,7 +6,6 @@
 @endsection
 
 @section('contenu')
-<div>
 	<div class="container-fluid container blc text-center">
 		<div class="row ble1 menuTop">
 	        <div class="text-center">
@@ -21,7 +20,7 @@
 	        	<u>Description :</u><br>{{ $events->description }}
 	        </div>
 	        <div class="col-lg-3 col-md-3 col-sm-3"></div>
-	    
+	    </div>
 		<div class="marginTop50">
 			<form method="post" action="{{ route('image.store') }}" enctype="multipart/form-data">
 	             @csrf
@@ -53,23 +52,16 @@
             @endif -->
 
 		
-		<div class="row ble1">
+		<div class="ble1 row">
 			<h2>Photos</h2>
 		</div>
-        
 		<div class="row">
-		
-			<div class="col-lg-12 col-mg-12 col-sm-12 blc">
-				<div class="row">
-                @foreach ($images as $image)
-					<div class="col-lg-3 col-md-6 col-sm-6">
-						<a href="{{ route('image.show', $image->id) }}"><img src="/storage/images/{{ $image->url_image }}" alt="" width="200" height="200" alt="pile"></a>
-					</div>
-					@endforeach
-				</div>
+        @foreach ($images as $image)
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<a href="{{ route('image.show', $image->id) }}"><img src="/storage/images/{{ $image->url_image }}" alt="" width="200" height="200" alt="pile"></a>
 			</div>
+			@endforeach
 		</div>
+
 	</div>
-			
-</div>   
 @endsection
