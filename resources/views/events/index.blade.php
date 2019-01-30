@@ -1,14 +1,20 @@
+<?php 
+$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+if (strpos($url,'boiteIdee') !== false) {
+    $nomPage = "Boîte à idées";
+} elseif(strpos($url,'attente') !== false) {
+    $nomPage = "Idées à valider";
+} elseif(strpos($url,'eventPasse') !== false) {
+	$nomPage = "Events passés";
+} elseif(strpos($url,'events') !== false){
+    $nomPage = "Evenements actuels";
+}
+?>
 @extends('layout')
 
 @section('title')
-<title>Events</title>
+<title>{{$nomPage}}</title>
 @endsection
-
-
-
-
-
-
 
 @section('contenu')
 

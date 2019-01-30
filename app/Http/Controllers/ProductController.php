@@ -50,6 +50,23 @@ class ProductController extends Controller
                     ->with('i', (request()->input('page', 1)-1)*2);
     }
 
+    public function stores(Request $request)
+    {
+        
+       $link = $request->url_image->store('images','public');
+       $test = explode('/', $link);
+        $categorie = Categorie::where('categorie', $request->categorie)->first();
+     
+        $produit = Produit::firstOrCreate(
+            ['Nom_article' => $request->Nom_article],
+            ['description' => $request->description,
+            'prix' => $request->price,
+            'url_image' => $test[1],
+            'id_categorie' => $categorie->id]
+        );
+        //$test = explode('/', $request->image);
+}
+
     /**
      * Store a newly created resource in storage.
      *
