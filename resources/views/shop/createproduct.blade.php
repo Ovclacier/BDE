@@ -3,7 +3,7 @@
 
 
 <body>
-            <form method="post" action="{{ route('produits.stores') }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('produits.stores') }}"  enctype="multipart/form-data">
 
                 @csrf 
                 <h1> Enter Details to create a product</h1>
