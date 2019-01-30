@@ -30,11 +30,25 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class=" nav navbar-nav">
   		<li><a class="texte" href="{{ route('produits.index') }}">Boutique</a></li>
-          <li><a class="texte" href="Idees">Boite à idées</a></li>
-          <li><a class="texte" href="{{ route('events.index') }}">Events</a></li>
+      <li class="dropdown back">
+        <a class="texte" data-toggle="dropdown">Events
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu back">
+        <li><a class="texte" href="{{ route('events.idees') }}">Boite à idées</a></li>
+          <li><a class="texte" href="{{ route('events.index') }}">Events a venir</a></li>
+          <li><a class="texte" href="{{ route('events.passes') }}">Events passés</a></li>
+          @if (auth()->guest()!=true && auth()->user()->grade>1)
+          <li><a class="texte" href="{{ route('events.attente') }}">Propositions</a></li>
+          @endif
+        </ul>
+      </li>
         </ul>
         <ul class=" nav navbar-nav navbar-right">
+        @if (auth()->guest()!=true)
+        <li><a class="texte">Connecté</a></li>
+          @else
           <li><a class="texte" href="Connexion">Connexion/Inscription</a></li>
+          @endif
         </ul>
       </div>
     </div>
