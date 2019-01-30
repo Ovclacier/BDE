@@ -33,8 +33,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Categorie::all();
-        return view('shop.createproduct', ['categories' => $categories]);
+        return view('shop.createproduct');
     }
 
     public function triCategorie($id)
@@ -50,6 +49,7 @@ class ProductController extends Controller
                                 'categories' => $categories])
                     ->with('i', (request()->input('page', 1)-1)*2);
     }
+
     public function stores(Request $request)
     {
         
@@ -65,13 +65,8 @@ class ProductController extends Controller
             'id_categorie' => $categorie->id]
         );
         //$test = explode('/', $request->image);
+}
 
-        
-        $produit->save();
-       
-  
-        return redirect()->route('produits.index');
-    }
     /**
      * Store a newly created resource in storage.
      *
@@ -80,22 +75,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
         $test = explode('/', $request->URL_image->store('images','public'));
 
-        $produit = Produit::firstOrCreate(
+        $produit = Produits::firstOrCreate(
             ['Nom_article' => $request->Nom_article],
             ['description' => $request->description,
             'price' => $request->price,
-            'url_image' => $test[1]]
+            'URL_image' => $test[1] ]
         );
         //$test = explode('/', $request->image);
 
         
         $produit->save();
-       
+        $produits = Produit::paginate(5);
   
-        return redirect()->route('produits.index');
+        return redirect()->route('produits.index',compact('produits'))
+            ->with('i', (request()->input('page', 1)-1)*2);
     }
 
     /**
